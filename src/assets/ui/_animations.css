@@ -1,0 +1,17 @@
+/* === ANIMATIONS === */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* --- Dialogue Box Transition --- */
+.dialogue-fade-enter-active,
+.dialogue-fade-leave-active {
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.dialogue-fade-enter-from,
+.dialogue-fade-leave-to {
+  opacity: 0;
+  transform: translateY(20px);
+}

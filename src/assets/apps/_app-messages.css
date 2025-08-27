@@ -1,0 +1,50 @@
+/* Add this inside _app-messages.css */
+.contact-pfp-container i {
+  font-size: 2.5em; /* Make the icon large */
+  color: #555;   /* Give it a subtle color */
+}
+
+/* --- List View (Master View) --- */
+.list-container {
+  flex-grow: 1; /* <-- THE FIX IS HERE */
+  overflow-y: auto;
+  padding: 10px;
+}
+.contact-item {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.contact-item:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+.contact-pfp-container {
+  width: 50px; height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+.contact-pfp-container img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.contact-info { overflow: hidden; }
+.contact-name {
+  font-size: 1.1em; font-weight: 500;
+}
+.last-message {
+  font-size: 0.9em;
+  color: var(--color-text-muted);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+/* --- Detail View (Chat View) --- */
+/* The custom .chat-header styles have been removed as this view now uses the standard PhoneAppHeader component. */
+.messages-list { flex-grow: 1; overflow-y: auto; padding: 20px 10px; display: flex; flex-direction: column; }
+.message-wrapper { display: flex; margin-bottom: 10px; }
+.message-bubble { padding: 12px 18px; border-radius: 22px; line-height: 1.5; max-width: 80%; cursor: pointer; }
+.received { background: #262626; color: #fff; align-self: flex-start; border-bottom-left-radius: 8px; }
+.message-bubble.unread { font-weight: bold; background: #3a3a3a; }

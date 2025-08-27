@@ -1,0 +1,137 @@
+[
+  {
+    "id": "colatina_es",
+    "nome": "Colatina",
+    "estado": "Espírito Santo",
+    "pais": "Brasil",
+    "texto": "A colonização de Colatina se intensificou a partir de 1910, com a chegada da Estrada de Ferro Vitória a Minas. Antes disso, a região era habitada pelos índios Botocudos. Colatina possui uma cena musical vibrante e diversificada, com festivais que celebram desde a música popular brasileira até o rock e a viola caipira. A cidade, que já foi um importante porto fluvial para o escoamento do café, hoje se destaca como um polo de comércio e serviços na região noroeste do estado. A beleza de seu pôr do sol é reconhecida e apreciada por moradores e visitantes.",
+    "foto": "colatina-es.jpg",
+    "foto_link": "https://commons.wikimedia.org/wiki/File:Vista-cidade-doce.jpg"
+  },
+  {
+    "id": "saoroque_es",
+    "nome": "São Roque do Canaã",
+    "estado": "Espírito Santo",
+    "pais": "Brasil",
+    "texto": "A história de São Roque do Canaã é marcada pela imigração italiana, que se iniciou por volta de 1875. [12] Fugindo de uma grave epidemia que assolava a região, os imigrantes fizeram novenas a São Roque, o santo protetor contra doenças. [12] Atribuindo o fim da peste à intercessão do santo, construíram um oratório por volta de 1889, onde hoje se encontra a Igreja Matriz. [12] O nome \"do Canaã\" foi adicionado em homenagem ao Vale do Canaã, para diferenciar a localidade de outras com o mesmo nome. [7, 12] A cultura local preserva fortemente as tradições italianas, visíveis na culinária, nas festas e no dialeto vêneto, ainda falado por alguns moradores.",
+    "foto": "saoroque-es.jpg",
+    "foto_link": "https://www.saoroquedocanaa.es.gov.br/pagina/ler/2081/a-cidade"
+  },
+  {
+    "id": "itarana-es",
+    "nome": "Itarana",
+    "estado": "Espírito Santo",
+    "pais": "Brasil",
+    "texto": "Colonizada na segunda metade do século XIX por imigrantes italianos vindos de Santa Teresa, a cidade de Itarana tem sua origem na povoação de Figueira de Santa Joana. [36] O nome Itarana, que significa \"Pedra da Onça\" em tupi, foi adotado em 1943. [9] A cultura local é uma mistura harmoniosa das heranças italianas e alemãs. [9] Em 2016, a língua pomerana, de origem alemã, foi cooficializada no município, reflexo da forte presença dessa comunidade. [25] A cidade é conhecida por suas belezas naturais, com montanhas e cachoeiras, e por eventos culturais como o Tombo da Papa e a Festa do Café, que celebram as tradições rurais e a identidade local. [31]",
+    "foto": "itarana-es.jpg",
+    "foto_link": "https://commons.wikimedia.org/wiki/File:Itarana-ES_(50894880968).jpg"
+  },
+  {
+    "id": "vitoria-es",
+    "nome": "Vitória",
+    "estado": "Espírito Santo",
+    "pais": "Brasil",
+    "texto": "Fundada em 8 de setembro de 1551, Vitória é uma das cidades mais antigas do Brasil. [8] O nome da cidade é uma homenagem à vitória portuguesa sobre os índios goitacás. [43] A capital capixaba preserva um rico patrimônio histórico, com edificações que datam do século XVI, como a Capela de Santa Luzia, a construção mais antiga da cidade. [8] A influência da colonização europeia é visível na arquitetura religiosa e nos prédios históricos do centro. [14] A cultura local é marcada por manifestações tradicionais, como a confecção das panelas de barro pelas Paneleiras de Goiabeiras, e por um vibrante calendário de eventos. [14]",
+    "foto": "vitoria-es.jpg",
+    "foto_link": "https://commons.wikimedia.org/wiki/File:Itarana-ES_(50894880968).jpg"
+  },
+  {
+    "id": "belohorizonte_mg",
+    "nome": "Belo Horizonte",
+    "estado": "Minas Gerais",
+    "pais": "Brasil",
+    "texto": "Inaugurada em 1897 para ser a nova capital de Minas Gerais, Belo Horizonte foi a primeira cidade planejada do Brasil. [39] O projeto urbanístico de Aarão Reis, inspirado em ideais republicanos e em cidades europeias, previa ruas largas e quarteirões regulares. [39] Culturalmente, a cidade se destaca pela efervescência da vida noturna, sendo conhecida como a \"Capital Nacional dos Botecos\". [17] BH foi palco do surgimento do movimento musical Clube da Esquina, que projetou a música mineira para o mundo. O Conjunto Arquitetônico da Pampulha, projetado por Oscar Niemeyer, é um marco do modernismo brasileiro e foi reconhecido como Patrimônio Cultural da Humanidade pela UNESCO. [39]",
+    "foto": "belohorizonte-mg.jpg",
+    "foto_link": "https://commons.wikimedia.org/wiki/File:Belo_Horizonte_Brazil_Skyline_Aerial,_December_2024.jpg"
+  },
+  {
+    "id": "lins_sp",
+    "nome": "Lins",
+    "estado": "São Paulo",
+    "pais": "Brasil",
+    "texto": "Lins surgiu no início do século XX, com a expansão da Estrada de Ferro Noroeste do Brasil, em um local que era cruzamento de uma antiga trilha de índios coroados. [46] O nome da estação, \"Albuquerque Lins\", foi uma homenagem ao então presidente do estado de São Paulo. [46] A cidade preserva sua herança cultural em espaços como o Museu Histórico de Lins, localizado na antiga estação ferroviária, que retrata a história local e dedica parte de sua exposição à cultura japonesa, muito presente na região. [11, 53] A cultura grega também deixou sua marca na cidade, com a construção da Igreja Ortodoxa Grega. [53]",
+    "foto": "lins-sp.jpg",
+    "foto_link": "https://commons.wikimedia.org/wiki/File:Vistanoturnalins.jpg"
+  },
+  {
+    "id": "tupa-sp",
+    "nome": "Tupã",
+    "estado": "São Paulo",
+    "pais": "Brasil",
+    "texto": "Fundada em 12 de outubro de 1929 por Luiz de Souza Leão, Tupã teve seu nome escolhido em homenagem aos povos indígenas que habitavam a região. [35] A cidade cresceu à sombra do cultivo do café, com forte influência de imigrantes, especialmente letos e japoneses. [35] A construção da ferrovia na década de 1920 foi um marco para o desenvolvimento local, facilitando o escoamento da produção agrícola. [16] Tupã é conhecida como a \"Capital Nacional da Fotografia\" e sedia o Museu Histórico e Pedagógico Índia Vanuíre, um dos mais importantes do país dedicados à cultura indígena. [44]",
+    "foto": "tupa-sp.jpg",
+    "foto_link": "https://www.tupa.sp.gov.br/pagina/3/perfil-da-cidade"
+  },
+  {
+    "id": "marianomoro-rs",
+    "nome": "Mariano Moro",
+    "estado": "Rio Grande do Sul",
+    "pais": "Brasil",
+    "texto": "O nome do município é uma homenagem a Mariano Cândido de Moro, primeiro engenheiro-chefe da Comissão de Terras de Erechim. A história da cidade está ligada à colonização da região do Alto Uruguai, com a chegada de imigrantes, principalmente de origem italiana, no início do século XX. A cultura local reflete essa herança, com destaque para a religiosidade, as tradições gastronômicas e os festejos comunitários. A economia do município é baseada na agricultura e na pecuária.",
+    "foto": "marianomoro-rs.jpeg",
+    "foto_link": "https://marianomoro.rs.gov.br/noticias_ver.php?id_noticia=911"
+  },
+  {
+    "id": "lisboa_portugal",
+    "nome": "Lisboa",
+    "estado": "",
+    "pais": "Portugal",
+    "texto": "Com mais de 20 séculos de existência, a história de Lisboa é marcada pela passagem de diversos povos, como fenícios, romanos e mouros. [13, 24] A cidade prosperou como um importante centro comercial e cultural sob o domínio muçulmano, até a reconquista cristã em 1147. [24] A Era dos Descobrimentos, nos séculos XV e XVI, foi um período de grande esplendor, quando Lisboa se tornou a \"Senhora dos Mares\". Em 1755, a cidade foi devastada por um terremoto, seguido de um tsunami e um incêndio, mas foi reconstruída. [24] A cultura lisboeta é rica e diversificada, com destaque para o Fado, gênero musical classificado como Patrimônio Cultural Imaterial da Humanidade.",
+    "foto": "lisboa-pt.jpg",
+    "foto_link": "https://pt.wikipedia.org/wiki/Ficheiro:Lisbon_(36831596786)_(cropped).jpg"
+  },
+  {
+    "id": "calcuta_india",
+    "nome": "Calcutá",
+    "estado": "Bengala do Oeste",
+    "pais": "Índia",
+    "texto": "Calcutá, ou Kolkata, foi a capital da Índia Britânica até 1911 e um importante centro do movimento de independência indiano. A cidade tem uma longa e rica história cultural, sendo conhecida como a \"Capital Cultural da Índia\". É o berço de muitos movimentos literários e artísticos do país e foi lar de figuras proeminentes como o poeta e prêmio Nobel Rabindranath Tagore. A arquitetura de Calcutá reflete sua história, com edifícios coloniais britânicos ao lado de templos hindus e mesquitas. A cidade também é famosa por seus festivais, especialmente o Durga Puja, uma celebração vibrante que atrai visitantes de todo o mundo.",
+    "foto": "calcuta-india.jpg",
+    "foto_link": "https://unsplash.com/pt-br/fotografias/fotografia-aerea-da-cidade-com-arranha-ceus-e-parque-durante-o-dia-Y-jzNrG-_60"
+  },
+  {
+    "id": "saopetersburgo_russia",
+    "nome": "São Petersburgo",
+    "estado": "Distrito Federal do Noroeste",
+    "pais": "Rússia",
+    "texto": "Fundada em 1703 pelo czar Pedro, o Grande, São Petersburgo foi a capital do Império Russo por mais de dois séculos. [20] A cidade foi palco de eventos cruciais da história russa, como a Revolução de 1917, ganhando o apelido de \"Berço das Revoluções\". [21] Durante a Segunda Guerra Mundial, a cidade, então chamada de Leningrado, resistiu a um cerco de quase 900 dias pelas forças nazistas. [20] Conhecida como a \"Veneza do Norte\" por seus canais, São Petersburgo é um Patrimônio Mundial da UNESCO e abriga tesouros culturais como o Museu Hermitage, o terceiro maior do mundo. [10, 21, 26]",
+    "foto": "saopetesburgo-russia.jpg",
+    "foto_link": "https://commons.wikimedia.org/wiki/File:4A7A3069_Moika,_Saint_Petersburg_(35468573803).jpg"
+  },
+  {
+    "id": "moscou_russia",
+    "nome": "Moscou",
+    "estado": "Distrito Federal Central",
+    "pais": "Rússia",
+    "texto": "A primeira menção a Moscou data de 1147. [37] A cidade cresceu em torno do Kremlin, uma fortaleza que hoje abriga o governo russo. [29] Ao longo de sua história, Moscou foi palco de eventos marcantes, como o Grande Incêndio de 1547 e a invasão das tropas de Napoleão em 1812. [34] A cidade se tornou a capital da União Soviética em 1918. [34] Culturalmente, Moscou é um centro de grande riqueza, com centenas de museus, teatros e o famoso Balé Bolshoi. [18, 29] As estações de metrô de Moscou são verdadeiros museus subterrâneos, decoradas para homenagear personalidades importantes da história do país. [29]",
+    "foto": "moscou-russia.jpg",
+    "foto_link": "https://pt.wikipedia.org/wiki/Moscovo#/media/Ficheiro:Saint_Basil's_Cathedral_and_the_Red_Square.jpg"
+  },
+  {
+    "id": "vesoul_franca",
+    "nome": "Vesoul",
+    "estado": "Bourgogne-Franche-Comté",
+    "pais": "França",
+    "texto": "Vesoul tem uma história rica que remonta à Idade Média, quando um castelo foi construído em uma colina para proteger a região. A cidade se desenvolveu em torno deste castelo, tornando-se um importante centro comercial. Vesoul é conhecida por ser o local de nascimento do pintor e escultor Jean-Léon Gérôme, uma figura proeminente da arte acadêmica do século XIX. A cidade também é famosa por seu festival anual de cinema, o Festival Internacional de Cinema Asiático de Vesoul, que atrai cineastas e entusiastas de todo o mundo, celebrando o cinema de todo o continente asiático.",
+    "foto": "vesoul-franca.jpg",
+    "foto_link": "https://en.wikipedia.org/wiki/Vesoul#/media/File:Vieux-Vesoul.jpg"
+  },
+  {
+    "id": "teodosia_crimeia",
+    "nome": "Teodósia",
+    "estado": "",
+    "pais": "Criméia",
+    "texto": "Fundada por gregos no século VI a.C., Teodósia tem uma longa e complexa história, tendo sido ocupada por diversos povos ao longo dos séculos. [19] Chamada de Caffa durante o período em que foi uma colônia genovesa, tornou-se um importante centro de comércio de escravos. A cidade também é conhecida por ter sido um dos pontos de entrada da Peste Negra na Europa, no século XIV, trazida por navios genoveses. Mais tarde, sob o domínio do Império Otomano, foi renomeada para Keve. [19] Hoje, Teodósia é um importante porto e um popular destino turístico de veraneio. [19]",
+    "foto": "feodosa-crimeia.jpg",
+    "foto_link": ""
+  },
+  {
+    "id": "pomeranie_russia",
+    "nome": "Pomeranie",
+    "estado": "Oblast de Novgorod",
+    "pais": "Rússia",
+    "texto": "Pomeranie é uma aldeia localizada no distrito de Volotovsky. Embora pequena, a aldeia tem seu lugar na história da arte russa como o local de nascimento do pintor Alexey Bogolyubov, em 1824. Bogolyubov, neto do famoso escritor e filósofo Alexander Radishchev, tornou-se um proeminente pintor de paisagens e marinhas, deixando um legado significativo na arte russa do século XIX. A história da aldeia está, portanto, intrinsecamente ligada à vida e obra deste importante artista.",
+    "foto": null,
+    "foto_link": ""
+  }
+]

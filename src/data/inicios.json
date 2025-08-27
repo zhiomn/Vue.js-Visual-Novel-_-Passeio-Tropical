@@ -1,0 +1,39 @@
+[
+  {
+    "id": "inicio_1",
+    "nome": "Quarto",
+    "music_track": "run1_theme.mp3",
+    "ambience_track": "rain_on_window.mp3",
+    "action_label": "Sair para a rua",
+    "dialogue": [
+      "...O som do despertador entra dentro do seu sonho...",
+      "...Você acorda e escuta a chuva batendo no vidro da janela...",
+      "...Debaixo do cobertor está quentinho, mas você tem um compromisso, e precisa ir pra fora..."
+    ]
+  },
+  {
+    "id": "inicio_2",
+    "nome": "Biblioteca",
+    "music_track": "run2_theme.mp3",
+    "ambience_track": "library_ambience.mp3",
+    "action_label": "Explorar a biblioteca",
+    "dialogue": [
+      "...Você acorda em meio à estantes...",
+      "...Muitas cores, letras e formas compõem a paisagem visual...",
+      "...Aqui é, visivelmente, uma biblioteca..."
+    ]
+  },
+  {
+    "id": "inicio_3",
+    "nome": "Sala dos Espelhos",
+    "music_track": "run3_theme.mp3",
+    "ambience_track": "echoing_drone.mp3",
+    "action_label": "Atravessar o vão",
+    "dialogue": [
+      "O despertador está tocando com um eco diferente...",
+      "Olhando ao redor você vê reflexos de si mesm@...",
+      "É uma sala com paredes de espelho, e um vão luminoso na ponta...",
+      "Sendo olhado pela sua própria imagem espelhada, você se aproxima das luzes do vão..."
+    ]
+  }
+]

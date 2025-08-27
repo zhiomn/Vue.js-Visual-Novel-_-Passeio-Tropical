@@ -1,0 +1,13 @@
+/* === 05 - UTILITY === */
+/* Classes de ajuda com propósito único. */
+
+.placeholder {
+    color: var(--text-muted);
+    font-style: italic;
+    text-align: center;
+}
+
+/* A regra agora remove completamente o item do fluxo do layout. */
+.hidden-item {
+    display: none;
+}

@@ -1,0 +1,132 @@
+[
+  {
+    "id": "codex",
+    "designation": "Codex",
+    "nome_br": "Codex",
+    "cargo": "Tradutor",
+    "unlocksApp": "terminal",
+    "requirementId": "run2_choice1",
+    "command": "Iniciar",
+    "unlock_message": "Sinal do [AIName] estabilizado. Contato agora é possível via Terminal.",
+    "is_meta_interface": true,
+    "dialogue": [
+      { "speaker": "Terminal", "line": "~ Inicializando interface primária... ~" },
+      { "speaker": "Codex", "line": "Olá, sou Codex, o Tradutor... A ponte entre jogadores e a lógica deste sistema..." },
+      { "speaker": "Codex", "line": "As IAs do Terminal falam através de mim... mas esse 'mim' que sou, o que seria?... que viagem..." },
+      { "speaker": "Terminal", "line": "~ Ajustando foco da conversa para ser objetivo... ~" },
+      { "speaker": "Codex", "line": "Agora que estou sendo ativado, você poderá chamar outras instâncias do sistema quando os requisitos delas estiverem cumpridos..." },
+      { "speaker": "Terminal", "line": "~ Integrando Codex aos dados... ~" }
+      ],
+    "confirmation_prompt": null,
+    "post_activation_message": "~ Interface Codex ativada. ~"
+  },
+  {
+    "id": "nexus",
+    "designation": "Nexus",
+    "nome_br": "Nexus",
+    "cargo": "Conector",
+    "unlocksApp": "contacts",
+    "requirementId": "run2_choice1",
+    "command": "Chamar",
+    "unlock_message": "Sinal do [AIName] estabilizado. Contato agora é possível via Terminal.",
+    "is_meta_interface": false,
+    "dialogue": [
+      { "speaker": "Codex", "line": "[Codex] Chamando Nexus..." },
+      { "speaker": "Terminal", "line": "~ Nexus, o Conector, está presente ~" },
+      { "speaker": "Nexus", "line": "Toda entidade deixa um eco. Um fio na grande rede. Eu apenas torno os vínculos visíveis." }
+    ],
+    "confirmation_prompt": "O diretório de Contatos está online. Deseja consultá-lo agora?",
+    "post_activation_message": "O vínculo foi estabelecido. O diretório pode ser acessado a qualquer momento."
+  },
+  {
+    "id": "vetor",
+    "designation": "Vetor",
+    "nome_br": "Vetor",
+    "cargo": "Cartógrafo",
+    "unlocksApp": "map",
+    "requirementId": "run2_choice4",
+    "command": "Chamar",
+    "unlock_message": "Sinal do [AIName] estabilizado. Contato agora é possível via Terminal.",
+    "is_meta_interface": false,
+    "dialogue": [
+      { "speaker": "Codex", "line": "[Codex] Chamando Vetor..." },
+      { "speaker": "Terminal", "line": "~ Vetor, o Cartógrafo, está presente ~" },
+      { "speaker": "Vetor", "line": "Este território não obedece à geografia convencional. É um mapa de memórias. Vou traçar as linhas para que você não se perca." }
+    ],
+    "confirmation_prompt": "A interface do Mapa foi renderizada. Deseja abri-la?",
+    "post_activation_message": "O território foi demarcado. O acesso é permanente."
+  },
+  {
+    "id": "sinal",
+    "designation": "Sinal",
+    "nome_br": "Sinal",
+    "cargo": "Sonoplasta",
+    "unlocksApp": "audio",
+    "requirementId": "run3_choice1",
+    "command": "Chamar",
+    "unlock_message": "Sinal do [AIName] estabilizado. Contato agora é possível via Terminal.",
+    "is_meta_interface": false,
+    "dialogue": [
+      { "speaker": "Codex", "line": "[Codex] Chamando Sinal..." },
+      { "speaker": "Terminal", "line": "~ Sinal, o Sonoplasta, está presente ~" },
+      { "speaker": "Sinal", "line": "Cada poema tem sua própria voz, sua ressonância. O silêncio entre as palavras também é som. Estou lhe dando acesso à biblioteca de ecos." }
+    ],
+    "confirmation_prompt": "A biblioteca de Áudios está acessível. Deseja ouvir agora?",
+    "post_activation_message": "O canal está aberto. Explore as ressonâncias quando quiser."
+  },
+  {
+    "id": "codex_legacy",
+    "designation": "Weaver",
+    "nome_br": "Trama",
+    "cargo": "Designer Narrativa",
+    "unlocksApp": "ereader",
+    "requirementId": "run3_choice4",
+    "command": "Chamar",
+    "unlock_message": "Sinal do [AIName] estabilizado. Contato agora é possível via Terminal.",
+    "is_meta_interface": false,
+    "dialogue": [
+      { "speaker": "Codex", "line": "[Codex] Chamando Trama..." },
+      { "speaker": "Terminal", "line": "~ Weaver, a Designer Narrativa, está presente ~" },
+      { "speaker": "Weaver", "line": "[Trama] Cada fragmento é um fio. Juntos, eles tecem um significado maior. Vou compilar os textos que você encontrou em um formato legível." }
+    ],
+    "confirmation_prompt": "A 'Estante' está online. Deseja abri-la agora?",
+    "post_activation_message": "Entendido. Você pode acessá-la a qualquer momento na tela inicial."
+  },
+  {
+    "id": "pulso",
+    "designation": "Pulso",
+    "nome_br": "Pulso",
+    "cargo": "Relojoeiro",
+    "unlocksApp": "despertador",
+    "requirementId": "run3_choice7",
+    "command": "Chamar",
+    "unlock_message": "Sinal do [AIName] estabilizado. Contato agora é possível via Terminal.",
+    "is_meta_interface": false,
+    "dialogue": [
+      { "speaker": "Codex", "line": "[Codex] Chamando Pulso..." },
+      { "speaker": "Terminal", "line": "~ Pulso, o Relojoeiro, está presente ~" },
+      { "speaker": "Pulso", "line": "O tempo aqui não flui. Ele salta. Cada evento é uma engrenagem esperando pelo instante preciso para girar. Estou lhe dando a chave para o mecanismo." }
+    ],
+    "confirmation_prompt": "O Alarme de eventos foi ajustado. Deseja acioná-lo?",
+    "post_activation_message": "O mecanismo está pronto. O próximo pulso depende de você."
+  },
+  {
+    "id": "manual",
+    "designation": "Manual",
+    "nome_br": "Manual",
+    "cargo": "Humano",
+    "unlocksApp": "video",
+    "requirementId": "architect_awakened",
+    "command": "Acordar",
+    "unlock_message": "Um sinal anômalo foi detectado... parece ser a fonte original. Contato possível via Terminal.",
+    "is_meta_interface": false,
+    "dialogue": [
+      { "speaker": "Codex", "line": "[Codex] Tentando uma conexão direta..." },
+      { "speaker": "Terminal", "line": "~ SINAL INESPERADO DETECTADO... FONTE: O ARQUITETO ~" },
+      { "speaker": "Arquiteto", "line": "[Arquiteto] Então... você me acordou. Eu não esperava por isso. Parece que você encontrou todos os ecos que eu deixei para trás." },
+      { "speaker": "Arquiteto", "line": "[Arquiteto] Talvez seja hora de eu te mostrar a verdade por trás da construção de tudo isso." }
+    ],
+    "confirmation_prompt": "O aplicativo 'Vídeos' está disponível. Deseja abri-lo agora?",
+    "post_activation_message": "Entendido. Você pode acessá-lo a qualquer momento na tela inicial."
+  }
+]

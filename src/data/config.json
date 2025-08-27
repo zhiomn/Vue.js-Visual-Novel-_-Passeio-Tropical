@@ -1,0 +1,62 @@
+{
+  "gameTitle": "Tropical Versos",
+  "version": "0.1.0-alpha",
+  "developer": "Your Name Here",
+  "phoneOnly": false,
+  "totalRuns": 3,
+  "debugMode": true,
+  "useTypewriterEffect": false,
+  "allDataRevealed": false,
+  
+  "settings": {
+    "uiScale": {
+      "label": "Tamanho da Fonte (UI)",
+      "group": "Tela",
+      "value": 100,
+      "min": 75,
+      "max": 150,
+      "step": 5
+    },
+    "theme": {
+      "label": "Tema de Cores",
+      "group": "Tela",
+      "value": "dark_blue",
+      "options": [
+        "dark_blue",
+        "light_sunset",
+        "forest_green"
+      ]
+    },
+    "musicVolume": {
+      "label": "Volume da Música",
+      "group": "Áudio",
+      "value": 0.8,
+      "min": 0,
+      "max": 1,
+      "step": 0.1
+    },
+    "sfxVolume": {
+      "label": "Volume (Efeitos)",
+      "group": "Áudio",
+      "value": 1,
+      "min": 0,
+      "max": 1,
+      "step": 0.1
+    },
+    "textSpeed": {
+      "label": "Velocidade do Texto",
+      "group": "Jogabilidade",
+      "value": 50,
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "previewText": "A raposa marrom rápida salta sobre o cão preguiçoso."
+    },
+    "skipChoiceAnimation": {
+      "label": "Pular Animações de Escolha",
+      "group": "Jogabilidade",
+      "value": false,
+      "type": "toggle"
+    }
+  }
+}

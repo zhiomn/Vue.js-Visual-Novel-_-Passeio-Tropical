@@ -1,0 +1,72 @@
+/* === 06 - LAYOUT DOCUMENT === */
+/* Estilos aplicados apenas quando body.layout-document está ativo. */
+
+/* Estilo geral para o conteúdo do documento, melhorando a legibilidade */
+.layout-document #content-display {
+    line-height: 1.7;
+}
+
+/* Estilos para as listas de definição no glossário */
+.layout-document #content-display ul.definition-list {
+    list-style: none; /* Removemos as bolinhas padrão para um visual mais limpo */
+    padding-left: 0;
+    margin-top: 1em;
+}
+
+.layout-document #content-display ul.definition-list li {
+    padding-left: 1.5em; /* Adicionamos um recuo customizado */
+    position: relative;
+}
+
+/* Adicionamos um marcador de lista mais sutil */
+.layout-document #content-display ul.definition-list li::before {
+    content: '•';
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+
+/* Estilo para títulos de seção de definição com cores! */
+.layout-document #content-display h4 {
+    display: inline-block;
+    padding: 0.3em 0.6em;
+    border-radius: 5px;
+    margin-top: 2em;
+    border: 1px solid var(--border-color);
+    background-color: var(--code-bg-color);
+}
+
+/* Garante que o <code> dentro do h4 tenha a cor certa */
+.layout-document #content-display h4 code {
+    background: none;
+    padding: 0;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: var(--text-primary); /* Garante a cor do texto principal */
+}
+
+/* APLICAÇÃO DE CORES NAS TAGS DE DEFINIÇÃO */
+.layout-document #content-display h4:has(code.cat-id) { background-color: var(--event-trigger-color); }
+.layout-document #content-display h4:has(code.cat-cat) { background-color: var(--event-logic-color); }
+.layout-document #content-display h4:has(code.cat-dur) { background-color: var(--event-ui-color); }
+.layout-document #content-display h4:has(code.cat-delay) { background-color: var(--event-ui-color); }
+.layout-document #content-display h4:has(code.cat-wait) { background-color: var(--event-system-color); }
+.layout-document #content-display h4:has(code.cat-ref) { background-color: var(--event-system-color); }
+
+.layout-document #content-display h4:has(code) code {
+    color: var(--bg-color); /* Texto escuro para contraste com o fundo colorido */
+}
+
+
+/* Estilo para blocos de código de exemplo */
+.layout-document #content-display pre {
+    background-color: #111;
+    border: 1px solid var(--border-color);
+    padding: 1em;
+    border-radius: 5px;
+    font-size: 0.9em;
+    white-space: pre-wrap;
+    margin-top: 1em;
+}

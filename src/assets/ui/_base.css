@@ -1,0 +1,25 @@
+/* === GLOBAL RESETS === */
+body, html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-primary);
+  font-family: var(--font-main);
+  overflow: hidden;
+  
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.game-container {
+  width: 100%;
+  height: 100%;
+  position: relative; /* Establishes a stacking context */
+  overflow: hidden;   /* Prevents any weird overflow issues */
+}

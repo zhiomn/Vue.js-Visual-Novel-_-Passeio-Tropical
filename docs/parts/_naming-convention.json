@@ -1,0 +1,40 @@
+{
+  "comment": "Este arquivo define a estrutura para todos os IDs de eventos nas sequências.",
+  "structure": "SEQUENCIA_FASE_AÇÃO",
+  "delimiters": {
+    "primary": "_",
+    "secondary": "-"
+  },
+  "prefixes": {
+    "SEQUENCIA": {
+      "comment": "Prefixo obrigatório que identifica a sequência principal.",
+      "values": {
+        "INIT": "Sequência de Início de Run",
+        "TRAVEL": "Sequência de Transição de Viagem",
+        "END": "Sequência de Fim de Run"
+      }
+    },
+    "FASE": {
+      "comment": "Descrição curta e semântica da fase dentro da sequência.",
+      "examples": ["TRIGGER", "PRESENTATION", "NARRATION", "AWAIT_INPUT", "CONSEQUENCE"]
+    },
+    "AÇÃO": {
+      "comment": "Verbo no infinitivo + substantivo. Seja conciso e claro.",
+      "examples": ["LOAD_DATA", "FADE_IN_SCENE", "CALL_ORCHESTRATOR", "CHECK_GAME_COMPLETE"]
+    }
+  },
+  "examples": [
+    {
+      "id": "INIT_PRESENTATION_FADE_IN_SCENE",
+      "description": "Na sequência de INÍCIO, durante a fase de APRESENTAÇÃO, a ação é FADE_IN_SCENE."
+    },
+    {
+      "id": "TRAVEL_CONSEQUENCE_SAVE_PROGRESS",
+      "description": "Na sequência de VIAGEM, durante a fase de CONSEQUÊNCIA, a ação é SAVE_PROGRESS."
+    },
+    {
+      "id": "END_NARRATION_SPEAK_FINAL_DIALOGUE",
+      "description": "Na sequência de FIM, durante a fase de NARRAÇÃO, a ação é SPEAK_FINAL_DIALOGUE."
+    }
+  ]
+}

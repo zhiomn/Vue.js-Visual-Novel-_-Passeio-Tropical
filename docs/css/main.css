@@ -1,0 +1,9 @@
+/* === MAIN CSS IMPORTER === */
+/* Este arquivo apenas importa os parciais na ordem correta. */
+/* Não adicione nenhum estilo diretamente aqui. */
+
+@import url('_01-settings.css');
+@import url('_02-base.css');
+@import url('_03-layout.css');
+@import url('_04-components.css');
+@import url('_05-utility.css');

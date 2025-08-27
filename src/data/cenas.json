@@ -1,0 +1,65 @@
+[
+  {
+    "id": "cena_colina",
+    "nome": "Colina",
+    "imagem": "Colina.webp",
+    "painterId": "lev-lagorio",
+    "ambience_track": "windy_hills.mp3",
+    "msg_entrada": "Você chega ao topo da colina.",
+    "msg_saida": "É hora de seguir em frente."
+  },
+  {
+    "id": "cena_jardim",
+    "nome": "Jardim",
+    "imagem": "Jardim.webp",
+    "painterId": "",
+    "ambience_track": "garden_ambience.mp3",
+    "msg_entrada": "O cheiro de flores preenche o ar.",
+    "msg_saida": "Qual caminho você tomará?"
+  },
+  {
+    "id": "cena_parque",
+    "nome": "Parque",
+    "imagem": "Parque.webp",
+    "painterId": "wassily-kandinsky",
+    "ambience_track": "park_sounds.mp3",
+    "msg_entrada": "Crianças brincam no parque.",
+    "msg_saida": "Vamos explorar outro lugar."
+  },
+  {
+    "id": "cena_ponte",
+    "nome": "Ponte",
+    "imagem": "Ponte.webp",
+    "painterId": "lev-lagorio",
+    "ambience_track": "river_flow.mp3",
+    "msg_entrada": "A velha ponte de pedra cruza um rio tranquilo.",
+    "msg_saida": "Você atravessa a ponte."
+  },
+  {
+    "id": "cena_praia",
+    "nome": "Praia",
+    "imagem": "Praia.webp",
+    "painterId": "lev-lagorio",
+    "ambience_track": "ocean_waves.mp3",
+    "msg_entrada": "O som das ondas é calmante.",
+    "msg_saida": "O sol está se pondo, hora de ir."
+  },
+  {
+    "id": "cena_rua",
+    "nome": "Rua",
+    "imagem": "Rua.webp",
+    "painterId": "",
+    "ambience_track": "city_sounds.mp3",
+    "msg_entrada": "Uma rua movimentada, cheia de histórias.",
+    "msg_saida": "Você decide deixar a multidão."
+  },
+  {
+    "id": "cena_tenda",
+    "nome": "Tenda",
+    "imagem": "Tenda.webp",
+    "painterId": "",
+    "ambience_track": "forest_night.mp3",
+    "msg_entrada": "Uma tenda misteriosa se ergue em uma clareira.",
+    "msg_saida": "Você sai da tenda."
+  }
+]

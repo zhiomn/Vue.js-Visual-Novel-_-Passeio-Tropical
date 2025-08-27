@@ -1,0 +1,30 @@
+[
+  {
+    "id": "TRIGGER_APP_MOUNT",
+    "description": "Montagem do `App.vue`."
+  },
+  {
+    "id": "TRIGGER_SCENE_READY",
+    "description": "Orquestrador sinaliza que a cena está pronta."
+  },
+  {
+    "id": "TRIGGER_NARRATION_COMPLETE",
+    "description": "Animação da narração termina."
+  },
+  {
+    "id": "TRIGGER_PLAYER_ACTION_CLICK",
+    "description": "Jogador clica no botão de Ação."
+  },
+  {
+    "id": "TRIGGER_PLAYER_CHOICE_CLICK",
+    "description": "Jogador clica no botão de Escolha de Conteúdo."
+  },
+  {
+    "id": "TRIGGER_PLAYER_TRAVEL_CLICK",
+    "description": "Jogador clica em um botão de destino."
+  },
+  {
+    "id": "TRIGGER_NO_MORE_OPTIONS",
+    "description": "Não há mais destinos ou escolhas válidas."
+  }
+]

@@ -1,0 +1,20 @@
+{
+  "projectDescription": "Passeio Tropical?... esse parece o nome de um livro que li quando era criança... ou será que foi um filme?... humm... essa memória é como a de um sonho coberto por neblina...",
+  "technicalInfo": {
+    "title": "Ficha Técnica",
+    "items": [
+      { "label": "Engine de Jogo", "value": "Vue 3 (Composition API)" },
+      { "label": "Gerenciador de Estado", "value": "Pinia" },
+      { "label": "Ambiente de Desenvolvimento", "value": "Vite" },
+      { "label": "Linguagem Principal", "value": "JavaScript (ESM)" },
+      { "label": "Estilização", "value": "CSS Padrão com Variáveis" }
+    ]
+  },
+  "credits": {
+    "title": "Equipe",
+    "members": [
+      { "role": "Direção, Roteiro e Design", "name": "Zião Clarice Dionísio" },
+      { "role": "Programação", "name": "Gemini 2.5" }
+    ]
+  }
+}

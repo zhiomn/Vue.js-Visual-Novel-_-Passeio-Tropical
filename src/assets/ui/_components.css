@@ -1,0 +1,118 @@
+/* === STYLED COMPONENTS (Buttons, Headers, etc.) === */
+
+/* --- Dialogue Box & Buttons (Modo Exploração Padrão) --- */
+.dialogue-text {
+  font-family: var(--font-narrative);
+  font-size: 1.4em;
+  line-height: 1.6;
+  margin: 0 0 20px 0;
+}
+
+.choice-btn {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  color: var(--color-text-primary);
+  border: 2px solid var(--color-border);
+  padding: 15px 25px;
+  font-size: 1.1em;
+  font-family: var(--font-narrative);
+  cursor: pointer;
+  width: 85%;
+  text-align: center;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  white-space: pre-wrap;
+}
+
+.choice-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.choice-btn:disabled { 
+  cursor: not-allowed; 
+  opacity: 0.5; 
+}
+
+
+/* --- Styles for Contemplative Mode --- */
+
+.contemplative-mode.dialogue-box-wrapper {
+  bottom: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 30px 10%;
+}
+
+.contemplative-mode .dialogue-box {
+  background: none;
+  border: none;
+  backdrop-filter: none;
+  box-shadow: none;
+  text-align: center;
+  cursor: default;
+}
+
+.contemplative-mode .dialogue-text {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.contemplative-mode .choice-btn {
+  background: none;
+  border: none;
+  backdrop-filter: none;
+  width: auto;
+  padding: 8px 15px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1.2em;
+  color: var(--color-text-muted);
+  font-weight: normal;
+  transition: color 0.2s ease;
+  white-space: nowrap; /* --- THE FIX IS HERE --- */
+}
+
+.contemplative-mode .choice-btn:hover:not(:disabled) {
+  background: none;
+  border-color: transparent;
+  transform: none;
+  color: var(--color-text-primary);
+}
+
+.contemplative-mode .special-btn {
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+.contemplative-mode .special-btn:hover:not(:disabled) {
+  color: white;
+}
+
+/* --- Custom Scrollbar for Phone UI --- */
+/* Applied to all scrollable content areas within the phone for a consistent, native feel. */
+.content-area::-webkit-scrollbar,
+.list-container::-webkit-scrollbar,
+.messages-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.content-area::-webkit-scrollbar-track,
+.list-container::-webkit-scrollbar-track,
+.messages-list::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.content-area::-webkit-scrollbar-thumb,
+.list-container::-webkit-scrollbar-thumb,
+.messages-list::-webkit-scrollbar-thumb {
+  background-color: rgba(140, 158, 255, 0.4); /* --color-primary with transparency */
+  border-radius: 20px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+.content-area::-webkit-scrollbar-thumb:hover,
+.list-container::-webkit-scrollbar-thumb:hover,
+.messages-list::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(140, 158, 255, 0.7);
+}

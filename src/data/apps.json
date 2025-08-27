@@ -1,0 +1,99 @@
+[
+  {
+    "id": "messages",
+    "name": "Mensagens",
+    "icon": "fa-solid fa-comments",
+    "colorGradient": ["#4ade80", "#16a34a"],
+    "requirementId": "run1_choice1",
+    "unlock_message": "Fragmentos de conversas passadas começam a surgir... Novo aplicativo: [AppName]."
+  },
+  {
+    "id": "notes",
+    "name": "Anotações",
+    "icon": "fa-solid fa-note-sticky",
+    "colorGradient": ["#ec4899", "#ef4444"],
+    "requirementId": "run1_choice3",
+    "unlock_message": "Pensamentos e poemas encontrados agora podem ser salvos. Novo aplicativo: [AppName]."
+  },
+  {
+    "id": "gallery",
+    "name": "Galeria",
+    "icon": "fa-solid fa-images",
+    "colorGradient": ["#8c9eff", "#764ba2"],
+    "requirementId": "run1_choice6",
+    "unlock_message": "As imagens descritas nas anotações agora podem ser visualizadas. Novo aplicativo: [AppName]."
+  },
+  {
+    "id": "contacts",
+    "name": "Contatos",
+    "icon": "fa-solid fa-address-book",
+    "colorGradient": ["#8c9eff", "#764ba2"],
+    "requirementId": "run2_choice1",
+    "requiresTerminalUnlock": false
+  },
+  {
+    "id": "map",
+    "name": "Mapa",
+    "icon": "fa-solid fa-map-location-dot",
+    "colorGradient": ["#f97316", "#c2410c"],
+    "requirementId": "run2_choice4",
+    "requiresTerminalUnlock": false
+  },
+
+  {
+    "id": "audio",
+    "name": "Áudios",
+    "icon": "fa-solid fa-headphones-simple",
+    "colorGradient": ["#4ade80", "#16a34a"],
+    "requirementId": "run3_choice1",
+    "requiresTerminalUnlock": false
+  },
+  {
+    "id": "ereader",
+    "name": "Estante",
+    "icon": "fa-solid fa-book-open-reader",
+    "colorGradient": ["#8c9eff", "#764ba2"],
+    "requirementId": "run3_choice4",
+    "requiresTerminalUnlock": false
+  },
+  
+    {
+    "id": "info",
+    "name": "Sobre",
+    "icon": "fa-solid fa-info-circle",
+    "colorGradient": ["#9ca3af", "#4b5563"],
+    "requirementId": "run2_choice6",
+    "requiresTerminalUnlock": false
+  },
+  {
+    "id": "video",
+    "name": "Vídeos",
+    "icon": "fa-solid fa-circle-play",
+    "colorGradient": ["#ef4444", "#764ba2"],
+    "requiresTerminalUnlock": false,
+    "requirementId": "architect_awakened"
+  },
+  {
+    "id": "despertador",
+    "name": "Alarme",
+    "icon": "fa-solid fa-bell",
+    "colorGradient": ["#f97316", "#c2410c"],
+    "requirementId": "run3_choice7",
+    "requiresTerminalUnlock": false
+  },
+  {
+    "id": "ajustes",
+    "name": "Ajustes",
+    "icon": "fa-solid fa-gear",
+    "colorGradient": ["#9ca3af", "#4b5563"],
+    "requirementId": "run1_choice0"
+  },
+    {
+    "id": "terminal",
+    "name": "Terminal",
+    "icon": "fa-solid fa-terminal",
+    "colorGradient": ["#000000", "#121212"],
+    "requirementId": "run2_choice1",
+    "unlock_message": "Sinal desconhecido detectado... Acesso ao sistema subjacente concedido. Novo aplicativo: [AppName]."
+  }
+]

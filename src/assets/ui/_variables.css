@@ -1,0 +1,11 @@
+/* === THEME & BRAND (The Foundation) === */
+:root {
+  --color-bg-dark: #121212;
+  --color-surface: #1e1e1e;
+  --color-primary: #8c9eff;
+  --color-text-primary: #e0e0e0;
+  --color-text-muted: #a0a0a0;
+  --color-border: #333;
+  --font-main: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-narrative: 'Crimson Text', serif;
+}

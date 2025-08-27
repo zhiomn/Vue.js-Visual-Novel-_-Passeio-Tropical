@@ -1,0 +1,315 @@
+[
+  {
+    "id": "sandra_souza",
+    "name": "Sandra M. S. de Souza",
+    "avatar": "SandraSouza.jpg",
+    "link": null,
+    "city_id": "colatina_es",
+    "born_date": null,
+    "types": [
+      "Autora"
+    ],
+    "descricao": null
+  },
+  {
+    "id": "jacimar_boti",
+    "name": "Jacimar Berti Boti",
+    "avatar": "JacimarBerti.jpg",
+    "link": null,
+    "city_id": "colatina_es",
+    "born_date": null,
+    "types": [
+      "Autor"
+    ],
+    "descricao": null
+  },
+  {
+    "id": "daniel_moreira",
+    "name": "Daniel de S. Moreira",
+    "avatar": "DanielMoreira.jpg",
+    "link": null,
+    "city_id": "belohorizonte_mg",
+    "born_date": "12/10/1979",
+    "types": [
+      "Autor"
+    ],
+    "descricao": "Daniel de Souza Moreira é atleticano, apaixonado por música e \"sofressor\" de História. Entusiasta de tro-k-dilhos. Viva Leminski!"
+  },
+  {
+    "id": "breno_tardin",
+    "name": "Breno Tardin",
+    "avatar": "BrenoTardin.jpg",
+    "link": "https://www.instagram.com/brenotardin/",
+    "city_id": "colatina_es",
+    "born_date": "24/24/2024",
+    "types": [
+      "Autor"
+    ],
+    "descricao": "Músico gente boa"
+  },
+  {
+    "id": "rafael_senra",
+    "name": "Rafael Senra",
+    "avatar": "RafaelSenra.jpg",
+    "link": null,
+    "city_id": "colatina_es",
+    "born_date": null,
+    "types": [
+      "Autor"
+    ],
+    "descricao": null
+  },
+  {
+    "id": "augusto_bermond",
+    "name": "Augusto Bermond",
+    "avatar": "AugustoBermond.jpg",
+    "link": null,
+    "city_id": "colatina_es",
+    "born_date": null,
+    "types": [
+      "Autor"
+    ],
+    "descricao": null
+  },
+  {
+    "id": "maria_emilia_santos",
+    "name": "Maria Emília dos Santos",
+    "avatar": "EmiliaSantos.jpg",
+    "link": null,
+    "city_id": "colatina_es",
+    "born_date": null,
+    "types": [
+      "Autora"
+    ],
+    "descricao": null
+  },
+  {
+    "id": "dani_micoids",
+    "name": "Dani Micóids",
+    "avatar": "DaniMicoids.jpg",
+    "link": null,
+    "city_id": "vitoria-es",
+    "born_date": null,
+    "types": [
+      "Autora"
+    ],
+    "descricao": null
+  },
+  {
+    "id": "trp",
+    "name": "T. R. P.",
+    "avatar": "TRP.jpg",
+    "link": null,
+    "city_id": "colatina_es",
+    "born_date": null,
+    "types": [
+      "Autora"
+    ],
+    "descricao": null
+  },
+  {
+    "id": "hugo_reis",
+    "name": "Hugo Reis",
+    "avatar": "HugoReis.jpg",
+    "link": null,
+    "city_id": "lins_sp",
+    "born_date": null,
+    "types": [
+      "Autor"
+    ],
+    "descricao": null
+  },
+  {
+    "id": "henrique_pitt",
+    "name": "Henrique Pitt",
+    "avatar": "HenriquePitt.jpeg",
+    "link": null,
+    "city_id": "marianomoro-rs",
+    "born_date": null,
+    "types": [
+      "Autor"
+    ],
+    "descricao": null
+  },
+  {
+    "id": "rabindranath_tagore",
+    "name": "Rabindranath Tagore",
+    "avatar": "Rabindranath.jpg",
+    "link": null,
+    "city_id": "calcuta_india",
+    "born_date": null,
+    "types": [
+      "Autor"
+    ],
+    "descricao": null
+  },
+  {
+    "id": "isolina_castro",
+    "name": "M. Isolina de Castro Soares",
+    "avatar": "IsolinaCastro.jpg",
+    "link": null,
+    "city_id": "colatina_es",
+    "born_date": null,
+    "types": [
+      "Autora"
+    ],
+    "descricao": "Maria Isolina de Castro Soares é graduada em Letras pela Universidade Federal do Rio de Janeiro (UFRJ), com Mestrado e Doutorado na área de concentração Estudos Literários pela Universidade Federal do Espírito Santo (Ufes). Aposentou-se pelo Instituto Federal de Educação, Ciência e Tecnologia do Espírito Santo (Ifes), campus Colatina. É autora de Português Instrumental (ISBN 978-85-62934-32-2), obra que faz parte do catálogo de material de cursos técnicos do Ministério da Educação, acervo dirigido a alunos de Ensino Médio Técnico da Educação Profissional e Tecnológica. Publica poemas na zine Tropicalzin, de Colatina, ES. Possui inúmeros artigos publicados em livros, revistas e anais de congressos, abordando aspectos teóricos de obras literárias."
+  },
+  {
+    "id": "jim_duran",
+    "name": "Jim Duran",
+    "avatar": "JimDuran.jpg",
+    "link": null,
+    "city_id": "tupa-sp",
+    "born_date": null,
+    "types": [
+      "Autor",
+      "Apoiador"
+    ],
+    "descricao": null
+  },
+  {
+    "id": "alberto_caeiro",
+    "name": "Alberto Caeiro",
+    "avatar": "AlbertoCaeiro.jpg",
+    "link": null,
+    "city_id": "lisboa_portugal",
+    "born_date": null,
+    "types": [
+      "Autor"
+    ],
+    "descricao": null
+  },
+  {
+    "id": "nadie",
+    "name": "Nadie",
+    "avatar": "Nadie.jpg",
+    "link": null,
+    "city_id": "colatina_es",
+    "born_date": null,
+    "types": [
+      "Autor"
+    ],
+    "descricao": "muito embora houvesse uma demora em perceber, nadie era um corpo."
+  },
+  {
+    "id": "suely_selvatici",
+    "name": "Suely Selvátici Zanotelli",
+    "avatar": "SuelySelvatici.jpg",
+    "link": null,
+    "city_id": "colatina_es",
+    "born_date": null,
+    "types": [
+      "Autora"
+    ],
+    "descricao": "Suely Selvátici Zanotelli é professora de Língua Portuguesa e Literatura Brasileira, com especialização em Língua Portuguesa e Planejamento Educacional pela Universidade Salgado de Oliveira - UNIVERSO. Ela é integrante da ALARC (Academia de Letras e Artes de Colatina) e entusiasta do surrealismo ao vivo."
+  },
+  {
+    "id": "maraeliza_penitente",
+    "name": "MaraEliza Penitente",
+    "avatar": "MaraEliza.jpeg",
+    "link": null,
+    "city_id": "saoroque_es",
+    "born_date": null,
+    "types": [
+      "Autora"
+    ],
+    "descricao": null
+  },
+  {
+    "id": "eduardo_bulian",
+    "name": "Eduardo Bulian Gouveia",
+    "avatar": "EduardoBulian.jpg",
+    "link": null,
+    "city_id": "colatina_es",
+    "born_date": "4 de junho de 2006",
+    "types": [
+      "Autor"
+    ],
+    "descricao": "É encantado por música e viciado em dançar mal sozinho e em festas, gosta muito das bandas the strokes, arctic monkeys, los hermanos e lupe de lupe...  pensa demais."
+  },
+  {
+    "id": "ziao_dionisio",
+    "name": "Zião Clarice Dionísio",
+    "avatar": "Ziao.jpg",
+    "link": null,
+    "city_id": "colatina_es",
+    "born_date": "20 de maio de 1990",
+    "types": [
+      "Autor"
+    ],
+    "descricao": null
+  },
+  {
+    "id": "yane_c",
+    "name": "Yane C.",
+    "avatar": "YaneC.jpg",
+    "link": null,
+    "city_id": "colatina_es",
+    "born_date": null,
+    "types": [
+      "Autora"
+    ],
+    "descricao": null
+  },
+  {
+    "id": "nicholas-roerich",
+    "name": "Nicholas Roerich",
+    "avatar": "Nicholas-Roerich.jpg",
+    "link": "https://www.wikiart.org/en/nicholas-roerich",
+    "city_id": "saopetersburgo_russia",
+    "born_date": "9 de outubro de 1874",
+    "types": [
+      "Pintor"
+    ],
+    "descricao": "Nicholas Roerich (Николай Рерих) foi um pintor"
+  },
+    {
+    "id": "wassily-kandinsky",
+    "name": "Wassily Kandinsky",
+    "avatar": "Wassily-Kandinsky.jpg",
+    "link": "https://www.wikiart.org/en/wassily-kandinsky",
+    "city_id": "moscou_russia",
+    "born_date": "16 de dezembro de 1866",
+    "types": [
+      "Pintor"
+    ],
+    "descricao": null
+  },
+    {
+    "id": "jean-leon-gerome",
+    "name": "Jean-Leon Gerome",
+    "avatar": "Jean-Leon-Gerome.jpg",
+    "link": "https://www.wikiart.org/en/jean-leon-gerome",
+    "city_id": "vesoul_franca",
+    "born_date": "11 de maio de 1824",
+    "types": [
+      "Pintor"
+    ],
+    "descricao": null
+  },
+    {
+    "id": "alexey-bogolyubov",
+    "name": "Alexey-Bogolyubov",
+    "avatar": "Alexey-Bogolyubov.jpg",
+    "link": "https://www.wikiart.org/en/alexey-bogolyubov",
+    "city_id": "pomeranie_russia",
+    "born_date": "16 de março de 1824",
+    "types": [
+      "Pintor"
+    ],
+    "descricao": null
+  },
+    {
+    "id": "lev-lagorio",
+    "name": "Lev Lagorio",
+    "avatar": "Lev-Lagorio.jpg",
+    "link": "https://www.wikiart.org/en/lev-lagorio",
+    "city_id": "teodosia_crimeia",
+    "born_date": "9 de novembro de 1826",
+    "types": [
+      "Pintor"
+    ],
+    "descricao": null
+  }
+]

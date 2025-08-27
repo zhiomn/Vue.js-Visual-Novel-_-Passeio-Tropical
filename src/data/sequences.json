@@ -1,0 +1,142 @@
+[
+  {
+    "id": "seq_inicios",
+    "name": "Início de Run",
+    "description": "Descreve o fluxo de eventos desde o início de uma nova run até a primeira ação do jogador.",
+    "phases": [
+      {
+        "id": "inicio_f1",
+        "name": "Fase 1: Inicialização do Jogo/Run",
+        "steps": [
+          { "id": "inicio_f1_s1", "type": "Gatilho", "description": "App.vue é montado (primeira run) ou jogador clica em 'Começar a Próxima Jornada'." },
+          { "id": "inicio_f1_s2", "type": "LÓGICA", "description": "useRunStore.startNewGameOrRun() é chamado." },
+          { "id": "inicio_f1_s3", "type": "LÓGICA", "description": "playerStore incrementa runCount." },
+          { "id": "inicio_f1_s4", "type": "LÓGICA", "description": "getStartingSequence() busca os dados da run atual em inicios.json." },
+          { "id": "inicio_f1_s5", "type": "LÓGICA", "description": "useRunStore atualiza gamePhase para 'STARTING' e define currentScene com os dados da sequência de início." }
+        ]
+      },
+      {
+        "id": "inicio_f2",
+        "name": "Fase 2: Apresentação da Cena Inicial",
+        "steps": [
+          { "id": "inicio_f2_s1", "type": "Gatilho", "description": "currentScene é atualizado no useRunStore." },
+          { "id": "inicio_f2_s2", "type": "ÁUDIO", "description": "Animação de fade-in da música da run (music_track)." },
+          { "id": "inicio_f2_s3", "type": "ÁUDIO", "description": "Animação de fade-in do som ambiente da cena (ambience_track)." },
+          { "id": "inicio_f2_s4", "type": "UI", "description": "Animação de fade-in da imagem de fundo da cena (imagem)." },
+          { "id": "inicio_f2_s5", "type": "UI", "description": "DialogueBox é renderizada." },
+          { "id": "inicio_f2_s6", "type": "LÓGICA", "description": "narrationStore.speak() é chamado com o diálogo da sequência." },
+          { "id": "inicio_f2_s7", "type": "UI", "description": "Animação de typewriter do texto de narração." }
+        ]
+      },
+      {
+        "id": "inicio_f3",
+        "name": "Fase 3: Aguardando Ação do Jogador",
+        "steps": [
+          { "id": "inicio_f3_s1", "type": "Gatilho", "description": "Animação do texto de narração termina." },
+          { "id": "inicio_f3_s2", "type": "LÓGICA", "description": "getStartActions() busca as ações disponíveis em actions.json para a run atual." },
+          { "id": "inicio_f3_s3", "type": "UI", "description": "Animação de fade-in do botão de ação (ex: 'Sair para a rua')." },
+          { "id": "inicio_f3_s4", "type": "LÓGICA", "description": "useRunStore define presentationState para 'AWAITING_CHOICE'." }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "seq_viagem",
+    "name": "Transição de Viagem",
+    "description": "Descreve o fluxo de eventos desde a seleção de uma escolha de conteúdo até a chegada na próxima cena.",
+    "phases": [
+      {
+        "id": "viagem_f1",
+        "name": "Fase 1: Consequência da Escolha",
+        "steps": [
+          { "id": "viagem_f1_s1", "type": "Gatilho", "description": "Jogador clica em um botão de escolha de conteúdo (ex: 'Olhar a paisagem')." },
+          { "id": "viagem_f1_s2", "type": "UI", "description": "Animação de fade-out da DialogueBox atual." },
+          { "id": "viagem_f1_s3", "type": "LÓGICA", "description": "useRunStore processa a escolha, desbloqueia conteúdo." },
+          { "id": "viagem_f1_s4", "type": "UI", "description": "Animação de fade-in da DialogueBox com a mensagem de consequência." },
+          { "id": "viagem_f1_s5", "type": "ÁUDIO", "description": "Som de feedback positivo (SFX de descoberta)." }
+        ]
+      },
+      {
+        "id": "viagem_f2",
+        "name": "Fase 2: Preparação para a Viagem",
+        "steps": [
+          { "id": "viagem_f2_s1", "type": "Gatilho", "description": "Animação da mensagem de consequência termina." },
+          { "id": "viagem_f2_s2", "type": "UI", "description": "Animação de fade-out da DialogueBox." },
+          { "id": "viagem_f2_s3", "type": "UI", "description": "Animação de fade-out do fundo da cena atual (para preto)." },
+          { "id": "viagem_f2_s4", "type": "ÁUDIO", "description": "Animação de fade-out da música da run (se houver)." }
+        ]
+      },
+      {
+        "id": "viagem_f3",
+        "name": "Fase 3: A Escolha do Destino",
+        "steps": [
+          { "id": "viagem_f3_s1", "type": "Gatilho", "description": "Animações de fade-out da Fase 2 são concluídas." },
+          { "id": "viagem_f3_s2", "type": "UI", "description": "Animação de fade-in dos botões de viagem (estilo 'Contemplativo')." },
+          { "id": "viagem_f3_s3", "type": "Gatilho", "description": "Jogador clica em um botão de viagem (ex: 'Viajar para a Colina')." },
+          { "id": "viagem_f3_s4", "type": "UI", "description": "Animação de fade-out do botão não escolhido." },
+          { "id": "viagem_f3_s5", "type": "UI", "description": "Animação de fade-out (com um leve atraso) do botão escolhido." }
+        ]
+      },
+      {
+        "id": "viagem_f4",
+        "name": "Fase 4: A Chegada",
+        "steps": [
+          { "id": "viagem_f4_s1", "type": "Gatilho", "description": "Animações de fade-out da Fase 3 são concluídas." },
+          { "id": "viagem_f4_s2", "type": "ÁUDIO", "description": "Animação de fade-out do som ambiente da cena anterior." },
+          { "id": "viagem_f4_s3", "type": "LÓGICA", "description": "useRunStore atualiza o estado com a nova cena." },
+          { "id": "viagem_f4_s4", "type": "ÁUDIO", "description": "Animação de fade-in do som ambiente da nova cena." },
+          { "id": "viagem_f4_s5", "type": "ÁUDIO", "description": "Animação de fade-in da música da run (se houver)." },
+          { "id": "viagem_f4_s6", "type": "UI", "description": "Animação de fade-in do fundo da nova cena." },
+          { "id": "viagem_f4_s7", "type": "UI", "description": "Animação de fade-in da DialogueBox com a mensagem de chegada da nova cena." }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "seq_finais",
+    "name": "Fim de Run",
+    "description": "Descreve o fluxo de eventos que ocorre quando uma run é concluída.",
+    "phases": [
+      {
+        "id": "finais_f1",
+        "name": "Fase 1: Gatilho de Fim de Run",
+        "steps": [
+          { "id": "finais_f1_s1", "type": "Gatilho", "description": "Jogador esgota as opções de viagem ou desbloqueia todas as escolhas disponíveis no jogo." },
+          { "id": "finais_f1_s2", "type": "LÓGICA", "description": "useRunStore.transitionToEnding() é chamado." },
+          { "id": "finais_f1_s3", "type": "LÓGICA", "description": "gamePhase é atualizado para 'ENDING'." },
+          { "id": "finais_f1_s4", "type": "LÓGICA", "description": "getEndingSequence() busca os dados do final da run atual em finais.json." }
+        ]
+      },
+      {
+        "id": "finais_f2",
+        "name": "Fase 2: Transição para a Cena Final",
+        "steps": [
+          { "id": "finais_f2_s1", "type": "Gatilho", "description": "Lógica de transição de cena é iniciada." },
+          { "id": "finais_f2_s2", "type": "UI", "description": "Animação de fade-out do fundo da cena anterior (para preto)." },
+          { "id": "finais_f2_s3", "type": "ÁUDIO", "description": "Animação de fade-out da música e do som ambiente da run." },
+          { "id": "finais_f2_s4", "type": "ÁUDIO", "description": "Animação de fade-in da música de finalização (ambience_track de finais.json)." }
+        ]
+      },
+      {
+        "id": "finais_f3",
+        "name": "Fase 3: Apresentação da Narração Final",
+        "steps": [
+          { "id": "finais_f3_s1", "type": "Gatilho", "description": "Transições da Fase 2 são concluídas." },
+          { "id": "finais_f3_s2", "type": "LÓGICA", "description": "narrationStore.speak() é chamado com o diálogo da sequência final." },
+          { "id": "finais_f3_s3", "type": "UI", "description": "Animação de fade-in da DialogueBox." },
+          { "id": "finais_f3_s4", "type": "UI", "description": "Animação de typewriter do texto de narração final." }
+        ]
+      },
+      {
+        "id": "finais_f4",
+        "name": "Fase 4: Decisão Pós-Run",
+        "steps": [
+          { "id": "finais_f4_s1", "type": "Gatilho", "description": "Animação do texto final termina." },
+          { "id": "finais_f4_s2", "type": "LÓGICA", "description": "useRunStore verifica se é o final definitivo (isFinalEnding)." },
+          { "id": "finais_f4_s3", "type": "UI", "description": "Animação de fade-in do botão 'Começar a Próxima Jornada' (se não for o final) ou do texto 'Fim' (se for o final)." },
+          { "id": "finais_f4_s4", "type": "LÓGICA", "description": "useRunStore define presentationState para 'AWAITING_CHOICE'." }
+        ]
+      }
+    ]
+  }
+]

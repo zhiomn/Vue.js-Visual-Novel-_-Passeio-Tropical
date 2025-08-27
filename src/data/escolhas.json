@@ -1,0 +1,170 @@
+[
+  {
+    "id": 1,
+    "textId": "texto_01",
+    "cena": "Rua",
+    "escolha": "Vitrine",
+    "msg_antes": "Enquanto olha a vitrine você percebe alguém te olhando... é você mesm@, refletid@ no vidro...",
+    "imagem": "Tropicalzin01-16mar2023.webp"
+  },
+  {
+    "id": 2,
+    "textId": "texto_02",
+    "cena": "Colina",
+    "escolha": "Paisagem",
+    "msg_antes": "Do alto da colina você olha pra paisagem... sente o vento no rosto e respira fundo...",
+    "imagem": "Tropicalzin02-27abr2023.webp"
+  },
+  {
+    "id": 3,
+    "textId": "texto_03",
+    "cena": "Parque",
+    "escolha": "Piquenique",
+    "msg_antes": "Na grama do parque você vê amig@s fazendo um piquenique... eles tocam violão e cantam um rock brasileiro de 40 anos atrás...",
+    "imagem": "Tropicalzin03-25mai2023.webp"
+  },
+  {
+    "id": 4,
+    "textId": "texto_04",
+    "cena": "Tenda",
+    "escolha": "Janela",
+    "msg_antes": "A paisagem da janela é esplendorosa... você percebe que a natureza é um espetáculo quando olhamos de verdade pra ela...",
+    "imagem": "Tropicalzin04-29jun2023.webp"
+  },
+  {
+    "id": 5,
+    "textId": "texto_05",
+    "cena": "Parque",
+    "escolha": "Andarilho",
+    "msg_antes": "Num banco da praça dorme um andarilho... ele tem os pés sujos, uma sacola surrada, mas exala dignidade e alegria...",
+    "imagem": "Tropicalzin05-20jul2023.jpeg"
+  },
+  {
+    "id": 6,
+    "textId": "texto_06",
+    "cena": "Tenda",
+    "escolha": "Paredes",
+    "msg_antes": "As paredes da tenda são finas, não aguentam uma pedrada... mas ela te protege do vento gelado, do sol quente, e das molhadas gotas de chuva...",
+    "imagem": "Tropicalzin06-17ago2023.webp"
+  },
+  {
+    "id": 7,
+    "textId": "texto_07",
+    "cena": "Tenda",
+    "escolha": "Teto",
+    "msg_antes": "Os pingos de chuva batem no teto da tenda e fazem barulho... no interior da barraca, você também olha pra dentro de si mesm@...",
+    "imagem": "Tropicalzin07-28set2023.jpeg"
+  },
+  {
+    "id": 8,
+    "textId": "texto_08",
+    "cena": "Ponte",
+    "escolha": "Margens",
+    "msg_antes": "Nas margens você vê o que é deixado de lado... lixo jogado, bichos mortos... parece que lá é onde deixam aquilo onde não veem mais valor e brilho...",
+    "imagem": "Tropicalzin08-26out2023.webp"
+  },
+  {
+    "id": 9,
+    "textId": "texto_09",
+    "cena": "Ponte",
+    "escolha": "Barco",
+    "msg_antes": "Um barco atravessa o rio... o barqueiro rema com paciência e atenção... ele não tem pressa...",
+    "imagem": "Tropicalzin09-30nov2023.webp"
+  },
+  {
+    "id": 10,
+    "textId": "texto_10",
+    "cena": "Parque",
+    "escolha": "Trabalhador",
+    "msg_antes": "Sob a sombra de uma árvore, um homem com uniforme está sentado... ele segura uma marmitex e come calmo enquanto as pessoas passam...",
+    "imagem": "Tropicalzin10-22dez2023.webp"
+  },
+  {
+    "id": 11,
+    "textId": "texto_11",
+    "cena": "Colina",
+    "escolha": "Nascente",
+    "msg_antes": "Você vê uma nascente no chão, escorrendo e levando vida por onde sua água passa... o caminho que ela percorre está cheio de plantas ao redor...",
+    "imagem": "Tropicalzin11-20jan2024.webp"
+  },
+  {
+    "id": 12,
+    "textId": "texto_12",
+    "cena": "Praia",
+    "escolha": "Criança",
+    "msg_antes": "Sentada no chão da praia, uma criança brinca com alegria... ela dá sorrisos e solta gargalhadas... a simplicidade com que ela é feliz te inspira...",
+    "imagem": "Tropicalzin12-22fev2024.webp"
+  },
+  {
+    "id": 13,
+    "textId": "texto_13",
+    "cena": "Jardim",
+    "escolha": "Lago",
+    "msg_antes": "Se vê no reflexo",
+    "imagem": "Tropicalzin13-31mar2024.webp"
+  },
+  {
+    "id": 14,
+    "textId": "texto_14",
+    "cena": "Rua",
+    "escolha": "Calçada",
+    "msg_antes": null,
+    "imagem": "Tropicalzin14-28abr2024.webp"
+  },
+  {
+    "id": 15,
+    "textId": "texto_15",
+    "cena": "Praia",
+    "escolha": "Céu",
+    "msg_antes": null,
+    "imagem": "Tropicalzin15-24mai2024.webp"
+  },
+  {
+    "id": 16,
+    "textId": "texto_16",
+    "cena": "Rua",
+    "escolha": "Pessoas",
+    "msg_antes": null,
+    "imagem": "Tropicalzin16-30jun2024.jpeg"
+  },
+  {
+    "id": 17,
+    "textId": "texto_17",
+    "cena": "Ponte",
+    "escolha": "Riacho",
+    "msg_antes": null,
+    "imagem": "Tropicalzin17-14ago2024.jpeg"
+  },
+  {
+    "id": 18,
+    "textId": "texto_18",
+    "cena": "Jardim",
+    "escolha": "Nuvens",
+    "msg_antes": null,
+    "imagem": "Tropicalzin18-13nov2024.jpeg"
+  },
+  {
+    "id": 19,
+    "textId": "texto_19",
+    "cena": "Colina",
+    "escolha": "Encruzilhada",
+    "msg_antes": null,
+    "imagem": "Tropicalzin19-19jan2025.jpeg"
+  },
+  {
+    "id": 20,
+    "textId": "texto_20",
+    "cena": "Jardim",
+    "escolha": "Flores",
+    "msg_antes": null,
+    "imagem": "Tropicalzin20-20mar2025.jpeg"
+  },
+  {
+    "id": 21,
+    "textId": "texto_21",
+    "cena": "Praia",
+    "escolha": "Ondas",
+    "msg_antes": null,
+    "imagem": "Tropicalzin21-13jun2025.jpeg"
+  }
+]

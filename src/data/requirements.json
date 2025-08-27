@@ -1,0 +1,56 @@
+{
+  "run1_choice0": {
+    "description": "Available from the start of Run 1.",
+    "runRequired": 1,
+    "app": 0
+  },
+  "run1_choice1": {
+    "description": "Requires 1 total choice, available in Run 1.",
+    "runRequired": 1,
+    "app": 1
+  },
+  "run1_choice3": {
+    "description": "Requires 3 total choices, available in Run 1.",
+    "runRequired": 1,
+    "app": 3
+  },
+  "run1_choice6": {
+    "description": "Requires 6 total choices, available in Run 1.",
+    "runRequired": 1,
+    "app": 6
+  },
+  "run2_choice1": {
+    "description": "Requires 8 total choices, available from Run 2.",
+    "runRequired": 2,
+    "app": 8
+  },
+  "run2_choice4": {
+    "description": "Requires 10 total choices, available from Run 2.",
+    "runRequired": 2,
+    "app": 11
+  },
+  "run2_choice6": {
+    "description": "Requires 13 total choices, available from Run 2.",
+    "runRequired": 2,
+    "app": 13
+  },
+  "run3_choice1": {
+    "description": "Requires 15 total choices, available from Run 3.",
+    "runRequired": 3,
+    "app": 15
+  },
+  "run3_choice4": {
+    "description": "Requires 18 total choices, available from Run 3.",
+    "runRequired": 3,
+    "app": 18
+  },
+  "run3_choice7": {
+    "description": "Requires 21 total choices, available from Run 3.",
+    "runRequired": 3,
+    "app": 21
+  },
+  "architect_awakened": {
+    "description": "Unlocks via the special Architect's Awakening event.",
+    "trigger": "ARCHITECT_AWAKENED"
+  }
+}

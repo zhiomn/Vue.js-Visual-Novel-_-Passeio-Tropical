@@ -1,0 +1,20 @@
+:root {
+    --bg-color: #111111;
+    --surface-color: #1e1e1e;
+    --surface-light: #2c2c2c;
+    --primary-color: #93a6ff;
+    --text-primary: #d1d1d1;
+    --text-muted: #888888;
+    --border-color: #333333;
+
+    --event-ui: #22d3ee;
+    --event-logic: #4ade80;
+    --event-audio: #e879f9;
+    --event-trigger: #fb923c;
+    --event-system: #a78bfa;
+
+    --code-color: #f7b89c;
+    --code-bg-color: #2a2a2a;
+    --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-mono: "SF Mono", "Consolas", "Roboto Mono", monospace;
+}

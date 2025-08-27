@@ -1,0 +1,96 @@
+[
+  {
+    "id": "messages",
+    "name": "Mensagens",
+    "icon": "fa-solid fa-comments",
+    "colorKeys": ["green_light", "green_dark"],
+    "requirementId": "run1_choice1",
+    "unlock_message": "Fragmentos de conversas passadas começam a surgir... Novo aplicativo: [AppName]."
+  },
+  {
+    "id": "notes",
+    "name": "Anotações",
+    "icon": "fa-solid fa-note-sticky",
+    "colorKeys": ["pink", "red"],
+    "requirementId": "run1_choice3",
+    "unlock_message": "Pensamentos e poemas encontrados agora podem ser salvos. Novo aplicativo: [AppName]."
+  },
+  {
+    "id": "gallery",
+    "name": "Galeria",
+    "icon": "fa-solid fa-images",
+    "colorKeys": ["primary", "secondary"],
+    "requirementId": "run1_choice6",
+    "unlock_message": "As imagens descritas nas anotações agora podem ser visualizadas. Novo aplicativo: [AppName]."
+  },
+  {
+    "id": "terminal",
+    "name": "Terminal",
+    "icon": "fa-solid fa-terminal",
+    "colorKeys": ["terminal_green", "terminal_green_dark"],
+    "requirementId": "run2_choice7",
+    "unlock_message": "Sinal desconhecido detectado... Acesso ao sistema subjacente concedido. Novo aplicativo: [AppName]."
+  },
+  {
+    "id": "contacts",
+    "name": "Contatos",
+    "icon": "fa-solid fa-address-book",
+    "colorKeys": ["primary", "secondary"],
+    "requirementId": "run2_choice8",
+    "requiresTerminalUnlock": true
+  },
+  {
+    "id": "map",
+    "name": "Mapa",
+    "icon": "fa-solid fa-map-location-dot",
+    "colorKeys": ["orange", "orange_dark"],
+    "requirementId": "run2_choice10",
+    "requiresTerminalUnlock": true
+  },
+  {
+    "id": "audio",
+    "name": "Áudios",
+    "icon": "fa-solid fa-headphones-simple",
+    "colorKeys": ["green_light", "green_dark"],
+    "requirementId": "run2_choice13",
+    "requiresTerminalUnlock": true
+  },
+  {
+    "id": "ereader",
+    "name": "Estante",
+    "icon": "fa-solid fa-book-open-reader",
+    "colorKeys": ["primary", "secondary"],
+    "requirementId": "run3_choice15",
+    "requiresTerminalUnlock": true
+  },
+  {
+    "id": "info",
+    "name": "Sobre",
+    "icon": "fa-solid fa-info-circle",
+    "colorKeys": ["gray_light", "gray_dark"],
+    "requirementId": "run3_choice18",
+    "requiresTerminalUnlock": true
+  },
+  {
+    "id": "despertador",
+    "name": "Alarme",
+    "icon": "fa-solid fa-bell",
+    "colorKeys": ["orange", "orange_dark"],
+    "requirementId": "run3_choice21",
+    "requiresTerminalUnlock": true
+  },
+  {
+    "id": "video",
+    "name": "Vídeos",
+    "icon": "fa-solid fa-circle-play",
+    "colorKeys": ["red", "secondary"],
+    "requirementId": "architect_awakened"
+  },
+  {
+    "id": "ajustes",
+    "name": "Ajustes",
+    "icon": "fa-solid fa-gear",
+    "colorKeys": ["gray_light", "gray_dark"],
+    "requirementId": "always_available"
+  }
+]

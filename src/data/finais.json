@@ -1,0 +1,32 @@
+[
+  {
+    "id": "final_run_1",
+    "nome": "O Primeiro Eco",
+    "ambience_track": "ending_drone_1.mp3",
+    "narration": [
+      "A porta se fecha atrás de você, mas o eco das suas escolhas permanece.",
+      "Um caminho foi percorrido.",
+      "Outros ainda aguardam."
+    ]
+  },
+  {
+    "id": "final_run_2",
+    "nome": "A Imagem se Forma",
+    "ambience_track": "ending_drone_2.mp3",
+    "narration": [
+      "Mais peças se encaixaram. As sombras começam a recuar.",
+      "Você sente que está se aproximando de uma verdade.",
+      "Apenas mais uma jornada."
+    ]
+  },
+  {
+    "id": "final_run_3",
+    "nome": "O Despertar",
+    "ambience_track": "ending_drone_3.mp3",
+    "narration": [
+      "Finalmente, tudo está claro. As histórias, os lugares, as vozes... tudo se conecta.",
+      "Você viu tudo o que havia para ver.",
+      "Obrigado por jogar."
+    ]
+  }
+]

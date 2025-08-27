@@ -1,0 +1,38 @@
+[
+  {
+    "id": "LOGIC_CALL_START_RUN",
+    "description": "`handleStartNewGameOrRun` inicia o ator da `runStartMachine`."
+  },
+  {
+    "id": "LOGIC_XSTATE_INIT",
+    "description": "**[XState: initializing]** Máquina invoca `loadInitialDataActor`."
+  },
+  {
+    "id": "LOGIC_XSTATE_TRANSITION",
+    "description": "**[XState: transition]** Máquina transita para o estado `{{targetState}}`."
+  },
+  {
+    "id": "LOGIC_XSTATE_NARRATE",
+    "description": "**[XState: narrating]** Máquina invoca `speakSequenceActor`."
+  },
+  {
+    "id": "LOGIC_XSTATE_FINAL",
+    "description": "**[XState: {{state}}]** Máquina atinge seu estado final."
+  },
+  {
+    "id": "LOGIC_ORCHESTRATOR_CALL",
+    "description": "Orquestrador chama `{{method}}`."
+  },
+  {
+    "id": "LOGIC_SELECT_CHOICE",
+    "description": "`handleSelectChoice` processa a escolha e salva o progresso."
+  },
+  {
+    "id": "LOGIC_UPDATE_STATE",
+    "description": "O estado da `runStore` é atualizado com os dados da nova cena."
+  },
+  {
+    "id": "LOGIC_FETCH_DATA",
+    "description": "Busca dados da sequência de final em `finais.json`."
+  }
+]
