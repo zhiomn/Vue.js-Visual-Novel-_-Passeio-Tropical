@@ -2,13 +2,24 @@ import config from '@/data/config.json';
 
 const DEBUG_MODE = config.debugMode;
 
-// Função para converter uma cor hexadecimal em RGBA com baixa opacidade
-function hexToRgba(hex, alpha = 0.1) {
-  const r = parseInt(hex.slice(1, 3), 16);
-  const g = parseInt(hex.slice(3, 5), 16);
-  const b = parseInt(hex.slice(5, 7), 16);
-  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+function getCallerInfo() {
+    try {
+        throw new Error();
+    } catch (e) {
+        // Analisa a stack trace para encontrar o chamador
+        const stackLines = e.stack.split('\n');
+        // O índice 3 geralmente é o chamador da função de log (0=Error, 1=getCallerInfo, 2=log function)
+        const callerLine = stackLines[3] || '';
+        const match = callerLine.match(/at\s+(?:(\w+)\s+\()?(?:.*\/)?([\w\.]+\.js:\d+:\d+)/);
+        if (match) {
+            const functionName = match[1] || 'anonymous';
+            const fileInfo = match[2];
+            return `${fileInfo} (${functionName})`;
+        }
+        return 'unknown';
+    }
 }
+
 
 export function createLogger(prefix, color) {
   if (!DEBUG_MODE) {
@@ -18,47 +29,35 @@ export function createLogger(prefix, color) {
       error: () => {},
       group: () => {},
       groupEnd: () => {},
+      logState: () => {},
     };
   }
 
-  // Estilo para o prefixo [NomeDoManager]
-  const prefixStyle = `
-    background-color: ${hexToRgba(color, 0.15)};
-    color: ${color};
-    font-weight: bold;
-    padding: 2px 6px;
-    border-radius: 4px;
-    border: 1px solid ${hexToRgba(color, 0.3)};
-  `;
-
-  // Estilo para o resto da mensagem
+  const prefixStyle = `background-color: ${color}; color: #111; font-weight: bold; padding: 2px 6px; border-radius: 4px;`;
   const messageStyle = 'color: inherit;';
+  const callerStyle = 'color: #888; font-style: italic; font-size: 0.8em;';
 
   function logMessage(level, message, data) {
+    const callerInfo = getCallerInfo();
     const logFunc = console[level] || console.log;
+
     if (data !== undefined) {
-      logFunc(`%c${prefix}%c ${message}`, prefixStyle, messageStyle, data);
+      logFunc(`%c${prefix}%c ${message}\n%c@ ${callerInfo}`, prefixStyle, messageStyle, callerStyle, data);
     } else {
-      logFunc(`%c${prefix}%c ${message}`, prefixStyle, messageStyle);
+      logFunc(`%c${prefix}%c ${message}\n%c@ ${callerInfo}`, prefixStyle, messageStyle, callerStyle);
     }
   }
-
+  
   return {
-    log(message, data) {
-      logMessage('log', message, data);
-    },
-    warn(message, data) {
-      logMessage('warn', `[WARN] ${message}`, data);
-    },
-    error(message, data) {
-      logMessage('error', `[ERROR] ${message}`, data);
-    },
-    group(title) {
-      // MUDANÇA: Usar console.group para começar expandido
-      console.group(`%c${prefix}%c ${title}`, prefixStyle, messageStyle);
-    },
-    groupEnd() {
-      console.groupEnd();
+    log(message, data) { logMessage('log', message, data); },
+    warn(message, data) { logMessage('warn', `[WARN] ${message}`, data); },
+    error(message, data) { logMessage('error', `[ERROR] ${message}`, data); },
+    group(title) { console.group(`%c${prefix}%c ${title}`, prefixStyle, messageStyle); },
+    groupEnd() { console.groupEnd(); },
+    logState(storeName, stateObject) {
+        console.groupCollapsed(`%c${prefix}%c State Snapshot: ${storeName}`, prefixStyle, 'font-weight: bold;');
+        console.table(stateObject);
+        console.groupEnd();
     }
   };
 }

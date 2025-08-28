@@ -3,25 +3,26 @@
        :style="{ fontSize: `${configStore.getSettingValue('uiScale')}%` }"
        :class="{ 'phone-is-active': phoneStore.isPhoneVisible }">
     
-    <Stars v-if="isContemplative" />
-
     <SceneTransition
       v-show="runStore.backgroundUrl && !configStore.phoneOnly"
       :background-url="runStore.backgroundUrl"
     />
     
-    <DialogueBox
-      v-if="displayStore.isDialogueVisible && !configStore.phoneOnly"
-      :narration="narrationStore.narrationText"
-      :interactions="runStore.availableInteractions"
-      :travel-options="runStore.travelOptions"
-      :game-phase="runStore.gamePhase"
-      :is-final-ending="runStore.isFinalEnding"
-      :are-interactions-visible="displayStore.areInteractionsVisible"
-      @choiceSelected="runStore.selectChoice"
-      @actionExecuted="runStore.executeAction"
-      @travelSelected="runStore.travelToScene"
-      @startNewRun="runStore.startNextRun"
+    <!-- Controlador de Visão Principal -->
+    <ContemplativeOverlay
+        v-if="runStore.gamePhase === 'STARTING' || runStore.gamePhase === 'ENDING'"
+        :narration="narrationStore.narrationText"
+        :interactions="runStore.availableInteractions"
+        :game-phase="runStore.gamePhase"
+        :is-final-ending="runStore.isFinalEnding"
+        :are-interactions-visible="displayStore.areInteractionsVisible"
+    />
+    <ExplorationUI
+        v-else-if="runStore.gamePhase === 'EXPLORING'"
+        :narration="narrationStore.narrationText"
+        :interactions="runStore.availableInteractions"
+        :travel-options="runStore.travelOptions"
+        :are-interactions-visible="displayStore.areInteractionsVisible"
     />
 
     <PhoneUI />
@@ -32,48 +33,43 @@
 </template>
 
 <script setup>
-import { onMounted, computed, nextTick } from 'vue';
+import { onMounted, nextTick } from 'vue';
 import { useRunStore } from '@/stores/useRunStore';
 import { useConfigStore } from '@/stores/config';
 import { usePlayerStore } from '@/stores/player';
-import { useReadStatusStore } from '@/stores/readStatus';
 import { useNarrationStore } from '@/stores/narration';
 import { usePhoneStore } from '@/stores/phone';
 import { useDisplayStore } from '@/stores/useDisplayStore';
-import DialogueBox from './components/ui/DialogueBox.vue';
+import { resumeGameSession } from '@/services/runOrchestrator';
 import PhoneUI from './components/phone/PhoneUI.vue';
 import SceneTransition from './components/ui/SceneTransition.vue';
-import Stars from './components/Stars.vue';
+import ContemplativeOverlay from './components/ui/ContemplativeOverlay.vue';
+import ExplorationUI from './components/ui/ExplorationUI.vue';
 import { createLogger } from './utils/loggers/loggerFactory';
 
 const logger = createLogger('App', '#a78bfa');
 const runStore = useRunStore();
 const configStore = useConfigStore();
 const playerStore = usePlayerStore();
-const readStatusStore = useReadStatusStore();
 const narrationStore = useNarrationStore();
 const phoneStore = usePhoneStore();
 const displayStore = useDisplayStore();
 
-const isContemplative = computed(() => {
-  return runStore.gamePhase === 'STARTING' || runStore.gamePhase === 'ENDING';
-});
-
 onMounted(async () => {
-  logger.log('App.vue mounted. Beginning game initialization...');
+  logger.group('App Initialization');
   configStore.loadSettingsFromLocalStorage();
-  readStatusStore.loadReadStatus();
   playerStore.loadProgress();
-
   await nextTick();
+
+  logger.logState('Initial PlayerStore', { ...playerStore.$state });
+  logger.logState('Initial RunStore', { ...runStore.$state });
 
   if (configStore.phoneOnly) {
     phoneStore.isPhoneVisible = true;
-    logger.log('PhoneOnly mode detected. Forcing phone visibility.');
   }
-
-  logger.log('Stores loaded. Resuming game session...');
-  runStore.resumeGameSession();
+  
+  resumeGameSession();
+  logger.groupEnd();
 });
 </script>
 

@@ -2,7 +2,6 @@ import { createActor, assign, fromPromise } from 'xstate';
 import { usePlayerStore } from '@/stores/player';
 import { useNarrationStore } from '@/stores/narration';
 import { useDisplayStore } from '@/stores/useDisplayStore';
-import { useReadStatusStore } from '@/stores/readStatus';
 import { useRunStore } from '@/stores/useRunStore';
 import { getStartingSequence } from '@/gameLogic/run/start';
 import { getAvailableChoices, getRandomScene, getTravelOptions } from '@/gameLogic/run/explore';
@@ -10,29 +9,47 @@ import { getEndingSequence } from '@/gameLogic/run/end';
 import { getStartActions, getSceneActions } from '@/gameLogic/run/actions';
 import { jsonDbService } from '@/services/jsonDbService';
 import { runStartMachine } from '@/stateMachines/runStartMachine';
+import { travelMachine } from '@/stateMachines/travelMachine';
 import { createLogger } from '@/utils/loggers/loggerFactory';
 
 const logger = createLogger('RunOrchestrator', '#d946ef');
 
-let runMachineActor = null;
+let runStartActor = null;
+let travelActor = null;
 
-function initializeRunLogic() {
-    logger.group('Orquestrando lógica de início de run...');
+// --- FUNÇÕES DE INICIALIZAÇÃO E RETOMADA ---
+
+export function resumeGameSession() {
     const playerStore = usePlayerStore();
+    logger.log(`Resuming game session for Run #${playerStore.runCount}`);
+    if (playerStore.runCount === 0) playerStore.startNewRun();
+
+    if (playerStore.gamePhase === 'EXPLORING' && playerStore.lastSceneName) {
+        logger.log(`Resuming directly into EXPLORING phase at scene: ${playerStore.lastSceneName}`);
+        resumeExploring(playerStore.lastSceneName);
+    } else {
+        logger.log('No exploration state found. Initializing run start sequence.');
+        initializeRunStartLogic();
+    }
+}
+
+async function resumeExploring(sceneName) {
+    useRunStore().setGamePhase('EXPLORING');
+    await travelToScene(sceneName); // Chamada direta, sem lock, pois é parte do fluxo de inicialização
+}
+
+// --- ORQUESTRAÇÃO DO INÍCIO DA RUN ---
+
+function initializeRunStartLogic() {
+    logger.group('Orchestrating run start logic...');
+    const playerStore = usePlayerStore();
+    const runStore = useRunStore();
     const narrationStore = useNarrationStore();
     const displayStore = useDisplayStore();
-    const runStore = useRunStore();
-
-    runStore.gamePhase = 'STARTING';
-
-    if (runMachineActor) runMachineActor.stop();
-
-    if (playerStore.isGameComplete) {
-        logger.log('Jogo já concluído. Pulando para a sequência final.');
-        logger.groupEnd();
-        return handleTransitionToEnding();
-    }
     
+    runStore.setGamePhase('STARTING');
+    if (runStartActor) runStartActor.stop();
+
     const machine = runStartMachine.provide({
         actors: {
             loadInitialDataActor: fromPromise(({ input }) => Promise.resolve(getStartingSequence(input.runCount))),
@@ -46,199 +63,187 @@ function initializeRunLogic() {
         }
     });
 
-    runMachineActor = createActor(machine, { input: { runCount: playerStore.runCount } });
-
-    runMachineActor.subscribe(async (snapshot) => {
-        logger.log(`[XState] Snapshot: ${snapshot.value}`, { context: snapshot.context });
-        
-        runStore.currentScene = snapshot.context.sequence;
-        runStore.availableInteractions.actions = snapshot.context.actions;
-
-        if (snapshot.matches('presentingScene')) {
-            await displayStore.waitFor(700);
-            runMachineActor.send({ type: 'SCENE_READY' });
-        }
-        
-        if (snapshot.status === 'done') {
-            logger.log(`[XState] Ator finalizado no estado: ${snapshot.value}`);
-            logger.groupEnd();
-            if (snapshot.matches('runStarted')) {
-                const startAction = runStore.availableInteractions.actions[0];
-                if (startAction) runStore.executeAction(startAction);
-            } else if (snapshot.matches('gameComplete')) {
-                await handleTransitionToEnding();
-            }
-        }
-    });
-
-    runMachineActor.start();
+    runStartActor = createActor(machine, { input: { runCount: playerStore.runCount } });
+    runStartActor.subscribe(snapshot => handleRunStartSnapshot(snapshot));
+    runStartActor.start();
 }
 
-// --- LÓGICA DE RETOMADA INTELIGENTE ---
-export function handleResumeGameSession() {
-    const playerStore = usePlayerStore();
-    logger.log(`Resumindo sessão de jogo para a Run #${playerStore.runCount}`);
-    if (playerStore.runCount === 0) {
-        playerStore.startNewRun();
-    }
-
-    // A bifurcação principal: retomar na exploração ou começar do início?
-    if (playerStore.gamePhase === 'EXPLORING' && playerStore.lastSceneName) {
-        logger.log(`Retomando diretamente na fase de EXPLORING na cena: ${playerStore.lastSceneName}`);
-        handleResumeExploring(playerStore.lastSceneName);
-    } else {
-        logger.log('Nenhum estado de exploração encontrado. Iniciando a sequência de introdução da run.');
-        initializeRunLogic();
-    }
-}
-
-async function handleResumeExploring(sceneName) {
+async function handleRunStartSnapshot(snapshot) {
     const runStore = useRunStore();
-    runStore.gamePhase = 'EXPLORING'; // Sincroniza a runStore volátil
-    await handleTravelToScene(sceneName);
-}
-// --- FIM DA LÓGICA DE RETOMADA ---
+    const displayStore = useDisplayStore();
 
-export async function handleStartNextRun() {
-    const playerStore = usePlayerStore();
-    const runStore = useRunStore();
-    logger.log(`Iniciando a PRÓXIMA run. Run atual: ${playerStore.runCount}`);
+    logger.log(`[XState:runStart] Snapshot: ${snapshot.value}`, { context: snapshot.context });
+    runStore.setCurrentScene(snapshot.context.sequence);
+    runStore.setInteractions({ choices: [], actions: snapshot.context.actions });
 
-    if (playerStore.isGameComplete) {
-        logger.warn("Tentativa de iniciar uma nova run quando o jogo já está completo.");
-        await handleTransitionToEnding();
-        return;
+    if (snapshot.matches('presentingScene')) {
+        await displayStore.waitFor(700);
+        runStartActor.send({ type: 'SCENE_READY' });
     }
     
-    runStore.$reset();
-    playerStore.startNewRun();
-    playerStore.saveProgress();
-    initializeRunLogic();
+    if (snapshot.status === 'done') {
+        logger.log(`[XState:runStart] Actor finished in state: ${snapshot.value}`);
+        logger.groupEnd();
+        if (snapshot.matches('runStarted')) {
+            const startAction = runStore.availableInteractions.actions[0];
+            if (startAction) executeAction(startAction);
+        }
+    }
 }
 
-export async function handleTravelToScene(sceneName) {
-    logger.group(`Orquestrando viagem para a cena: ${sceneName}`);
+// --- ORQUESTRAÇÃO DO FLUXO PRINCIPAL (ESCOLHAS E VIAGENS) ---
+
+export async function selectChoice(escolhaId) {
+    const displayStore = useDisplayStore();
+    await displayStore.withInputLock(async () => {
+        logger.group(`Orchestrating choice selection: ${escolhaId}`);
+        displayStore.setInteractionsVisibility(false);
+        await displayStore.waitFor(400);
+
+        const playerStore = usePlayerStore();
+        playerStore.unlockChoice(escolhaId);
+
+        const runStore = useRunStore();
+        runStore.addVisitedScene(runStore.currentScene.nome);
+        runStore.setInteractions({ choices: [], actions: [] });
+        
+        playerStore.saveProgress();
+        
+        if (travelActor) travelActor.stop();
+
+        const escolha = jsonDbService.findEscolhaById(escolhaId);
+        const narrationStore = useNarrationStore();
+        
+        const machine = travelMachine.provide({
+            actors: {
+                speakSequenceActor: fromPromise(({ input }) => narrationStore.speak(input.dialogue)),
+                fadeOutSceneActor: fromPromise(() => displayStore.animateSceneFadeOut()),
+            },
+            actions: {
+                showDialogue: () => displayStore.setDialogueVisibility(true),
+                showInteractions: () => displayStore.setInteractionsVisibility(true),
+                loadTravelOptions: () => {
+                    const travelOptions = getTravelOptions(runStore.visitedScenesInThisRun);
+                    if (travelOptions.length === 0) {
+                        travelActor.send({ type: 'NO_MORE_TRAVEL_OPTIONS' });
+                    }
+                    runStore.setTravelOptions(travelOptions);
+                }
+            }
+        });
+
+        travelActor = createActor(machine, { input: { escolha } });
+        travelActor.subscribe(snapshot => handleTravelSnapshot(snapshot));
+        travelActor.start();
+    });
+}
+
+async function handleTravelSnapshot(snapshot) {
+    logger.log(`[XState:travel] Snapshot: ${snapshot.value}`);
+    if (snapshot.status === 'done') {
+        logger.log(`[XState:travel] Actor finished.`);
+        const runStore = useRunStore();
+        if (runStore.travelOptions.length === 0) {
+            await transitionToEnding();
+        }
+        logger.groupEnd();
+    }
+}
+
+// --- A CORREÇÃO ESTÁ AQUI: withInputLock foi removido daqui. ---
+export async function travelToScene(sceneName) {
     const displayStore = useDisplayStore();
     const narrationStore = useNarrationStore();
     const playerStore = usePlayerStore();
-    const readStatusStore = useReadStatusStore();
     const runStore = useRunStore();
 
+    logger.group(`Orchestrating travel to scene: ${sceneName}`);
+    logger.logState('useRunStore (Before)', { ...runStore.$state });
+
     displayStore.setInteractionsVisibility(false);
+    await displayStore.waitFor(400); 
     
     const sceneData = jsonDbService.findCenaByName(sceneName);
     if (!sceneData) {
-      logger.error(`Dados da cena '${sceneName}' não encontrados!`);
+      logger.error(`Scene data for '${sceneName}' not found!`);
       logger.groupEnd();
       return;
     }
 
-    readStatusStore.markSceneAsViewed(sceneData.id);
-    runStore.currentScene = sceneData;
-    runStore.availableInteractions = { choices: [], actions: [] };
-    runStore.travelOptions = []; 
+    runStore.setCurrentScene(sceneData);
+    runStore.setInteractions({ choices: [], actions: [] });
+    runStore.setTravelOptions([]); 
 
-    // --- SINCRONIZAR ESTADO PERSISTENTE ---
-    playerStore.gamePhase = 'EXPLORING';
     playerStore.lastSceneName = sceneName;
     playerStore.saveProgress();
-    // --- FIM DA SINCRONIZAÇÃO ---
 
     await displayStore.animateSceneFadeIn();
-    const narrationText = runStore.currentScene.msg_entrada || `Você chegou em ${runStore.currentScene.nome}.`;
+    const narrationText = runStore.currentScene.msg_entrada || `You have arrived at ${runStore.currentScene.nome}.`;
     await narrationStore.speak([narrationText]);
 
-    runStore.availableInteractions.choices = getAvailableChoices(sceneName, playerStore.unlockedEscolhaIds);
-    runStore.availableInteractions.actions = getSceneActions(sceneName);
+    const choices = getAvailableChoices(sceneName, playerStore.unlockedEscolhaIds);
+    const actions = getSceneActions(sceneName);
+    runStore.setInteractions({ choices, actions });
     
+    logger.logState('useRunStore (After)', { ...runStore.$state });
     displayStore.setInteractionsVisibility(true);
     logger.groupEnd();
 }
 
-export async function handleSelectChoice(escolhaId) {
-    logger.group(`Orquestrando processamento da escolha: ${escolhaId}`);
-    const playerStore = usePlayerStore();
-    const narrationStore = useNarrationStore();
-    const readStatusStore = useReadStatusStore();
-    const runStore = useRunStore();
+// --- ORQUESTRAÇÃO DE AÇÕES GERAIS E FIM DE RUN ---
+
+export async function executeAction(action) {
     const displayStore = useDisplayStore();
+    // Este é o "lock" principal.
+    await displayStore.withInputLock(async () => {
+        logger.log(`Orchestrating action execution: ${action.id || action.type}`, action);
+        displayStore.setInteractionsVisibility(false);
+        await displayStore.waitFor(400);
 
-    displayStore.setInteractionsVisibility(false);
-    await displayStore.waitFor(400);
+        if (action.type === 'transition' && action.payload.targetPhase === 'EXPLORING') {
+            const playerStore = usePlayerStore();
+            const runStore = useRunStore();
+            runStore.setGamePhase('EXPLORING');
+            playerStore.gamePhase = 'EXPLORING';
+            logger.log(`Phase Transition: STARTING -> EXPLORING`);
+            
+            logger.logState('usePlayerStore', { ...playerStore.$state });
+            logger.logState('useRunStore', { ...runStore.$state });
 
-    playerStore.unlockChoice(escolhaId);
-    
-    runStore.visitedScenesInThisRun.push(runStore.currentScene.nome);
-    runStore.availableInteractions = { choices: [], actions: [] };
-    
-    // Salva o progresso *após* a escolha ser adicionada, mas *antes* de qualquer nova cena ser definida
-    playerStore.saveProgress();
-    readStatusStore.saveReadStatus();
-
-    const escolha = jsonDbService.findEscolhaById(escolhaId);
-    const narrationText = escolha.msg_antes || "Você descobriu algo novo...";
-    await narrationStore.speak([narrationText]);
-    
-    await displayStore.animateSceneFadeOut();
-    await handlePresentTravelOptions();
-    logger.groupEnd();
-}
-
-export async function handleExecuteAction(action) {
-    logger.log(`Orquestrando execução da ação: ${action.id || action.type}`, action);
-    const runStore = useRunStore();
-    const playerStore = usePlayerStore();
-    const displayStore = useDisplayStore();
-
-    displayStore.setInteractionsVisibility(false);
-    await displayStore.waitFor(400);
-
-    if (action.type === 'transition' && action.payload.targetPhase === 'EXPLORING') {
-        runStore.gamePhase = 'EXPLORING';
-        playerStore.gamePhase = 'EXPLORING'; // Manter o estado persistente sincronizado
-        logger.log(`Transição de Fase: STARTING -> EXPLORING`);
-        const randomScene = getRandomScene(runStore.visitedScenesInThisRun);
-        if (randomScene) {
-            await handleTravelToScene(randomScene.nome);
-        } else {
-            await handleTransitionToEnding();
+            const randomScene = getRandomScene(runStore.visitedScenesInThisRun);
+            if (randomScene) {
+                // Esta chamada agora não tentará um novo lock.
+                await travelToScene(randomScene.nome);
+            } else {
+                await transitionToEnding();
+            }
         }
-    }
+    });
 }
 
-async function handlePresentTravelOptions() {
-    logger.group('Orquestrando apresentação de opções de viagem...');
-    const narrationStore = useNarrationStore();
+export async function startNextRun() {
+    const playerStore = usePlayerStore();
     const displayStore = useDisplayStore();
-    const runStore = useRunStore();
-    
-    const travelableScenes = getTravelOptions(runStore.visitedScenesInThisRun);
-
-    if (travelableScenes.length === 0) {
-      logger.log("Não há mais destinos. Encerrando a run.");
-      logger.groupEnd();
-      return handleTransitionToEnding();
-    }
-
-    const narrationText = runStore.currentScene.msg_saida || "Para onde agora?";
-    await narrationStore.speak([narrationText]);
-    
-    runStore.travelOptions = travelableScenes;
-    displayStore.setInteractionsVisibility(true);
-    logger.log('Opções de viagem prontas.', runStore.travelOptions);
-    logger.groupEnd();
+    await displayStore.withInputLock(async () => {
+        logger.log(`Starting NEXT run. Current run: ${playerStore.runCount}`);
+        
+        useRunStore().$reset();
+        playerStore.startNewRun();
+        playerStore.saveProgress();
+        initializeRunStartLogic();
+    });
 }
 
-export async function handleTransitionToEnding() {
-    logger.group('Orquestrando sequência de fim de run...');
+async function transitionToEnding() {
+    logger.group('Orchestrating end of run sequence...');
     const playerStore = usePlayerStore();
     const narrationStore = useNarrationStore();
     const displayStore = useDisplayStore();
     const runStore = useRunStore();
 
-    runStore.gamePhase = 'ENDING';
-    playerStore.gamePhase = 'ENDING'; // Manter o estado persistente sincronizado
-    playerStore.lastSceneName = null; // Limpar a última cena ao terminar
+    runStore.setGamePhase('ENDING');
+    playerStore.gamePhase = 'ENDING';
+    playerStore.lastSceneName = null;
     playerStore.saveProgress();
 
     displayStore.setInteractionsVisibility(false);
@@ -246,14 +251,10 @@ export async function handleTransitionToEnding() {
     await displayStore.animateSceneFadeOut();
 
     const sequence = getEndingSequence(playerStore.runCount);
-    if (!sequence) {
-      logger.warn(`Nenhuma sequência de fim encontrada para a run ${playerStore.runCount}.`);
-      await narrationStore.speak(["A jornada termina aqui."]);
-    } else {
-      runStore.currentScene = sequence;
-      runStore.isFinalEnding = playerStore.isGameComplete;
-      await narrationStore.speak(sequence.narration);
-    }
+    runStore.setCurrentScene(sequence);
+    runStore.isFinalEnding = playerStore.isGameComplete;
+    
+    await narrationStore.speak(sequence.narration);
     
     displayStore.setInteractionsVisibility(true);
     logger.groupEnd();

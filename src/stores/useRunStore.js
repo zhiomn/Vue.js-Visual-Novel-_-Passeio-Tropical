@@ -1,12 +1,4 @@
 import { defineStore } from 'pinia';
-import { 
-    handleResumeGameSession,
-    handleStartNextRun,
-    handleTravelToScene,
-    handleSelectChoice,
-    handleExecuteAction,
-} from '@/services/runOrchestrator';
-import { useDisplayStore } from './useDisplayStore';
 
 export const useRunStore = defineStore('run', {
   state: () => ({
@@ -27,30 +19,24 @@ export const useRunStore = defineStore('run', {
     },
   },
 
+  // As ações agora são mutações de estado diretas, a serem chamadas pelo orquestrador.
   actions: {
-    // --- THE ARCHITECTURAL FIX IS HERE: Every user-initiated async flow is now locked at the store level ---
-    resumeGameSession() {
-      handleResumeGameSession();
+    setGamePhase(phase) {
+      this.gamePhase = phase;
     },
-    
-    startNextRun() {
-      const displayStore = useDisplayStore();
-      displayStore.withInputLock(handleStartNextRun);
+    setCurrentScene(sceneData) {
+      this.currentScene = sceneData;
     },
-
-    travelToScene(sceneName) {
-      const displayStore = useDisplayStore();
-      displayStore.withInputLock(() => handleTravelToScene(sceneName));
+    setInteractions(interactions) {
+      this.availableInteractions = interactions;
     },
-
-    selectChoice(escolhaId) {
-      const displayStore = useDisplayStore();
-      displayStore.withInputLock(() => handleSelectChoice(escolhaId));
+    setTravelOptions(options) {
+      this.travelOptions = options;
     },
-
-    executeAction(action) {
-      const displayStore = useDisplayStore();
-      displayStore.withInputLock(() => handleExecuteAction(action));
-    },
+    addVisitedScene(sceneName) {
+        if (!this.visitedScenesInThisRun.includes(sceneName)) {
+            this.visitedScenesInThisRun.push(sceneName);
+        }
+    }
   },
 });
