@@ -1,0 +1,15 @@
+{
+    "elements": {
+        "nodes": [
+            { "data": { "id": "folders", "label": "View: Folders", "type": "ui" } },
+            { "data": { "id": "grid", "label": "View: Grid", "type": "ui" } },
+            { "data": { "id": "lightbox", "label": "Overlay: Lightbox", "type": "ui" } }
+        ],
+        "edges": [
+            { "data": { "source": "folders", "target": "grid", "label": "Clica Pasta" } },
+            { "data": { "source": "grid", "target": "folders", "label": "Voltar" } },
+            { "data": { "source": "grid", "target": "lightbox", "label": "Clica Imagem" } },
+            { "data": { "source": "lightbox", "target": "grid", "label": "Fechar" } }
+        ]
+    }
+}

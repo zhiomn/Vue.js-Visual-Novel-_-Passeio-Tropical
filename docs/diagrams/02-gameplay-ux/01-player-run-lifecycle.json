@@ -1,0 +1,32 @@
+{
+    "elements": {
+        "nodes": [
+            { "data": { "id": "start", "label": "Início da Run\n(Modo Contemplativo)", "type": "ui" } },
+            { "data": { "id": "action", "label": "Ação Inicial", "type": "ui" } },
+            { "data": { "id": "transition", "label": "Transição para Exploração", "type": "service" } },
+            { "data": { "id": "scene", "label": "Chegada na Cena", "type": "ui" } },
+            { "data": { "id": "choices", "label": "Apresentação das Escolhas", "type": "ui" } },
+            { "data": { "id": "select", "label": "Seleção da Escolha", "type": "ui" } },
+            { "data": { "id": "consequence", "label": "Consequência", "type": "ui" } },
+            { "data": { "id": "travel", "label": "Apresentação da Viagem", "type": "ui" } },
+            { "data": { "id": "end_check", "label": "Há mais cenas?", "type": "store" } },
+            { "data": { "id": "end_transition", "label": "Transição para o Fim", "type": "service" } },
+            { "data": { "id": "ending", "label": "Narração Final\n(Modo Contemplativo)", "type": "ui" } },
+            { "data": { "id": "end_run", "label": "Fim da Run", "type": "ui" } }
+        ],
+        "edges": [
+            { "data": { "source": "start", "target": "action" } },
+            { "data": { "source": "action", "target": "transition" } },
+            { "data": { "source": "transition", "target": "scene" } },
+            { "data": { "source": "scene", "target": "choices" } },
+            { "data": { "source": "choices", "target": "select" } },
+            { "data": { "source": "select", "target": "consequence" } },
+            { "data": { "source": "consequence", "target": "travel" } },
+            { "data": { "source": "travel", "target": "end_check" } },
+            { "data": { "source": "end_check", "target": "scene", "label": "Sim" } },
+            { "data": { "source": "end_check", "target": "end_transition", "label": "Não" } },
+            { "data": { "source": "end_transition", "target": "ending" } },
+            { "data": { "source": "ending", "target": "end_run" } }
+        ]
+    }
+}

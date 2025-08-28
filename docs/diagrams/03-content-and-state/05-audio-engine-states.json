@@ -1,0 +1,17 @@
+{
+    "elements": {
+        "nodes": [
+            { "data": { "id": "idle", "label": "Idle", "type": "store" } },
+            { "data": { "id": "playing", "label": "Playing", "type": "store" } },
+            { "data": { "id": "paused", "label": "Paused", "type": "store" } }
+        ],
+        "edges": [
+            { "data": { "source": "idle", "target": "playing", "label": "playTrack(new)" } },
+            { "data": { "source": "playing", "target": "paused", "label": "playTrack(same)" } },
+            { "data": { "source": "paused", "target": "playing", "label": "playTrack(same)" } },
+            { "data": { "source": "playing", "target": "idle", "label": "onend" } },
+            { "data": { "source": "paused", "target": "playing", "label": "playTrack(new)" } },
+            { "data": { "source": "playing", "target": "playing", "label": "playTrack(new)" } }
+        ]
+    }
+}

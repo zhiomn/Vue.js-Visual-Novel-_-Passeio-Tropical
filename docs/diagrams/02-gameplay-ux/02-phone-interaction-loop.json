@@ -1,0 +1,22 @@
+{
+    "elements": {
+        "nodes": [
+            { "data": { "id": "game", "label": "Exploração do Jogo", "type": "service" } },
+            { "data": { "id": "unlock", "label": "Desbloqueio Causal Ocorre", "type": "store" } },
+            { "data": { "id": "notification", "label": "Notificação Aparece", "type": "ui" } },
+            { "data": { "id": "toggle", "label": "Jogador Clica no Botão do Celular", "type": "ui" } },
+            { "data": { "id": "phone", "label": "UI do Celular Visível", "type": "ui" } },
+            { "data": { "id": "navigate", "label": "Jogador Navega / Lê Conteúdo", "type": "ui" } },
+            { "data": { "id": "close", "label": "Jogador Fecha o Celular", "type": "ui" } }
+        ],
+        "edges": [
+            { "data": { "source": "game", "target": "unlock" } },
+            { "data": { "source": "unlock", "target": "notification" } },
+            { "data": { "source": "notification", "target": "toggle" } },
+            { "data": { "source": "toggle", "target": "phone" } },
+            { "data": { "source": "phone", "target": "navigate" } },
+            { "data": { "source": "navigate", "target": "close" } },
+            { "data": { "source": "close", "target": "game" } }
+        ]
+    }
+}

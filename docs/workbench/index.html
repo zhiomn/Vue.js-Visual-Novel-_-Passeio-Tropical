@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Workbench de Fluxos - Tropical Versos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1><i class="fa-solid fa-sitemap"></i> Workbench de Fluxos de Jogo</h1>
+        <label for="file-input" class="file-label">Carregar Arquivos de Lógica</label>
+        <input type="file" id="file-input" accept=".js,.ts" multiple>
+    </header>
+    <main>
+        <div id="diagram-container">
+             <div class="placeholder-text">
+                <p>Para começar, carregue todos os arquivos de lógica relevantes:</p>
+                <p><strong>(e.g., todos os arquivos de /src/stores/ e /src/stateMachines/)</strong></p>
+                <p>A ferramenta irá construir um índice de dependências e exibir o primeiro diagrama.</p>
+            </div>
+        </div>
+        <aside id="inspector-panel">
+            <div class="placeholder-text">
+                Clique em um nó do diagrama para ver seus detalhes e referências.
+            </div>
+        </aside>
+    </main>
+    <script src="./lib/d3.v7.min.js"></script>
+    <script src="./lib/elk.min.js"></script>
+    <script type="module" src="./src/main.js"></script>
+</body>
+</html>

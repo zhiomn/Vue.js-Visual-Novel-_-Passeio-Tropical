@@ -1,0 +1,27 @@
+{
+    "elements": {
+        "nodes": [
+            { "data": { "id": "click", "label": "Player Click", "type": "ui" } },
+            { "data": { "id": "runstore", "label": "useRunStore.selectChoice()", "type": "store" } },
+            { "data": { "id": "lock", "label": "displayStore.withInputLock()", "type": "store" } },
+            { "data": { "id": "orchestrator", "label": "orchestrator.handleSelectChoice()", "type": "service" } },
+            { "data": { "id": "playerstore", "label": "playerStore.unlockChoice()", "type": "store" } },
+            { "data": { "id": "save", "label": "playerStore.saveProgress()", "type": "store" } },
+            { "data": { "id": "narrate", "label": "narrationStore.speak()", "type": "store" } },
+            { "data": { "id": "fade", "label": "displayStore.animateFade()", "type": "store" } },
+            { "data": { "id": "travel", "label": "orchestrator.handlePresentTravel()", "type": "service" } },
+            { "data": { "id": "unlock", "label": "Input Unlocked", "type": "ui" } }
+        ],
+        "edges": [
+            { "data": { "source": "click", "target": "runstore" } },
+            { "data": { "source": "runstore", "target": "lock", "label": "wraps execution" } },
+            { "data": { "source": "lock", "target": "orchestrator", "label": "executes async action" } },
+            { "data": { "source": "orchestrator", "target": "playerstore" } },
+            { "data": { "source": "playerstore", "target": "save" } },
+            { "data": { "source": "save", "target": "narrate" } },
+            { "data": { "source": "narrate", "target": "fade" } },
+            { "data": { "source": "fade", "target": "travel" } },
+            { "data": { "source": "travel", "target": "unlock", "label": "on completion" } }
+        ]
+    }
+}

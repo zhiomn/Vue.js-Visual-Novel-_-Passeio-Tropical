@@ -1,0 +1,17 @@
+{
+    "elements": {
+        "nodes": [
+            { "data": { "id": "escolhas", "label": "escolhas.json", "type": "service" } },
+            { "data": { "id": "textos", "label": "textos.json", "type": "service" } },
+            { "data": { "id": "pessoas", "label": "pessoas.json", "type": "service" } },
+            { "data": { "id": "obras", "label": "obras.json", "type": "service" } },
+            { "data": { "id": "map", "label": "_masterContentMap", "type": "store" } }
+        ],
+        "edges": [
+            { "data": { "source": "escolhas", "target": "map", "label": "Chave Principal (escolhaId)" } },
+            { "data": { "source": "textos", "target": "map", "label": "Junta via textId" } },
+            { "data": { "source": "pessoas", "target": "map", "label": "Junta via authorId" } },
+            { "data": { "source": "obras", "target": "map", "label": "Junta via obraId" } }
+        ]
+    }
+}

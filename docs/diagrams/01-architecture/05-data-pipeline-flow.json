@@ -1,0 +1,19 @@
+{
+    "elements": {
+        "nodes": [
+            { "data": { "id": "json", "label": "data/*.json", "type": "service" } },
+            { "data": { "id": "map", "label": "_masterContentMap", "type": "store" } },
+            { "data": { "id": "getter", "label": "contentStore.unlockedNotes (getter)", "type": "store" } },
+            { "data": { "id": "player", "label": "playerStore.unlockedEscolhaIds", "type": "store" } },
+            { "data": { "id": "component", "label": "NoteListView.vue", "type": "ui" } },
+            { "data": { "id": "render", "label": "Rendered List", "type": "ui" } }
+        ],
+        "edges": [
+            { "data": { "source": "json", "target": "map", "label": "1. Initialized into" } },
+            { "data": { "source": "map", "target": "getter", "label": "2. Read by" } },
+            { "data": { "source": "player", "target": "getter", "label": "3. Filtered by" } },
+            { "data": { "source": "getter", "target": "component", "label": "4. Consumed by" } },
+            { "data": { "source": "component", "target": "render", "label": "5. Renders" } }
+        ]
+    }
+}

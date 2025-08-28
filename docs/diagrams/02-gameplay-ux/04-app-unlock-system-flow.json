@@ -1,0 +1,24 @@
+{
+    "elements": {
+        "nodes": [
+            { "data": { "id": "start", "label": "Jogador Faz uma Escolha", "type": "ui" } },
+            { "data": { "id": "count", "label": "unlockedChoiceCount++", "type": "store" } },
+            { "data": { "id": "check_req", "label": "Contagem atende ao requisito?", "type": "service" } },
+            { "data": { "id": "visible", "label": "App se torna visível", "type": "ui" } },
+            { "data": { "id": "check_terminal", "label": "Requer Terminal?", "type": "service" } },
+            { "data": { "id": "terminal", "label": "Jogador ativa via Terminal", "type": "ui" } },
+            { "data": { "id": "end_unlocked", "label": "App 100% Desbloqueado", "type": "store" } },
+            { "data": { "id": "continue", "label": "Continua jogando", "type": "ui" } }
+        ],
+        "edges": [
+            { "data": { "source": "start", "target": "count" } },
+            { "data": { "source": "count", "target": "check_req" } },
+            { "data": { "source": "check_req", "target": "visible", "label": "Sim" } },
+            { "data": { "source": "check_req", "target": "continue", "label": "Não" } },
+            { "data": { "source": "visible", "target": "check_terminal" } },
+            { "data": { "source": "check_terminal", "target": "terminal", "label": "Sim" } },
+            { "data": { "source": "check_terminal", "target": "end_unlocked", "label": "Não" } },
+            { "data": { "source": "terminal", "target": "end_unlocked" } }
+        ]
+    }
+}

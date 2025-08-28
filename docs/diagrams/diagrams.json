@@ -1,0 +1,20 @@
+{
+    "diagrams": [
+        { "category": "Arquitetura e Fluxo de Código", "title": "Interação entre Módulos", "path": "./01-architecture/01-store-interaction-flow.html" },
+        { "category": "Arquitetura e Fluxo de Código", "title": "Ciclo de Vida de uma Ação do Jogador", "path": "./01-architecture/02-action-lifecycle-flow.html" },
+        { "category": "Arquitetura e Fluxo de Código", "title": "Hierarquia de Componentes Vue", "path": "./01-architecture/03-component-hierarchy.html" },
+        { "category": "Arquitetura e Fluxo de Código", "title": "Diagrama de Sequência (Seleção de Escolha)", "path": "./01-architecture/04-sequence-select-choice.html" },
+        { "category": "Arquitetura e Fluxo de Código", "title": "Fluxo do Pipeline de Dados", "path": "./01-architecture/05-data-pipeline-flow.html" },
+        { "category": "Mecânicas e Jornada do Jogador (UX)", "title": "Ciclo de Vida de uma 'Run'", "path": "./02-gameplay-ux/01-player-run-lifecycle.html" },
+        { "category": "Mecânicas e Jornada do Jogador (UX)", "title": "Loop de Interação com o Celular", "path": "./02-gameplay-ux/02-phone-interaction-loop.html" },
+        { "category": "Mecânicas e Jornada do Jogador (UX)", "title": "Mapa de Navegação dos Apps", "path": "./02-gameplay-ux/03-phone-app-navigation-map.html" },
+        { "category": "Mecânicas e Jornada do Jogador (UX)", "title": "Fluxo do Sistema de Desbloqueio de Apps", "path": "./02-gameplay-ux/04-app-unlock-system-flow.html" },
+        { "category": "Conteúdo e Estado", "title": "Construção do MasterContentMap", "path": "./03-content-and-state/01-master-content-map-build.html" },
+        { "category": "Conteúdo e Estado", "title": "Máquina de Estado (Início da Run)", "path": "./03-content-and-state/02-run-start-machine-flow.html" },
+        { "category": "Conteúdo e Estado", "title": "Estados da UI do App Galeria", "path": "./03-content-and-state/03-gallery-app-uistate-flow.html" },
+        { "category": "Conteúdo e Estado", "title": "Fluxo de Desbloqueio Causal", "path": "./03-content-and-state/04-causal-unlock-flow.html" },
+        { "category": "Conteúdo e Estado", "title": "Estados da Engine de Áudio", "path": "./03-content-and-state/05-audio-engine-states.html" },
+        { "category": "Conteúdo e Estado", "title": "Ecossistema de Conteúdo", "path": "./03-content-and-state/06-content-ecosystem-map.html" },
+        { "category": "Processos de Desenvolvimento", "title": "Fluxo de Trabalho Git", "path": "./04-development-process/01-git-feature-branch-workflow.html" }
+    ]
+}

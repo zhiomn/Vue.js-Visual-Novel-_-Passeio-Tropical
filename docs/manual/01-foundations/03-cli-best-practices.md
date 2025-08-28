@@ -1,44 +1,42 @@
 # 1.4 CLI Command Best Practices
 
-The single-line, executable terminal command is the primary interface for collaboration. Its format has been refined to maximize robustness and clarity, prioritizing what has proven to work reliably in practice.
+This document defines the official, robust protocol for file delivery in this project. It has been refined to work reliably within the constraints of our AI-Human chat interface.
+
+**The core principle is the strict separation of Command and Content.**
 
 ---
 
-## 1. The Sole Standard: `cat` with "Here Document"
+### The "Command-Content Separation" Protocol
 
-To guarantee transparency and robustness against the most common collaboration issues, the **only** permitted method for file delivery (both overwriting and appending) is the `cat` command combined with a "here document".
+All file creation and modification commands **must** be delivered in a two-part format: **The Command Block** and **The Content Block**. This is a non-negotiable directive to prevent rendering errors from the chat interface and ensure perfect file integrity.
 
-**This is a non-negotiable directive.**
+#### Part 1: The Command
 
-### 1.1 Overwriting Files (`>`)
+The AI will provide a simple, incomplete `cat` command using a "here document" with a **quoted delimiter (`'EOF'`)**. The quoted delimiter is critical as it prevents the shell from interpreting special characters (like `!` and `$`) within the content.
 
-Use a single greater-than sign (`>`) to completely replace the contents of a file.
+-   **To Overwrite a file:** `cat > [FILE_PATH] << 'EOF'`
+-   **To Append to a file:** `cat >> [FILE_PATH] << 'EOF'`
 
-**Structure:**
-- ```bash
-# Overwrites the entire file with the new content.
-cat > [FILE_PATH] << 'EOF'
-[Full and complete content of the file]
-EOF```
+#### Part 2: The Content
 
-### 1.2 Appending to Files (`>>`)
+Immediately following the command, the AI will provide the full, clean file content inside a separate, clearly marked code block.
 
-Use a double greater-than sign (`>>`) to add content to the end of an existing file without deleting its current content.
+#### Part 3: The Execution (Human Action)
 
-**Structure:**
-- ```bash
-# Appends the new content to the end of the file.
-cat >> [FILE_PATH] << 'EOF'
-[New content to be added]
+The human collaborator must follow these steps precisely:
 
-2. The Critical Distinction: > vs. >>
-Understanding the difference between these two operators is the most critical part of this workflow. Using the wrong one will lead to data loss.
-> (Overwrite): A destructive action. Use only when your intent is to replace the file entirely.
->> (Append): A non-destructive action. Use when your intent is to add to the file.
-Always verify the operator matches the task's intent.
+1.  Copy the **Command** from Part 1 and paste it into the terminal. Press **Enter**. The terminal will now be waiting for input, often showing a `>` prompt.
+2.  Copy the entire **Content** from Part 2 and paste it into the terminal.
+3.  Press **Enter** one last time to ensure the last line is registered.
+4.  On a new line, type `EOF` exactly as it appears in the command and press **Enter**. This finalizes the command and writes the file.
 
-3. Deprecated Methods (Forbidden)
-The base64 Experiment
-Status: FORBIDDEN.
-Reasoning: An experiment was conducted to use base64 encoding to prevent copy-paste errors. In practice, this method proved to be more fragile, introducing its own encoding/decoding errors that resulted in corrupted files and broken builds. It also violates our Cognitive Clarity pillar by obscuring the content being delivered. The theoretical robustness was outweighed by the practical friction it created.
-Conclusion: The transparency and proven reliability of the cat command make it our sole standard. No other file delivery methods will be used.
+---
+
+### Why this Protocol is the Final Standard
+
+This protocol is the most robust solution because it solves both potential points of failure simultaneously:
+
+1.  **It solves the Shell Interpretation problem:** Using `<< 'EOF'` (with quotes) guarantees that the terminal treats the content as a literal string.
+2.  **It solves the Interface Rendering problem:** Separating the content into its own block prevents the chat UI from breaking the structure of the initial command.
+
+This is our standard for all future file modifications.

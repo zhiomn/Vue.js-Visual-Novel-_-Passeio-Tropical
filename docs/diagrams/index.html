@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Índice de Diagramas - Tropical Versos</title>
+    <style>
+        :root {
+            --primary-color: #93a6ff; --surface-color: #1e1e1e; --text-primary: #d1d1d1; --text-muted: #888;
+            --bg-color: #111111; --border-color: #333; --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        }
+        body, html { font-family: var(--font-sans); background-color: var(--bg-color); color: var(--text-primary); margin: 0; height: 100vh; overflow: hidden; }
+        .workbench-layout { display: flex; height: 100%; }
+        #sidebar { flex: 0 0 350px; padding: 2rem; border-right: 1px solid var(--border-color); overflow-y: auto; background-color: var(--surface-color); }
+        #content { flex-grow: 1; }
+        iframe { width: 100%; height: 100%; border: none; }
+        h1 { font-size: 1.5em; color: var(--primary-color); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem; margin-top: 0; }
+        h2 { color: var(--text-primary); margin-top: 1.5rem; padding-bottom: 0.5rem; font-size: 1em; text-transform: uppercase; letter-spacing: 1px; }
+        ul { list-style: none; padding: 0; }
+        li a {
+            color: var(--text-muted); text-decoration: none; font-size: 0.9em; display: block; padding: 0.5rem;
+            border-radius: 4px; transition: all 0.2s ease;
+        }
+        a:hover { color: var(--primary-color); background-color: #2c2c2c; }
+    </style>
+</head>
+<body>
+    <div class="workbench-layout">
+        <aside id="sidebar">
+            <h1>Índice de Diagramas</h1>
+            <div id="diagram-index"><p>Carregando...</p></div>
+        </aside>
+        <main id="content">
+            <iframe name="diagram_frame" id="diagram_frame"></iframe>
+        </main>
+    </div>
+    <script type="module" src="./index-builder.js"></script>
+</body>
+</html>

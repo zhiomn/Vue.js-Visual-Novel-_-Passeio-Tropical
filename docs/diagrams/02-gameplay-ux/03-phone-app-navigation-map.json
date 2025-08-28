@@ -1,0 +1,30 @@
+{
+    "elements": {
+        "nodes": [
+            { "data": { "id": "home", "label": "Home Screen", "type": "ui" } },
+            { "data": { "id": "messages_list", "label": "Messages (List)", "type": "ui" } },
+            { "data": { "id": "chat_view", "label": "Messages (Chat)", "type": "ui" } },
+            { "data": { "id": "gallery_folder", "label": "Gallery (Folders)", "type": "ui" } },
+            { "data": { "id": "gallery_grid", "label": "Gallery (Grid)", "type": "ui" } },
+            { "data": { "id": "lightbox", "label": "Gallery (Lightbox)", "type": "ui" } },
+            { "data": { "id": "notes_list", "label": "Notes (List)", "type": "ui" } },
+            { "data": { "id": "note_detail", "label": "Notes (Detail)", "type": "ui" } }
+        ],
+        "edges": [
+            { "data": { "source": "home", "target": "messages_list", "label": "Clica Ícone" } },
+            { "data": { "source": "messages_list", "target": "chat_view", "label": "Clica Contato" } },
+            { "data": { "source": "chat_view", "target": "messages_list", "label": "Voltar" } },
+            { "data": { "source": "messages_list", "target": "home", "label": "Voltar" } },
+            { "data": { "source": "home", "target": "gallery_folder", "label": "Clica Ícone" } },
+            { "data": { "source": "gallery_folder", "target": "gallery_grid", "label": "Clica Pasta" } },
+            { "data": { "source": "gallery_grid", "target": "lightbox", "label": "Clica Imagem" } },
+            { "data": { "source": "lightbox", "target": "gallery_grid", "label": "Voltar" } },
+            { "data": { "source": "gallery_grid", "target": "gallery_folder", "label": "Voltar" } },
+            { "data": { "source": "gallery_folder", "target": "home", "label": "Voltar" } },
+            { "data": { "source": "home", "target": "notes_list", "label": "Clica Ícone" } },
+            { "data": { "source": "notes_list", "target": "note_detail", "label": "Clica Nota" } },
+            { "data": { "source": "note_detail", "target": "notes_list", "label": "Voltar" } },
+            { "data": { "source": "notes_list", "target": "home", "label": "Voltar" } }
+        ]
+    }
+}

@@ -1,0 +1,18 @@
+{
+    "elements": {
+        "nodes": [
+            { "data": { "id": "ui_action", "label": "Componente UI\n(e.g., DialogueBox)", "type": "ui" } },
+            { "data": { "id": "store_facade", "label": "Ação Facade\n(useRunStore)", "type": "store" } },
+            { "data": { "id": "store_display", "label": "useDisplayStore", "type": "store" } },
+            { "data": { "id": "orchestrator", "label": "runOrchestrator", "type": "service" } },
+            { "data": { "id": "store_player", "label": "Estado Persistente\n(usePlayerStore)", "type": "store" } }
+        ],
+        "edges": [
+            { "data": { "source": "ui_action", "target": "store_facade", "label": "1. Evento do Usuário" } },
+            { "data": { "source": "store_facade", "target": "store_display", "label": "2. Invoca Input Lock" } },
+            { "data": { "source": "store_facade", "target": "orchestrator", "label": "3. Delega a lógica" } },
+            { "data": { "source": "orchestrator", "target": "store_player", "label": "4. Atualiza estado" } },
+            { "data": { "source": "store_player", "target": "ui_action", "label": "5. UI Reage (Reatividade)" } }
+        ]
+    }
+}

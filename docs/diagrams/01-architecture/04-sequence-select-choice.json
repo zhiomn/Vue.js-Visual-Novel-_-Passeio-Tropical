@@ -1,0 +1,8 @@
+{
+    "elements": {
+        "nodes": [
+            { "data": { "id": "placeholder", "label": "Diagrama de Sequência\n(Requer Sintaxe Diferente)", "type": "service" } }
+        ],
+        "edges": []
+    }
+}

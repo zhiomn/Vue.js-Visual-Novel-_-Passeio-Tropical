@@ -1,0 +1,21 @@
+{
+    "elements": {
+        "nodes": [
+            { "data": { "id": "read_note", "label": "Lê Anotação", "type": "ui" } },
+            { "data": { "id": "unlock_gallery", "label": "Desbloqueia Imagem (Galeria)", "type": "store" } },
+            { "data": { "id": "unlock_author", "label": "Desbloqueia Detalhes (Autor)", "type": "store" } },
+            { "data": { "id": "view_gallery", "label": "Vê Imagem (Galeria)", "type": "ui" } },
+            { "data": { "id": "unlock_ereader", "label": "Desbloqueia Revista (Estante)", "type": "store" } },
+            { "data": { "id": "view_contact", "label": "Vê Perfil (Contato)", "type": "ui" } },
+            { "data": { "id": "unlock_map", "label": "Desbloqueia Local (Mapa)", "type": "store" } }
+        ],
+        "edges": [
+            { "data": { "source": "read_note", "target": "unlock_gallery" } },
+            { "data": { "source": "read_note", "target": "unlock_author" } },
+            { "data": { "source": "unlock_gallery", "target": "view_gallery" } },
+            { "data": { "source": "view_gallery", "target": "unlock_ereader" } },
+            { "data": { "source": "unlock_author", "target": "view_contact" } },
+            { "data": { "source": "view_contact", "target": "unlock_map" } }
+        ]
+    }
+}

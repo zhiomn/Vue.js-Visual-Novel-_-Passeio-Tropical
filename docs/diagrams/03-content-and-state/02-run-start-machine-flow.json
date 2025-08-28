@@ -1,0 +1,19 @@
+{
+    "elements": {
+        "nodes": [
+            { "data": { "id": "initializing", "label": "initializing", "type": "store" } },
+            { "data": { "id": "presentingScene", "label": "presentingScene", "type": "store" } },
+            { "data": { "id": "narrating", "label": "narrating", "type": "store" } },
+            { "data": { "id": "awaitingAction", "label": "awaitingAction", "type": "store" } },
+            { "data": { "id": "runStarted", "label": "runStarted (Final)", "type": "store" } },
+            { "data": { "id": "gameComplete", "label": "gameComplete (Final)", "type": "store" } }
+        ],
+        "edges": [
+            { "data": { "source": "initializing", "target": "presentingScene", "label": "onDone" } },
+            { "data": { "source": "initializing", "target": "gameComplete", "label": "onError" } },
+            { "data": { "source": "presentingScene", "target": "narrating", "label": "SCENE_READY" } },
+            { "data": { "source": "narrating", "target": "awaitingAction", "label": "onDone" } },
+            { "data": { "source": "awaitingAction", "target": "runStarted", "label": "ACTION_EXECUTED" } }
+        ]
+    }
+}

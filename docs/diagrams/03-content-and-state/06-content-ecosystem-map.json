@@ -1,0 +1,24 @@
+{
+    "elements": {
+        "nodes": [
+            { "data": { "id": "choice", "label": "Escolha", "type": "ui" } },
+            { "data": { "id": "text", "label": "Texto/Poema", "type": "store" } },
+            { "data": { "id": "scene", "label": "Cena", "type": "ui" } },
+            { "data": { "id": "author", "label": "Autor", "type": "store" } },
+            { "data": { "id": "painter", "label": "Pintor", "type": "store" } },
+            { "data": { "id": "magazine", "label": "Revista/Obra", "type": "store" } },
+            { "data": { "id": "audio", "label": "Faixa de Áudio", "type": "store" } },
+            { "data": { "id": "city", "label": "Cidade", "type": "store" } }
+        ],
+        "edges": [
+            { "data": { "source": "choice", "target": "text", "label": "revela" } },
+            { "data": { "source": "choice", "target": "scene", "label": "ocorre em" } },
+            { "data": { "source": "text", "target": "author", "label": "escrito por" } },
+            { "data": { "source": "scene", "target": "painter", "label": "pintado por" } },
+            { "data": { "source": "text", "target": "magazine", "label": "publicado em" } },
+            { "data": { "source": "text", "target": "audio", "label": "tem áudio de" } },
+            { "data": { "source": "author", "target": "city", "label": "nasceu em" } },
+            { "data": { "source": "painter", "target": "city", "label": "nasceu em" } }
+        ]
+    }
+}

@@ -1,0 +1,21 @@
+{
+    "elements": {
+        "nodes": [
+            { "data": { "id": "app", "label": "App.vue", "type": "ui" } },
+            { "data": { "id": "scene", "label": "SceneTransition.vue", "type": "ui" } },
+            { "data": { "id": "dialogue", "label": "DialogueBox.vue", "type": "ui" } },
+            { "data": { "id": "phone", "label": "PhoneUI.vue", "type": "ui" } },
+            { "data": { "id": "typewriter", "label": "TypewriterButton.vue", "type": "ui" } },
+            { "data": { "id": "icon", "label": "PhoneAppIcon.vue", "type": "ui" } },
+            { "data": { "id": "app_instance", "label": "e.g., MessagesApp.vue", "type": "ui" } }
+        ],
+        "edges": [
+            { "data": { "source": "app", "target": "scene" } },
+            { "data": { "source": "app", "target": "dialogue" } },
+            { "data": { "source": "app", "target": "phone" } },
+            { "data": { "source": "dialogue", "target": "typewriter" } },
+            { "data": { "source": "phone", "target": "icon" } },
+            { "data": { "source": "phone", "target": "app_instance", "label": "dynamic component" } }
+        ]
+    }
+}

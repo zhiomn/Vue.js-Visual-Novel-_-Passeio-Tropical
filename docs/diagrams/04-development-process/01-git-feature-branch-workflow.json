@@ -1,0 +1,31 @@
+{
+    "elements": {
+        "nodes": [
+            { "data": { "id": "main_start", "label": "Branch 'main' (estável)", "type": "store" } },
+            { "data": { "id": "branch", "label": "git checkout -b feature/...", "type": "service" } },
+            { "data": { "id": "feature_dev", "label": "Desenvolvimento na Feature Branch", "type": "ui" } },
+            { "data": { "id": "commit", "label": "git commit", "type": "service" } },
+            { "data": { "id": "push_feature", "label": "git push origin feature/...", "type": "service" } },
+            { "data": { "id": "review", "label": "Revisão e Testes", "type": "ui" } },
+            { "data": { "id": "checkout_main", "label": "git checkout main", "type": "service" } },
+            { "data": { "id": "pull", "label": "git pull origin main", "type": "service" } },
+            { "data": { "id": "merge", "label": "git merge feature/...", "type": "service" } },
+            { "data": { "id": "push_main", "label": "git push origin main", "type": "service" } },
+            { "data": { "id": "main_end", "label": "Branch 'main' (atualizada)", "type": "store" } },
+            { "data": { "id": "cleanup", "label": "Deletar a Feature Branch", "type": "service" } }
+        ],
+        "edges": [
+            { "data": { "source": "main_start", "target": "branch", "label": "Inicia a tarefa" } },
+            { "data": { "source": "branch", "target": "feature_dev" } },
+            { "data": { "source": "feature_dev", "target": "commit" } },
+            { "data": { "source": "commit", "target": "push_feature", "label": "Salva o progresso" } },
+            { "data": { "source": "push_feature", "target": "review", "label": "Pronto para revisão" } },
+            { "data": { "source": "review", "target": "checkout_main", "label": "Aprovado" } },
+            { "data": { "source": "checkout_main", "target": "pull", "label": "Sincroniza" } },
+            { "data": { "source": "pull", "target": "merge", "label": "Integra" } },
+            { "data": { "source": "merge", "target": "push_main" } },
+            { "data": { "source": "push_main", "target": "main_end" } },
+            { "data": { "source": "main_end", "target": "cleanup" } }
+        ]
+    }
+}
