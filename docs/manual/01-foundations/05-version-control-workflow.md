@@ -4,6 +4,17 @@ To ensure project stability, maintain a clear history, and allow for safe experi
 
 ---
 
+### One-Time Setup: GitHub Authentication
+
+**IMPORTANT:** GitHub no longer accepts account passwords for command-line operations. You **must** use a **Personal Access Token (PAT)**.
+
+1.  **Generate a PAT:** Create a new token on the GitHub website: [Settings -> Developer settings -> Personal access tokens -> Tokens (classic)](https://github.com/settings/tokens).
+2.  **Scopes:** When creating the token, grant it the full **`repo`** scope. This allows it to manage your private repositories.
+3.  **Save the Token:** Copy the token and save it in a secure password manager. **You will only see it once.**
+4.  **Authentication:** When the command line asks for your `Password`, **paste the Personal Access Token**, not your account password.
+
+---
+
 ### Core Principles
 
 1.  **`main` is Sacred:** No direct development occurs on the `main` branch. All new features or fixes are developed in separate branches.
