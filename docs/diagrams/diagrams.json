@@ -11,6 +11,7 @@
         { "category": "Mecânicas e Jornada do Jogador (UX)", "title": "Fluxo do Sistema de Desbloqueio de Apps", "path": "./02-gameplay-ux/04-app-unlock-system-flow.html" },
         { "category": "Conteúdo e Estado", "title": "Construção do MasterContentMap", "path": "./03-content-and-state/01-master-content-map-build.html" },
         { "category": "Conteúdo e Estado", "title": "Máquina de Estado (Início da Run)", "path": "./03-content-and-state/02-run-start-machine-flow.html" },
+        { "category": "Conteúdo e Estado", "title": "Máquina de Estado (Viagem)", "path": "./03-content-and-state/07-travel-machine-flow.html" },
         { "category": "Conteúdo e Estado", "title": "Estados da UI do App Galeria", "path": "./03-content-and-state/03-gallery-app-uistate-flow.html" },
         { "category": "Conteúdo e Estado", "title": "Fluxo de Desbloqueio Causal", "path": "./03-content-and-state/04-causal-unlock-flow.html" },
         { "category": "Conteúdo e Estado", "title": "Estados da Engine de Áudio", "path": "./03-content-and-state/05-audio-engine-states.html" },

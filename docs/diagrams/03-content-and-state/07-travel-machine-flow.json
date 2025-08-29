@@ -1,0 +1,6 @@
+{
+    "elements": {
+        "nodes": [ { "data": { "id": "placeholder", "label": "Diagrama 'Máquina de Estado (Viagem)' a ser preenchido", "type": "service" } } ],
+        "edges": []
+    }
+}
