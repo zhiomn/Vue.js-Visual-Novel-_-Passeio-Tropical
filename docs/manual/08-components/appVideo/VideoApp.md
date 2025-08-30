@@ -1,17 +1,19 @@
 # Component: VideoApp
 
 - **File Path:** `src/components/appVideo/VideoApp.vue`
-- **Responsibility:** To display the final, concluding video content of the game.
+- **Responsibility:** Root component and view controller for the Video application.
 
 ---
 
 ## 1. Design Philosophy
 
-This is the final content application the player unlocks. It serves as the narrative payoff at the end of the game's progression system. Currently, it displays a placeholder state indicating no signal is available. In its final form, it will contain the video player or sequence that concludes the story.
+**Analogy: The View Controller.**
+
+This component implements the standard "Master-Detail" UI pattern. It holds the local state (`currentVideoId`) to switch between the list of available videos (`VideoListView.vue`) and the full-screen player for a single video (`VideoDetailView.vue`).
 
 ---
 
 ## 2. Component API
 
 - **Props:** None
-- **Emitted Events:** `@back`
+- **Emitted Events:** `@back` (when in the list view)

@@ -1,0 +1,51 @@
+/* DEBUG_ID: _app-terminal.css */
+
+.terminal-list-container {
+  font-family: 'Courier New', Courier, monospace;
+  color: #a3e635;
+  background-color: #0d0d0d;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+.terminal-output {
+  line-height: 1.6;
+}
+.terminal-output p {
+  margin: 0 0 5px 0;
+}
+.contact-buttons-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.contact-btn {
+  background-color: transparent;
+  border: 1px solid #33ff33;
+  color: #33ff33;
+  padding: 10px;
+  font-family: inherit;
+  font-size: 1em;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+.contact-btn:hover:not(:disabled) {
+  background-color: #33ff33;
+  color: #0d0d0d;
+}
+.contact-btn:disabled {
+  border-color: #2a522a;
+  color: #2a522a;
+  cursor: not-allowed;
+}
+.contact-btn.is-activated {
+  border-color: #4a4a4a;
+  color: #4a4a4a;
+}
+.contact-btn.is-activated:hover:not(:disabled) {
+  background-color: #222;
+  color: #666;
+}

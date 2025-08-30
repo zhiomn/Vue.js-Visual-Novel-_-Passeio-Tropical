@@ -1,0 +1,26 @@
+[
+  {
+    "id": "video_1",
+    "titulo": "A Construção de um Verso",
+    "descricao": "Uma visão aprofundada do processo criativo por trás da poesia que impulsiona o projeto, explorando as inspirações e as técnicas.",
+    "thumbnail": "thumbnail1.webp",
+    "categoria": "Processo Criativo",
+    "link": "https://www.youtube.com/watch?v=Mr4wdI4DtAg"
+  },
+  {
+    "id": "video_2",
+    "titulo": "Ecos da Arquitetura",
+    "descricao": "Uma análise da arquitetura do jogo, revelando como os sistemas de estado e a lógica de desbloqueio foram projetados para criar uma experiência coesa.",
+    "thumbnail": "thumbnail2.webp",
+    "categoria": "Desenvolvimento",
+    "link": "https://www.youtube.com/watch?v=o-YBDTqX_ZU"
+  },
+  {
+    "id": "video_3",
+    "titulo": "O Despertar",
+    "descricao": "A transmissão final.",
+    "thumbnail": "thumbnail3.webp",
+    "categoria": "",
+    "link": "https://www.youtube.com/watch?v=xvFZjo5PgG0"
+  }
+]

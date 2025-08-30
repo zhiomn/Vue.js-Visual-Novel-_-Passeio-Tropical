@@ -9,7 +9,7 @@
     "types": [
       "Autora"
     ],
-    "descricao": null
+    "descricao": "Professora de educação infantil e ensino fundamental da Prefeitura do Rio de Janeiro, Advogada e Historiadora."
   },
   {
     "id": "jacimar_boti",
@@ -57,7 +57,7 @@
     "types": [
       "Autor"
     ],
-    "descricao": null
+    "descricao": "Rafael é um artista multimídia: tem produções literárias, musicais e também faz histórias em quadrinhos. Já lançou discos solo e com o codinome Alfa Serenar. Atualmente é Professor Adjunto do Departamento de Letras da Universidade Federal do Amapá."
   },
   {
     "id": "augusto_bermond",
@@ -69,7 +69,7 @@
     "types": [
       "Autor"
     ],
-    "descricao": null
+    "descricao": "Médico psiquiatra, pós-graduado em Filosofia e Neurologia. Autor de 'Primeiros Contos', 'Segundos Contos', 'Agente 49' e de contos publicados em antologias. Membro da Academia de Letras e Artes de Colatina."
   },
   {
     "id": "maria_emilia_santos",
@@ -81,7 +81,7 @@
     "types": [
       "Autora"
     ],
-    "descricao": null
+    "descricao": "Nasci em colatina no dia 26 do mes de fevereiro, minha infância e juventude foi na roça com minha família. Sou formada em Pedagogia pela FAFIC - Faculdade de Filosofia Ciência e Letras de Colatina e Pós-graduada em Planejamento Educacional. Membro da ALARC-Acadêmica de Letras e Artes de Colatina. Professora da rede municipal por 15 anos, contadora de Histórias e coordenou a Biblioteca Municipal em duas administrações. Atualmente aposentada escreve poesias e contos."
   },
   {
     "id": "dani_micoids",
@@ -137,11 +137,11 @@
     "avatar": "Rabindranath.jpg",
     "link": null,
     "city_id": "calcuta_india",
-    "born_date": null,
+    "born_date": "7 de maio de 1861",
     "types": [
       "Autor"
     ],
-    "descricao": null
+    "descricao": "Poeta, músico e pintor bengali, Rabindranath Tagore foi uma figura monumental na literatura mundial. Em 1913, ele se tornou o primeiro não-europeu a ganhar o Prêmio Nobel de Literatura. Sua obra, que inclui o hino nacional da Índia, é profundamente lírica e espiritual, remodelando a arte e a cultura de sua nação e influenciando o mundo com sua visão humanista."
   },
   {
     "id": "isolina_castro",
@@ -174,11 +174,11 @@
     "avatar": "AlbertoCaeiro.jpg",
     "link": null,
     "city_id": "lisboa_portugal",
-    "born_date": null,
+    "born_date": "16 de abril de 1889",
     "types": [
       "Autor"
     ],
-    "descricao": null
+    "descricao": "Alberto Caeiro não é uma pessoa real, mas sim o mais famoso dos heterônimos do poeta português Fernando Pessoa. Pessoa o concebeu como um 'mestre' para seus outros heterônimos, um poeta do campo que vivia em contato direto e puro com a natureza. A poesia de Caeiro é marcada por uma simplicidade radical, rejeitando o pensamento metafísico em favor de uma observação direta e sensorial do mundo, como se o visse pela primeira vez."
   },
   {
     "id": "nadie",
@@ -214,7 +214,7 @@
     "types": [
       "Autora"
     ],
-    "descricao": null
+    "descricao": "MaraEliza Penitente (Mara Elizabete Penitente) nasceu em Barracão de São Roque do Canaã no dia 8 de julho de 1956. Tem dois livros lançados no Clube dos Autores: Testemunho de Vida e Meus Remendos e uma zine (Somos loucos pelo pôr do sol) lançada em Colatina, ES, onde reside. Possui a página Amamos Colatina, no Facebook, onde publica seus poemas, reflexões, textos diversos e suas fotos. É membro da Academia de Letras e Artes de Colatina."
   },
   {
     "id": "eduardo_bulian",
@@ -262,7 +262,7 @@
     "types": [
       "Pintor"
     ],
-    "descricao": "Nicholas Roerich (Николай Рерих) foi um pintor"
+    "descricao": "Pintor, escritor, arqueólogo e filósofo, Nicholas Roerich foi uma figura proeminente do Simbolismo Russo, um movimento focado no espiritual. Seu vasto trabalho inclui a pintura do passado antigo da Rússia e cenários para os Ballets Russes de Diaghilev, como a famosa 'A Sagração da Primavera'. Roerich foi um dedicado ativista pela preservação da arte e arquitetura em tempos de guerra, sendo indicado várias vezes ao Prêmio Nobel da Paz pelo seu trabalho no 'Pacto Roerich', um tratado internacional para a proteção de bens culturais."
   },
     {
     "id": "wassily-kandinsky",
@@ -274,7 +274,7 @@
     "types": [
       "Pintor"
     ],
-    "descricao": null
+    "descricao": "Pintor e teórico da arte, Wassily Kandinsky é creditado como um dos pioneiros da arte abstrata. Nascido em Moscou, ele abandonou uma promissora carreira em direito e economia aos 30 anos para estudar pintura em Munique. Kandinsky acreditava que cada cor possuía uma vida misteriosa e uma ressonância espiritual, uma ideia que o levou a se afastar da representação figurativa. Foi professor na influente escola Bauhaus de 1922 até seu fechamento pelos nazistas em 1933, moldando uma nova geração de artistas."
   },
     {
     "id": "jean-leon-gerome",
@@ -286,11 +286,11 @@
     "types": [
       "Pintor"
     ],
-    "descricao": null
+    "descricao": "Pintor e escultor francês, Jean-Léon Gérôme foi um dos principais expoentes do Academismo. Suas obras, que abrangem pintura histórica, mitologia grega e Orientalismo, eram conhecidas pelo acabamento técnico impecável e pela atenção meticulosa aos detalhes. Ele viajou extensivamente, especialmente para o Egito, o que introduziu um elemento exótico em sua arte. Como um influente professor na École des Beaux-Arts em Paris, ele formou mais de 2.000 alunos, mas também ficou conhecido por sua ferrenha oposição aos Impressionistas, a quem considerava 'a desonra da arte francesa'."
   },
     {
     "id": "alexey-bogolyubov",
-    "name": "Alexey-Bogolyubov",
+    "name": "Alexey Bogolyubov",
     "avatar": "Alexey-Bogolyubov.jpg",
     "link": "https://www.wikiart.org/en/alexey-bogolyubov",
     "city_id": "pomeranie_russia",
@@ -298,7 +298,7 @@
     "types": [
       "Pintor"
     ],
-    "descricao": null
+    "descricao": "Alexey Bogolyubov foi um pintor russo de paisagens e marinhas. Neto do filósofo Alexander Radishchev, ele se formou como oficial da marinha e viajou extensivamente com a frota antes de se dedicar à arte. Sua experiência no mar o tornou um mestre em cenas marítimas e de batalha naval, notáveis por sua precisão histórica. Mais tarde, ele se aproximou do movimento realista dos 'Peredvizhniki' (Andarilhos) e fundou o Museu de Arte Radishchev em Saratov, o primeiro museu de arte público na Rússia fora de Moscou ou São Petersburgo."
   },
     {
     "id": "lev-lagorio",
@@ -310,6 +310,6 @@
     "types": [
       "Pintor"
     ],
-    "descricao": null
+    "descricao": "Lev Lagorio foi um pintor e aquarelista russo, conhecido principalmente por suas paisagens marítimas. Nascido na Crimeia, ele recebeu seu primeiro treinamento artístico nos estúdios do renomado mestre Ivan Aivazovsky. Associado à escola de pintura 'Cimmeriana', suas obras capturam a beleza e o poder do Mar Negro. Após seus estudos na Academia Imperial de Artes, ele viajou pela Europa e pelo Cáucaso, participando como artista em campanhas militares, o que adicionou um elemento dramático às suas paisagens e cenas de batalha."
   }
 ]

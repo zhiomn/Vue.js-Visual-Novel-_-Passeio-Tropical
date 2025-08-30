@@ -1,23 +1,23 @@
 /* Styles for the main phone "hardware" and container */
 #phone-toggle-btn {
   position: absolute;
-  bottom: 30px;
-  right: 30px;
+  bottom: 30px; /* RESTORED */
+  right: 30px; /* RESTORED */
   width: 70px;
   height: 70px;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border-radius: 50%;
-  z-index: 20;
+  z-index: 100; /* KEPT HIGH */
   cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
   box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.4s ease; /* ADDED opacity transition */
 }
 
 #phone-toggle-btn:hover {
-  transform: scale(1.1);
+  transform: scale(1.1); /* RESTORED */
 }
 
 #phone-ui {

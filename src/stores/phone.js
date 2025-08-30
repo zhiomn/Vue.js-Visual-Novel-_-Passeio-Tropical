@@ -4,8 +4,10 @@ import appsData from '@/data/apps.json';
 import { useConfigStore } from './config';
 import { evaluateRequirement, evaluateDetailReveal } from '@/gameLogic/unlocks/unlocksEvaluator';
 import config from '@/data/config.json';
+import { createLogger } from '@/utils/loggers/loggerFactory';
 
-// --- THE NEW LOGIC: A list of apps to exclude from the allDataRevealed override ---
+const logger = createLogger('PhoneStore', '#38bdf8');
+
 const TERMINAL_FLOW_APPS = [
   'terminal',
   'contacts',
@@ -21,21 +23,38 @@ export const usePhoneStore = defineStore('phone', {
   state: () => ({
     isPhoneVisible: false,
     activeApp: null,
+    terminalAdvanceSignal: 0,
   }),
 
   getters: {
     getAppState: () => (appId) => {
-      // --- THE FIX IS HERE ---
-      // This guard clause now checks if allDataRevealed is true AND the app is NOT in our exception list.
+      const playerStore = usePlayerStore();
+
+      // Prioridade 1: Desbloqueio Final. Tudo está acessível.
+      if (playerStore.isFinalUnlockActive) {
+        return { isUnlocked: true, areDetailsRevealed: true, meetsRequirements: true, isActivated: true };
+      }
+
+      // Prioridade 2: Arquiteto Despertou. Apenas o Terminal está funcional.
+      if (playerStore.hasArchitectAwakened) {
+        const appConfig = appsData.find(app => app.id === appId);
+        const isTerminalApp = appId === 'terminal';
+        
+        return { 
+          meetsRequirements: !!appConfig, // Todos os requisitos são considerados cumpridos para revelar nomes.
+          isUnlocked: isTerminalApp, // Apenas o Terminal está verdadeiramente desbloqueado.
+          isActivated: playerStore.activatedApps.includes(appId) || isTerminalApp,
+          areDetailsRevealed: true 
+        };
+      }
+
+      // Prioridade 3: Modo de Desenvolvedor (com exceções).
       if (config.allDataRevealed && !TERMINAL_FLOW_APPS.includes(appId)) {
         return { isUnlocked: true, areDetailsRevealed: true, meetsRequirements: true, isActivated: true };
       }
 
-      // If allDataRevealed is false OR if the app is part of the terminal flow,
-      // the original, complete game logic is executed.
-      const playerStore = usePlayerStore();
+      // Prioridade 4: Lógica Padrão do Jogo.
       const appConfig = appsData.find(app => app.id === appId);
-
       if (!appConfig) {
         return { isUnlocked: false, areDetailsRevealed: false, meetsRequirements: false, isActivated: false };
       }
@@ -50,27 +69,23 @@ export const usePhoneStore = defineStore('phone', {
       const meetsRequirements = evaluateRequirement(appConfig.requirementId, playerState);
       const needsActivation = appConfig.requiresTerminalUnlock || false;
       const isActivated = playerStore.activatedApps.includes(appConfig.id);
-      
       const isUnlocked = meetsRequirements && (!needsActivation || isActivated);
-      
       const areDetailsRevealed = evaluateDetailReveal(appConfig.unlocks, playerState);
 
-      return {
-        isUnlocked,
-        areDetailsRevealed,
-        meetsRequirements,
-        isActivated,
-      };
+      return { isUnlocked, areDetailsRevealed, meetsRequirements, isActivated };
     },
   },
 
   actions: {
+    triggerTerminalAdvance() {
+      logger.log('Sinal de avanço do terminal acionado.');
+      this.terminalAdvanceSignal++;
+    },
     activateApp(appId) {
       const playerStore = usePlayerStore();
       playerStore.addActivatedApp(appId);
       this.activeApp = appId;
     },
-
     openApp(appName) {
       this.activeApp = appName;
     },

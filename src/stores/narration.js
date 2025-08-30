@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia';
+import { usePlayerStore } from './player';
 import { logger } from '@/utils/logger';
 import config from '@/data/config.json';
 
@@ -8,7 +9,7 @@ export const useNarrationStore = defineStore('narration', {
     currentLine: '',
     isActive: false,
     awaitingPlayerInput: false,
-    isCurrentLineComplete: false, // --- THE NEW STATE ---
+    isCurrentLineComplete: false,
     isSequenceFinished: true,
     skipAnimationSignal: 0,
     _resolvePromise: null,
@@ -17,6 +18,24 @@ export const useNarrationStore = defineStore('narration', {
     narrationText: (state) => (state.isActive ? state.currentLine : null),
   },
   actions: {
+    _syncWithPlayerStore() {
+      const playerStore = usePlayerStore();
+      playerStore.setNarrationState({
+        lineQueue: this.lineQueue,
+        currentLine: this.currentLine,
+      });
+    },
+
+    rehydrate(savedState) {
+        this.lineQueue = savedState.lineQueue || [];
+        this.currentLine = savedState.currentLine || '';
+        this.isActive = !!this.currentLine;
+        this.isSequenceFinished = false;
+        this.isCurrentLineComplete = false; 
+        this.awaitingPlayerInput = false;
+        this._resolvePromise = null;
+    },
+
     speak(lines) {
       if (!lines || lines.length === 0) {
         return Promise.resolve();
@@ -34,10 +53,11 @@ export const useNarrationStore = defineStore('narration', {
     nextLine() {
       if (this.lineQueue.length > 0) {
         this.currentLine = this.lineQueue.shift();
-        // --- THE FIX IS HERE: Reset states for the new line ---
         this.awaitingPlayerInput = false;
         this.isCurrentLineComplete = false;
         logger.logNarration('QUEUE_ADVANCED', { currentLine: this.currentLine });
+
+        this._syncWithPlayerStore();
 
         if (!config.useTypewriterEffect) {
           this.markLineAsComplete();
@@ -51,22 +71,19 @@ export const useNarrationStore = defineStore('narration', {
         }
         this.isSequenceFinished = true;
         logger.logNarration('SEQUENCE_COMPLETE');
+        this._syncWithPlayerStore();
       }
     },
 
-    // Renamed for clarity
     markLineAsComplete() {
       this.awaitingPlayerInput = true;
       this.isCurrentLineComplete = true;
     },
 
     playerProceed() {
-      // --- THE FIX IS HERE: New two-step logic ---
       if (!this.isCurrentLineComplete) {
-        // Step 1: Line is still typing, so the goal is to complete it.
         this.skipAnimationSignal++;
       } else if (this.awaitingPlayerInput) {
-        // Step 2: Line is already complete, so the goal is to advance.
         this.nextLine();
       }
     },

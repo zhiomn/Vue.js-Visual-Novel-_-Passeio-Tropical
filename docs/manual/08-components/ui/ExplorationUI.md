@@ -5,7 +5,9 @@
 
 ---
 ## 1. Design Philosophy
-This component is the classic "dialogue box" UI for the main game loop. It is rendered at the bottom of the screen and is responsible for displaying scene narration and the player's choices (both content choices and travel options). It is a purpose-built component that contains no logic for other game phases.
+This component is the classic "dialogue box" UI for the main game loop. It is rendered at the bottom of the screen and is responsible for displaying scene narration and the player's content choices. It is a purpose-built component that contains no logic for other game phases.
+
+**Note:** This component is no longer responsible for displaying travel options, which have been moved to the dedicated `TravelOverlay.vue` component to create a distinct "Travel Mode".
 
 ---
 ## 2. Component API
@@ -14,5 +16,4 @@ This component is the classic "dialogue box" UI for the main game loop. It is re
 |---|---|---|
 | `narration` | `String` | The narrative text to display. |
 | `interactions` | `Object` | The available content choices for the player. |
-| `travelOptions` | `Array` | The available travel destinations. |
-| `areInteractionsVisible`| `Boolean` | Controls the visibility of the choice/travel buttons. |
+| `areInteractionsVisible`| `Boolean` | Controls the visibility of the choice buttons. |

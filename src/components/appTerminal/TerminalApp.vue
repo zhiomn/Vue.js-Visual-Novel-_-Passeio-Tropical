@@ -19,13 +19,17 @@
 </template>
 
 <script setup>
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import { usePhoneStore } from '@/stores/phone';
 import { usePlayerStore } from '@/stores/player';
 import PhoneAppHeader from '../phone/PhoneAppHeader.vue';
 import TerminalView from './TerminalView.vue';
 import DialogueView from './DialogueView.vue';
 import aisData from '@/data/ais.json';
+
+onMounted(() => {
+  console.log('[DEBUG_LOG] TerminalApp.vue: Componente Montado.');
+});
 
 const emit = defineEmits(['back']);
 
@@ -39,9 +43,9 @@ const currentAI = computed(() => {
   return aisData.find(ai => ai.id === currentAIId.value);
 });
 
-// --- NEW: Determine if we are re-viewing a dialogue ---
 const isReviewMode = computed(() => {
   if (!currentAI.value) return false;
+  if (playerStore.isFinalUnlockActive) return true;
   return phoneStore.getAppState(currentAI.value.unlocksApp).isActivated;
 });
 
@@ -51,6 +55,9 @@ function startDialogue(aiId) {
 }
 
 function handleDialogueComplete(appToUnlock) {
+  if (currentAI.value?.id === 'manual') {
+    playerStore.setFinalUnlockState();
+  }
   if (appToUnlock) {
     playerStore.addActivatedApp(appToUnlock);
   }
@@ -60,18 +67,14 @@ function handleOpenApp(appToUnlock) {
   if (appToUnlock) {
     phoneStore.openApp(appToUnlock);
   }
-  // --- REMOVED: No longer automatically closes the view ---
-  // currentAIId.value = null;
-  // currentView.value = 'list';
 }
 
-// --- NEW: Centralized back button logic ---
 function handleBack() {
   if (currentView.value === 'dialogue') {
     currentView.value = 'list';
     currentAIId.value = null;
   } else {
-    emit('back'); // Close the Terminal app itself
+    emit('back');
   }
 }
 </script>

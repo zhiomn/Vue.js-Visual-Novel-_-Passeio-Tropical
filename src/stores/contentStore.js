@@ -10,6 +10,7 @@ import textosData from '@/data/textos.json';
 import pessoasData from '@/data/pessoas.json';
 import obrasData from '@/data/obras.json';
 import cidadesData from '@/data/cidades.json';
+import videosData from '@/data/videos.json'; // <-- Import new data
 
 // Import our new selector functions from the 'content' subdirectory
 import { getUnlockedNotes } from './content/getUnlockedNotes';
@@ -118,6 +119,17 @@ export const useContentStore = defineStore('content', {
     unlockedMapLocations() {
       const readStatusStore = useReadStatusStore();
       return getUnlockedMapLocations(readStatusStore);
+    },
+    
+    // --- NEW GETTER ---
+    unlockedVideos() {
+      const phoneStore = usePhoneStore();
+      // For now, if the app is unlocked, all videos are available.
+      // This can be expanded later with causal unlock logic if needed.
+      if (phoneStore.getAppState('video').isUnlocked) {
+        return videosData;
+      }
+      return [];
     },
 
     isContactUnread: (state) => (contactId) => {

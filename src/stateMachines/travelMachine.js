@@ -24,21 +24,26 @@ export const travelMachine = createMachine({
       }
     },
     fadingOutScene: {
+      entry: ['hideDialogue'], // <-- THE FIX IS HERE
       invoke: {
         id: 'fadeOutScene',
         src: 'fadeOutSceneActor',
-        onDone: 'presentingTravelOptions',
+        onDone: 'enteringTravelMode',
         onError: {
             target: 'errorState',
             actions: assign({ error: 'Failed to fade out scene.' })
         }
       }
     },
+    enteringTravelMode: {
+        entry: ['enterTravelMode'],
+        always: 'presentingTravelOptions'
+    },
     presentingTravelOptions: {
-      entry: ['loadTravelOptions', 'showInteractions'],
+      entry: ['loadTravelOptions'], // 'showInteractions' removed as overlay handles its own reveal
       on: {
         TRAVEL_SELECTED: 'complete',
-        NO_MORE_TRAVEL_OPTIONS: 'complete' // A máquina termina, o orquestrador decide ir para o final.
+        NO_MORE_TRAVEL_OPTIONS: 'complete'
       }
     },
     complete: {

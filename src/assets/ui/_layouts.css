@@ -14,10 +14,30 @@
   overflow-y: auto;
 }
 
-/* --- THE FIX IS HERE --- */
 /* Hide the dialogue box when the phone is active, but keep it in the DOM */
 .game-container.phone-is-active .dialogue-box-wrapper {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s ease;
+}
+
+/* Reduce the phone button's opacity when the phone UI is visible */
+.game-container.phone-is-active #phone-toggle-btn {
+  opacity: 0.3;
+  /* THE FIX IS HERE: The 'pointer-events: none;' rule has been removed. */
+}
+
+/* --- Z-Index Stacking Order --- */
+/* Define a ordem de empilhamento explícita para as camadas globais da UI. */
+.scene-transition-container {
+  z-index: 1;
+}
+.stars-layer {
+  z-index: 2; /* Acima do fundo, abaixo da UI */
+}
+.dialogue-box-wrapper, .contemplative-overlay {
+  z-index: 10;
+}
+#phone-ui {
+  z-index: 50;
 }

@@ -11,12 +11,18 @@ export const usePlayerStore = defineStore('player', {
   state: () => ({
     isReady: false,
     hasArchitectAwakened: false,
+    isFinalUnlockActive: false,
     activatedApps: [],
     unlockedEscolhaIds: [],
     runCount: 0,
-    // --- NOVOS ESTADOS PERSISTENTES ---
     gamePhase: 'IDLE',
     lastSceneName: null,
+    narrationState: {
+      lineQueue: [],
+      currentLine: '',
+    },
+    // THE FIX IS HERE: New state to track post-choice context
+    awaitingTravelPrompt: false,
   }),
   getters: {
     isGameComplete(state) {
@@ -34,6 +40,11 @@ export const usePlayerStore = defineStore('player', {
     },
   },
   actions: {
+    setNarrationState({ lineQueue, currentLine }) {
+      this.narrationState.lineQueue = lineQueue;
+      this.narrationState.currentLine = currentLine;
+      this.saveProgress();
+    },
     addActivatedApp(appId) {
       if (!this.activatedApps.includes(appId)) {
         this.activatedApps.push(appId);
@@ -43,6 +54,13 @@ export const usePlayerStore = defineStore('player', {
     awakenArchitect() {
       if (!this.hasArchitectAwakened) {
         this.hasArchitectAwakened = true;
+        logger.log('O Arquiteto despertou. O estado do jogo mudou.');
+      }
+    },
+    setFinalUnlockState() {
+      if (!this.isFinalUnlockActive) {
+        this.isFinalUnlockActive = true;
+        logger.log('DESBLOQUEIO FINAL ATIVADO. Todos os sistemas estão agora abertos.');
       }
     },
     unlockChoice(escolhaId) {
@@ -53,9 +71,10 @@ export const usePlayerStore = defineStore('player', {
     startNewRun() {
       if (config.allDataRevealed) return;
       this.runCount++;
-      // --- Redefinir o estado da run para o início de uma nova run ---
       this.gamePhase = 'STARTING';
       this.lastSceneName = null;
+      this.narrationState = { lineQueue: [], currentLine: '' };
+      this.awaitingTravelPrompt = false; // Reset on new run
     },
     saveProgress() {
       if (config.allDataRevealed) {
@@ -63,7 +82,6 @@ export const usePlayerStore = defineStore('player', {
         return;
       }
       localStorage.setItem('game_player_progress', JSON.stringify(this.$state));
-      logger.log('Progresso salvo no LocalStorage.', this.$state);
     },
     loadProgress() {
       if (config.allDataRevealed) {
@@ -76,7 +94,6 @@ export const usePlayerStore = defineStore('player', {
         const savedProgress = localStorage.getItem('game_player_progress');
         if (savedProgress) {
           this.$patch(JSON.parse(savedProgress));
-          logger.log('Progresso do jogador carregado do LocalStorage.');
         }
       }
       this.isReady = true;

@@ -29,7 +29,7 @@
     "icon": "fa-solid fa-address-book",
     "colorGradient": ["#8c9eff", "#764ba2"],
     "requirementId": "run2_choice1",
-    "requiresTerminalUnlock": false
+    "requiresTerminalUnlock": true
   },
   {
     "id": "map",
@@ -37,16 +37,23 @@
     "icon": "fa-solid fa-map-location-dot",
     "colorGradient": ["#f97316", "#c2410c"],
     "requirementId": "run2_choice4",
-    "requiresTerminalUnlock": false
+    "requiresTerminalUnlock": true
   },
-
+ {
+    "id": "info",
+    "name": "Sobre",
+    "icon": "fa-solid fa-info-circle",
+    "colorGradient": ["#9ca3af", "#4b5563"],
+    "requirementId": "run2_choice6",
+    "requiresTerminalUnlock": true
+  },
   {
     "id": "audio",
     "name": "Áudios",
     "icon": "fa-solid fa-headphones-simple",
     "colorGradient": ["#4ade80", "#16a34a"],
     "requirementId": "run3_choice1",
-    "requiresTerminalUnlock": false
+    "requiresTerminalUnlock": true
   },
   {
     "id": "ereader",
@@ -54,23 +61,14 @@
     "icon": "fa-solid fa-book-open-reader",
     "colorGradient": ["#8c9eff", "#764ba2"],
     "requirementId": "run3_choice4",
-    "requiresTerminalUnlock": false
-  },
-  
-    {
-    "id": "info",
-    "name": "Sobre",
-    "icon": "fa-solid fa-info-circle",
-    "colorGradient": ["#9ca3af", "#4b5563"],
-    "requirementId": "run2_choice6",
-    "requiresTerminalUnlock": false
+    "requiresTerminalUnlock": true
   },
   {
     "id": "video",
     "name": "Vídeos",
     "icon": "fa-solid fa-circle-play",
     "colorGradient": ["#ef4444", "#764ba2"],
-    "requiresTerminalUnlock": false,
+    "requiresTerminalUnlock": true,
     "requirementId": "architect_awakened"
   },
   {
@@ -79,7 +77,7 @@
     "icon": "fa-solid fa-bell",
     "colorGradient": ["#f97316", "#c2410c"],
     "requirementId": "run3_choice7",
-    "requiresTerminalUnlock": false
+    "requiresTerminalUnlock": true
   },
   {
     "id": "ajustes",

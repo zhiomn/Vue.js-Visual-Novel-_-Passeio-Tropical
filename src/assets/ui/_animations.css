@@ -4,7 +4,7 @@
   to { opacity: 1; }
 }
 
-/* --- Dialogue Box Transition --- */
+/* --- Dialogue Box & Overlays Transition --- */
 .dialogue-fade-enter-active,
 .dialogue-fade-leave-active {
   transition: opacity 0.4s ease, transform 0.4s ease;

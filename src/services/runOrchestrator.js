@@ -17,7 +17,81 @@ const logger = createLogger('RunOrchestrator', '#d946ef');
 let runStartActor = null;
 let travelActor = null;
 
-// --- FUNÇÕES DE INICIALIZAÇÃO E RETOMADA ---
+// --- INTERNAL (UNLOCKED) CORE LOGIC ---
+
+async function _travelToSceneInternal(sceneName) {
+    const displayStore = useDisplayStore();
+    const narrationStore = useNarrationStore();
+    const playerStore = usePlayerStore();
+    const runStore = useRunStore();
+
+    logger.group(`Orchestrating travel to scene: ${sceneName}`);
+    
+    playerStore.setNarrationState({ lineQueue: [], currentLine: '' });
+    playerStore.awaitingTravelPrompt = false; // THE FIX IS HERE: Clear the flag on arrival
+
+    const sceneData = jsonDbService.findCenaByName(sceneName);
+    if (!sceneData) {
+      logger.error(`Scene data for '${sceneName}' not found!`);
+      logger.groupEnd();
+      return;
+    }
+
+    runStore.setCurrentScene(sceneData);
+    runStore.setTravelOptions([]); 
+    
+    await displayStore.animateSceneFadeIn();
+    
+    runStore.setGamePhase('EXPLORING');
+
+    displayStore.setDialogueVisibility(true);
+    const narrationText = runStore.currentScene.msg_entrada || `Você chegou em ${runStore.currentScene.nome}.`;
+    await narrationStore.speak([narrationText]);
+    
+    playerStore.lastSceneName = sceneName;
+    playerStore.saveProgress();
+
+    const choices = getAvailableChoices(sceneName, playerStore.unlockedEscolhaIds);
+    const actions = getSceneActions(sceneName);
+    runStore.setInteractions({ choices, actions });
+    
+    displayStore.setInteractionsVisibility(true);
+    logger.groupEnd();
+}
+
+function _startTravelSequence(escolha) {
+    const displayStore = useDisplayStore();
+    const narrationStore = useNarrationStore();
+    const runStore = useRunStore();
+
+    if (travelActor) travelActor.stop();
+
+    const machine = travelMachine.provide({
+        actors: {
+            speakSequenceActor: fromPromise(({ input }) => narrationStore.speak(input.dialogue)),
+            fadeOutSceneActor: fromPromise(() => displayStore.animateSceneFadeOut()),
+        },
+        actions: {
+            showDialogue: () => displayStore.setDialogueVisibility(true),
+            hideDialogue: () => displayStore.setDialogueVisibility(false),
+            enterTravelMode: () => runStore.setGamePhase('TRAVELING'),
+            loadTravelOptions: () => {
+                const travelOptions = getTravelOptions(runStore.visitedScenesInThisRun);
+                runStore.setTravelOptions(travelOptions);
+                if (travelOptions.length === 0) {
+                    setTimeout(() => travelActor.send({ type: 'NO_MORE_TRAVEL_OPTIONS' }), 10);
+                }
+            }
+        }
+    });
+
+    travelActor = createActor(machine, { input: { escolha } });
+    travelActor.subscribe(snapshot => handleTravelSnapshot(snapshot));
+    travelActor.start();
+}
+
+
+// --- PUBLIC (LOCKED) ENTRY POINTS ---
 
 export function resumeGameSession() {
     const playerStore = usePlayerStore();
@@ -34,11 +108,41 @@ export function resumeGameSession() {
 }
 
 async function resumeExploring(sceneName) {
-    useRunStore().setGamePhase('EXPLORING');
-    await travelToScene(sceneName); // Chamada direta, sem lock, pois é parte do fluxo de inicialização
-}
+    const playerStore = usePlayerStore();
+    const runStore = useRunStore();
+    const displayStore = useDisplayStore();
+    const narrationStore = useNarrationStore();
 
-// --- ORQUESTRAÇÃO DO INÍCIO DA RUN ---
+    runStore.setGamePhase('EXPLORING');
+
+    const sceneData = jsonDbService.findCenaByName(sceneName);
+    runStore.setCurrentScene(sceneData);
+
+    displayStore.animateSceneFadeIn(); 
+    displayStore.setDialogueVisibility(true);
+
+    if (playerStore.narrationState && playerStore.narrationState.currentLine) {
+        narrationStore.rehydrate(playerStore.narrationState);
+    } else {
+        const narrationText = sceneData.msg_entrada || `Você chegou em ${sceneData.nome}.`;
+        await narrationStore.speak([narrationText]);
+    }
+    
+    // THE FIX IS HERE: Conditional logic based on the new flag
+    if (playerStore.awaitingTravelPrompt) {
+        logger.log('Resuming in post-choice state. Triggering travel sequence.');
+        displayStore.setInteractionsVisibility(false); // Hide scene choices
+        const lastChoiceId = playerStore.unlockedEscolhaIds[playerStore.unlockedEscolhaIds.length - 1];
+        const lastEscolha = jsonDbService.findEscolhaById(lastChoiceId);
+        _startTravelSequence(lastEscolha); // Re-trigger the travel logic
+    } else {
+        logger.log('Resuming in standard scene state. Loading choices.');
+        const choices = getAvailableChoices(sceneName, playerStore.unlockedEscolhaIds);
+        const actions = getSceneActions(sceneName);
+        runStore.setInteractions({ choices, actions });
+        displayStore.setInteractionsVisibility(true);
+    }
+}
 
 function initializeRunStartLogic() {
     logger.group('Orchestrating run start logic...');
@@ -47,6 +151,7 @@ function initializeRunStartLogic() {
     const narrationStore = useNarrationStore();
     const displayStore = useDisplayStore();
     
+    runStore.$reset();
     runStore.setGamePhase('STARTING');
     if (runStartActor) runStartActor.stop();
 
@@ -56,7 +161,7 @@ function initializeRunStartLogic() {
             speakSequenceActor: fromPromise(({ input }) => narrationStore.speak(input.dialogue)),
         },
         actions: {
-            fadeInScene: () => displayStore.animateSceneFadeIn(),
+            fadeInScene: () => {},
             showDialogue: () => displayStore.setDialogueVisibility(true),
             showInteractions: () => displayStore.setInteractionsVisibility(true),
             loadStartActions: assign({ actions: ({ context }) => getStartActions(context.runCount) }),
@@ -91,8 +196,6 @@ async function handleRunStartSnapshot(snapshot) {
     }
 }
 
-// --- ORQUESTRAÇÃO DO FLUXO PRINCIPAL (ESCOLHAS E VIAGENS) ---
-
 export async function selectChoice(escolhaId) {
     const displayStore = useDisplayStore();
     await displayStore.withInputLock(async () => {
@@ -107,34 +210,12 @@ export async function selectChoice(escolhaId) {
         runStore.addVisitedScene(runStore.currentScene.nome);
         runStore.setInteractions({ choices: [], actions: [] });
         
+        // THE FIX IS HERE: Set the flag before saving the consequence state
+        playerStore.awaitingTravelPrompt = true;
         playerStore.saveProgress();
         
-        if (travelActor) travelActor.stop();
-
         const escolha = jsonDbService.findEscolhaById(escolhaId);
-        const narrationStore = useNarrationStore();
-        
-        const machine = travelMachine.provide({
-            actors: {
-                speakSequenceActor: fromPromise(({ input }) => narrationStore.speak(input.dialogue)),
-                fadeOutSceneActor: fromPromise(() => displayStore.animateSceneFadeOut()),
-            },
-            actions: {
-                showDialogue: () => displayStore.setDialogueVisibility(true),
-                showInteractions: () => displayStore.setInteractionsVisibility(true),
-                loadTravelOptions: () => {
-                    const travelOptions = getTravelOptions(runStore.visitedScenesInThisRun);
-                    if (travelOptions.length === 0) {
-                        travelActor.send({ type: 'NO_MORE_TRAVEL_OPTIONS' });
-                    }
-                    runStore.setTravelOptions(travelOptions);
-                }
-            }
-        });
-
-        travelActor = createActor(machine, { input: { escolha } });
-        travelActor.subscribe(snapshot => handleTravelSnapshot(snapshot));
-        travelActor.start();
+        _startTravelSequence(escolha);
     });
 }
 
@@ -150,51 +231,15 @@ async function handleTravelSnapshot(snapshot) {
     }
 }
 
-// --- A CORREÇÃO ESTÁ AQUI: withInputLock foi removido daqui. ---
 export async function travelToScene(sceneName) {
     const displayStore = useDisplayStore();
-    const narrationStore = useNarrationStore();
-    const playerStore = usePlayerStore();
-    const runStore = useRunStore();
-
-    logger.group(`Orchestrating travel to scene: ${sceneName}`);
-    logger.logState('useRunStore (Before)', { ...runStore.$state });
-
-    displayStore.setInteractionsVisibility(false);
-    await displayStore.waitFor(400); 
-    
-    const sceneData = jsonDbService.findCenaByName(sceneName);
-    if (!sceneData) {
-      logger.error(`Scene data for '${sceneName}' not found!`);
-      logger.groupEnd();
-      return;
-    }
-
-    runStore.setCurrentScene(sceneData);
-    runStore.setInteractions({ choices: [], actions: [] });
-    runStore.setTravelOptions([]); 
-
-    playerStore.lastSceneName = sceneName;
-    playerStore.saveProgress();
-
-    await displayStore.animateSceneFadeIn();
-    const narrationText = runStore.currentScene.msg_entrada || `You have arrived at ${runStore.currentScene.nome}.`;
-    await narrationStore.speak([narrationText]);
-
-    const choices = getAvailableChoices(sceneName, playerStore.unlockedEscolhaIds);
-    const actions = getSceneActions(sceneName);
-    runStore.setInteractions({ choices, actions });
-    
-    logger.logState('useRunStore (After)', { ...runStore.$state });
-    displayStore.setInteractionsVisibility(true);
-    logger.groupEnd();
+    await displayStore.withInputLock(async () => {
+        await _travelToSceneInternal(sceneName);
+    });
 }
-
-// --- ORQUESTRAÇÃO DE AÇÕES GERAIS E FIM DE RUN ---
 
 export async function executeAction(action) {
     const displayStore = useDisplayStore();
-    // Este é o "lock" principal.
     await displayStore.withInputLock(async () => {
         logger.log(`Orchestrating action execution: ${action.id || action.type}`, action);
         displayStore.setInteractionsVisibility(false);
@@ -203,17 +248,12 @@ export async function executeAction(action) {
         if (action.type === 'transition' && action.payload.targetPhase === 'EXPLORING') {
             const playerStore = usePlayerStore();
             const runStore = useRunStore();
-            runStore.setGamePhase('EXPLORING');
-            playerStore.gamePhase = 'EXPLORING';
-            logger.log(`Phase Transition: STARTING -> EXPLORING`);
             
-            logger.logState('usePlayerStore', { ...playerStore.$state });
-            logger.logState('useRunStore', { ...runStore.$state });
-
+            playerStore.gamePhase = 'EXPLORING';
+            
             const randomScene = getRandomScene(runStore.visitedScenesInThisRun);
             if (randomScene) {
-                // Esta chamada agora não tentará um novo lock.
-                await travelToScene(randomScene.nome);
+                await _travelToSceneInternal(randomScene.nome);
             } else {
                 await transitionToEnding();
             }
@@ -244,6 +284,7 @@ async function transitionToEnding() {
     runStore.setGamePhase('ENDING');
     playerStore.gamePhase = 'ENDING';
     playerStore.lastSceneName = null;
+    playerStore.awaitingTravelPrompt = false; // Ensure flag is cleared
     playerStore.saveProgress();
 
     displayStore.setInteractionsVisibility(false);
@@ -254,6 +295,7 @@ async function transitionToEnding() {
     runStore.setCurrentScene(sequence);
     runStore.isFinalEnding = playerStore.isGameComplete;
     
+    displayStore.setDialogueVisibility(true);
     await narrationStore.speak(sequence.narration);
     
     displayStore.setInteractionsVisibility(true);

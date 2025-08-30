@@ -25,7 +25,8 @@
 </template>
 
 <script setup>
-import { ref, onMounted, nextTick } from 'vue';
+import { ref, onMounted, nextTick, watch } from 'vue'; // <-- Importar 'watch'
+import { usePhoneStore } from '@/stores/phone'; // <-- Importar a phoneStore
 import TerminalText from '../ui/TerminalText.vue';
 
 const props = defineProps({
@@ -35,6 +36,7 @@ const props = defineProps({
 
 const emit = defineEmits(['dialogue-complete', 'open-app-confirmed']);
 
+const phoneStore = usePhoneStore(); // <-- Obter instância da store
 const viewState = ref('dialogue');
 const dialogueQueue = ref([]);
 const dialogueHistory = ref([]);
@@ -42,7 +44,7 @@ const currentLine = ref(null);
 const canAdvance = ref(false);
 const showContinueIndicator = ref(false);
 const containerRef = ref(null);
-const terminalTextRef = ref(null); // --- THE FIX IS HERE: Ref for the child component
+const terminalTextRef = ref(null);
 
 async function scrollToBottom() {
   await nextTick();
@@ -102,14 +104,16 @@ function advanceDialogue() {
   }
 }
 
-// --- THE FIX IS HERE: New handler for container clicks ---
 function handleContainerClick() {
-    // Only proceed if there's a line being displayed and the ref is available
     if (!currentLine.value || !terminalTextRef.value) return;
-    
-    // Call the child component's exposed method
     terminalTextRef.value.handleClick();
 }
+
+// --- NOVA LÓGICA ---
+// Observa o sinal da store e chama o manipulador de clique quando ele muda.
+watch(() => phoneStore.terminalAdvanceSignal, () => {
+    handleContainerClick();
+});
 
 function handleConfirmation(shouldOpenApp) {
   if (shouldOpenApp) {
@@ -126,7 +130,6 @@ function handleConfirmation(shouldOpenApp) {
 </script>
 
 <style scoped>
-/* --- THE FIX IS HERE: Add cursor pointer to the whole container --- */
 .dialogue-container { font-family: 'Courier New', Courier, monospace; color: #33ff33; background-color: #0d0d0d; padding: 20px; flex-grow: 1; position: relative; overflow-y: auto; cursor: pointer;}
 .dialogue-line { margin-bottom: 1em; font-size: 1em !important; line-height: 1.6; display: flex; align-items: baseline; }
 .speaker-label { font-weight: bold; margin-right: 1ch; color: #a3e635; }

@@ -1,47 +1,62 @@
 <template>
-  <div class="app-container">
-    <PhoneAppHeader title="Alarme" @back="$emit('back')" />
-    <div class="content-area empty-state-container">
-      <i class="fa-solid fa-bell-slash empty-icon"></i>
-      <h2 class="empty-title">Mecanismo Adormecido</h2>
-      <p class="empty-text">
-        O alarme está inativo. A sua função permanece um mistério por enquanto.
-      </p>
-    </div>
+  <div class="app-container" :class="{ 'is-awakening': currentState === 'awakening' }">
+    <template v-if="currentState !== 'awakening'">
+      <PhoneAppHeader title="Alarme" @back="$emit('back')" />
+      <div class="content-area alarm-ringing-bg">
+        
+        <div v-if="currentState === 'ringing'" class="alarm-content">
+          <button class="alarm-button" @click="currentState = 'confirming'">
+            <i class="fa-solid fa-bell"></i>
+          </button>
+          <span class="alarm-label">Desativar Alarme</span>
+        </div>
+
+        <div v-if="currentState === 'confirming'" class="confirmation-content">
+          <i class="fa-solid fa-triangle-exclamation warning-icon"></i>
+          <p class="confirmation-text">Tem certeza?</p>
+          <div class="confirmation-buttons">
+            <button @click="triggerAwakening">[ Sim ]</button>
+            <button @click="currentState = 'ringing'">[ Não ]</button>
+          </div>
+        </div>
+
+      </div>
+    </template>
+
+    <AwakeningSequence 
+      v-if="currentState === 'awakening'"
+      :duration="4000"
+      @sequence-complete="onSequenceComplete"
+    />
   </div>
 </template>
 
 <script setup>
+import { ref } from 'vue';
+import { usePlayerStore } from '@/stores/player';
+import { usePhoneStore } from '@/stores/phone';
 import PhoneAppHeader from '../phone/PhoneAppHeader.vue';
+import AwakeningSequence from './AwakeningSequence.vue';
 
-defineEmits(['back']);
+const emit = defineEmits(['back']);
+const playerStore = usePlayerStore();
+const phoneStore = usePhoneStore();
+
+const currentState = ref('ringing'); // 'ringing', 'confirming', 'awakening'
+
+function triggerAwakening() {
+  playerStore.awakenArchitect();
+  playerStore.saveProgress();
+  currentState.value = 'awakening';
+}
+
+function onSequenceComplete() {
+  phoneStore.closeApp();
+}
 </script>
 
 <style scoped>
-.empty-state-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  height: 100%;
-  padding: 20px;
-  box-sizing: border-box;
-}
-.empty-icon {
-  font-size: 4em;
-  color: #4a4a4a;
-  margin-bottom: 20px;
-}
-.empty-title {
-  font-size: 1.4em;
-  color: var(--color-text-primary);
-  margin-bottom: 10px;
-}
-.empty-text {
-  font-size: 1em;
-  color: var(--color-text-muted);
-  line-height: 1.6;
-  max-width: 80%;
+.app-container.is-awakening {
+  border-radius: 0; /* Ocupa a tela inteira */
 }
 </style>

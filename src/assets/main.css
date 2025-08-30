@@ -1,24 +1,24 @@
+/* DEBUG_ID: main.css */
+
 /*
   MAIN CSS IMPORTER
   Imports all partials in the correct order.
 */
 
 /* --- CORE GAME UI STYLES --- */
-/* These are now inside the 'ui' folder */
 @import url('./ui/_variables.css');
 @import url('./ui/_base.css');
 @import url('./ui/_animations.css');
 @import url('./ui/_layouts.css');
+@import url('./ui/_loading.css'); /* <-- ADDED HERE */
 @import url('./ui/_components.css');
 
 /* --- PHONE OS STYLES --- */
-/* These are inside the 'phone' folder */
 @import url('./phone/_phone-shell.css');
 @import url('./phone/_phone-homescreen.css');
 @import url('./phone/_phone-app-base.css');
 
 /* --- PHONE APP STYLES --- */
-/* These are inside the 'apps' folder */
 @import url('./apps/_app-messages.css');
 @import url('./apps/_app-notes.css');
 @import url('./apps/_app-gallery.css');
@@ -29,3 +29,6 @@
 @import url('./apps/_app-video.css');
 @import url('./apps/_app-despertador.css');
 @import url('./apps/_app-ajustes.css');
+@import url('./apps/_app-terminal.css');
+
+@import url('./apps/_app-video.css');

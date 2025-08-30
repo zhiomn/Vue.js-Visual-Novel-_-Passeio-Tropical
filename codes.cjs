@@ -12,7 +12,7 @@ const path = require('path');
 
 // --- CONFIGURAÇÃO ---
 const PORT = 3000;
-const IGNORE_DIRS = ['node_modules', '.git', 'dist', 'public'];
+const IGNORE_DIRS = ['node_modules', '.git', 'dist', 'public', 'docs'];
 const IGNORE_FILES = ['codes.cjs', 'codes.php', 'package-lock.json'];
 const IGNORE_EXTENSIONS = ['.png', '.jpg', '.jpeg', 'webp', '.gif', '.ico', '.svg', '.woff', '.woff2', '.ttf', '.pdf'];
 

@@ -1,42 +1,44 @@
 <template>
   <div class="contemplative-overlay">
     <Stars />
-    <div class="content-wrapper">
-      <TypewriterButton
-        v-if="narration"
-        :text="narration"
-        @animationComplete="narrationStore.markLineAsComplete"
-        @requestNextLine="narrationStore.playerProceed"
-      />
-      <div v-if="narrationStore.awaitingPlayerInput && !hasInteractions" class="continue-indicator">▼</div>
+    <transition name="dialogue-fade">
+      <div v-if="displayStore.isDialogueVisible" class="content-wrapper">
+        <TypewriterButton
+          v-if="narration"
+          :text="narration"
+          @animationComplete="narrationStore.markLineAsComplete"
+          @requestNextLine="narrationStore.playerProceed"
+        />
+        <div v-if="narrationStore.awaitingPlayerInput && !hasInteractions" class="continue-indicator">▼</div>
 
-      <div class="choice-container">
-        <template v-if="areInteractionsVisible && hasInteractions">
-          <RevealButton
-            v-for="action in interactions.actions"
-            :key="`action-${action.id}`"
-            :text="action.label"
-            :disabled="displayStore.isInputLocked"
-            @click="executeAction(action)"
-          />
-          <RevealButton
-            v-if="gamePhase === 'ENDING' && !isFinalEnding"
-            key="new-run-btn"
-            text="Começar a Próxima Jornada"
-            button-class="special-btn"
-            :disabled="displayStore.isInputLocked"
-            @click="startNextRun()"
-          />
-          <RevealButton
-            v-if="gamePhase === 'ENDING' && isFinalEnding"
-            key="end-game-btn"
-            text="Fim"
-            button-class="special-btn"
-            :disabled="true"
-          />
-        </template>
+        <div class="choice-container">
+          <template v-if="areInteractionsVisible && hasInteractions">
+            <RevealButton
+              v-for="action in interactions.actions"
+              :key="`action-${action.id}`"
+              :text="action.label"
+              :disabled="displayStore.isInputLocked"
+              @click="executeAction(action)"
+            />
+            <RevealButton
+              v-if="gamePhase === 'ENDING' && !isFinalEnding"
+              key="new-run-btn"
+              text="Começar a Próxima Jornada"
+              button-class="special-btn"
+              :disabled="displayStore.isInputLocked"
+              @click="startNextRun()"
+            />
+            <RevealButton
+              v-if="gamePhase === 'ENDING' && isFinalEnding"
+              key="end-game-btn"
+              text="Fim"
+              button-class="special-btn"
+              :disabled="true"
+            />
+          </template>
+        </div>
       </div>
-    </div>
+    </transition>
   </div>
 </template>
 
@@ -92,7 +94,6 @@ const hasInteractions = computed(() =>
 }
 .continue-indicator{ font-size:1.5em; color:var(--color-text-muted); animation:pulse 1.5s infinite; margin-top: 1rem; }
 @keyframes pulse{ 0%,100%{ opacity:0 } 50%{ opacity:1 } }
-/* Import styles from _components.css for contemplative buttons */
 :deep(.dialogue-text) {
   font-family: 'Courier New', Courier, monospace;
 }

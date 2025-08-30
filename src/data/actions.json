@@ -1,7 +1,7 @@
 [
   {
     "id": "action_start_run_1",
-    "label": "Sair para a rua",
+    "label": "...abrir a porta...",
     "type": "transition",
     "payload": {
       "targetPhase": "EXPLORING"
@@ -13,7 +13,7 @@
   },
   {
     "id": "action_start_run_2",
-    "label": "Explorar a biblioteca",
+    "label": "...caminhar pelo corredor...",
     "type": "transition",
     "payload": {
       "targetPhase": "EXPLORING"
@@ -25,7 +25,7 @@
   },
   {
     "id": "action_start_run_3",
-    "label": "Atravessar a porta",
+    "label": "...atravessar o vão...",
     "type": "transition",
     "payload": {
       "targetPhase": "EXPLORING"
@@ -33,19 +33,6 @@
     "context": {
       "phase": "STARTING",
       "run": 3
-    }
-  },
-  {
-    "id": "action_open_phone_rua",
-    "label": "Verificar o celular",
-    "type": "ui",
-    "payload": {
-      "target": "phone",
-      "app": "messages"
-    },
-    "context": {
-      "phase": "EXPLORING",
-      "scene": "Rua"
     }
   }
 ]

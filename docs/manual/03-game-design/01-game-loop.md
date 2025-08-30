@@ -51,8 +51,8 @@ A run follows a strict, state-driven lifecycle managed by the `runOrchestrator` 
 - **This is the key progression event.** Unlocking this Choice ID may now meet the requirements for unlocking new content (notes, messages, gallery items, etc.) via the `contentStore`'s reactive getters.
 
 **Step 5: Travel**
-- After the consequence, the current Scene is marked as "visited" for the current run.
-- The player is presented with up to two **Travel Options** to new, unvisited Scenes.
+- After the consequence, the `travelMachine` takes over. The current scene fades to black, leaving only a starfield. The `gamePhase` changes to `TRAVELING`.
+- The player is presented with up to two **Travel Options** to new, unvisited Scenes in a cinematic style.
 - The player chooses a new Scene, and the cycle returns to **Step 3**.
 
 **Step 6: Run Conclusion**

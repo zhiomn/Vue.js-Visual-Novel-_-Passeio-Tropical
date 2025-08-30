@@ -1,32 +1,42 @@
 [
   {
     "id": "final_run_1",
-    "nome": "O Primeiro Eco",
+    "nome": "Caverna",
     "ambience_track": "ending_drone_1.mp3",
     "narration": [
-      "A porta se fecha atrás de você, mas o eco das suas escolhas permanece.",
-      "Um caminho foi percorrido.",
-      "Outros ainda aguardam."
+      "O caminho chega numa caverna...",
+      "Você vê uma luz lá dentro ondulando nas paredes...",
+      "Enquanto caminha, escuta o eco do som dos seus passos vibrando no ar...",
+      "Uma fogueira e uma esteira de palha estão perto...",
+      "Você se alimenta de frutas que colheu no passeio...",
+      "É hora de descansar..."
     ]
   },
   {
     "id": "final_run_2",
-    "nome": "A Imagem se Forma",
+    "nome": "Barco",
     "ambience_track": "ending_drone_2.mp3",
     "narration": [
-      "Mais peças se encaixaram. As sombras começam a recuar.",
-      "Você sente que está se aproximando de uma verdade.",
-      "Apenas mais uma jornada."
+      "Um barco ancorado balança na água...",
+      "Você se aproxima e vê que há uma cabine...",
+      "O veleiro é confortável, mas não tem uma cama...",
+      "Na verdade, ele tem uma rede...",
+      "Você toma água e escova os dentes...",
+      "Deitad@ na rede, sente o balanço dela e do barco..."
     ]
   },
   {
     "id": "final_run_3",
-    "nome": "O Despertar",
+    "nome": "Campo estrelado",
     "ambience_track": "ending_drone_3.mp3",
     "narration": [
-      "Finalmente, tudo está claro. As histórias, os lugares, as vozes... tudo se conecta.",
-      "Você viu tudo o que havia para ver.",
-      "Obrigado por jogar."
+      "A noite chegou, e com ela as estrelas...",
+      "Num grande campo aberto, sem luzes por perto, o céu aparece brilhando por completo...",
+      "O caminho até aqui foi variado, passando por momentos e cenários...",
+      "Uma rede surgiu na tela, e pude ler, ouvir e ver, revistas e poemas...",
+      "Embora a memória esteja viva e fresca, o presente do agora te convida a olhar pra cima...",
+      "Imaginando as estrelas tão distantes, já nascidas, e suas luzes emitidas...",
+      "...que um dia (ou uma noite) tocarão nossas retinas..."
     ]
   }
 ]
