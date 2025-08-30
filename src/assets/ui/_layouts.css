@@ -1,4 +1,3 @@
-/* === PHONE APP LAYOUTS (Structure only) === */
 .app-container {
   display: flex;
   flex-direction: column;
@@ -14,26 +13,42 @@
   overflow-y: auto;
 }
 
-/* Hide the dialogue box when the phone is active, but keep it in the DOM */
 .game-container.phone-is-active .dialogue-box-wrapper {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.4s ease;
 }
 
-/* Reduce the phone button's opacity when the phone UI is visible */
 .game-container.phone-is-active #phone-toggle-btn {
   opacity: 0.3;
-  /* THE FIX IS HERE: The 'pointer-events: none;' rule has been removed. */
 }
 
-/* --- Z-Index Stacking Order --- */
-/* Define a ordem de empilhamento explícita para as camadas globais da UI. */
+@keyframes fadeInOverlay {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.travel-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.9);
+  pointer-events: none;
+  opacity: 0;
+  animation: fadeInOverlay 0.5s ease forwards;
+}
+
+.travel-overlay > * {
+    pointer-events: auto;
+}
+
 .scene-transition-container {
   z-index: 1;
 }
 .stars-layer {
-  z-index: 2; /* Acima do fundo, abaixo da UI */
+  z-index: 2;
 }
 .dialogue-box-wrapper, .contemplative-overlay {
   z-index: 10;

@@ -11,21 +11,20 @@
   "settings": {
     "uiScale": {
       "label": "Tamanho da Fonte (UI)",
-      "group": "Tela",
+      "group": "Texto",
       "value": 100,
       "min": 75,
       "max": 150,
       "step": 5
     },
-    "theme": {
-      "label": "Tema de Cores",
-      "group": "Tela",
-      "value": "dark_blue",
-      "options": [
-        "dark_blue",
-        "light_sunset",
-        "forest_green"
-      ]
+    "textSpeed": {
+      "label": "Velocidade do Texto",
+      "group": "Texto",
+      "value": 50,
+      "min": 10,
+      "max": 100,
+      "step": 5,
+      "previewText": "...o som do despertador entra dentro do seu sonho..."
     },
     "musicVolume": {
       "label": "Volume da Música",
@@ -42,21 +41,6 @@
       "min": 0,
       "max": 1,
       "step": 0.1
-    },
-    "textSpeed": {
-      "label": "Velocidade do Texto",
-      "group": "Jogabilidade",
-      "value": 50,
-      "min": 10,
-      "max": 100,
-      "step": 5,
-      "previewText": "A raposa marrom rápida salta sobre o cão preguiçoso."
-    },
-    "skipChoiceAnimation": {
-      "label": "Pular Animações de Escolha",
-      "group": "Jogabilidade",
-      "value": false,
-      "type": "toggle"
     }
   }
 }

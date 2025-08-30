@@ -7,6 +7,7 @@ import { getStartingSequence } from '@/gameLogic/run/start';
 import { getAvailableChoices, getRandomScene, getTravelOptions } from '@/gameLogic/run/explore';
 import { getEndingSequence } from '@/gameLogic/run/end';
 import { getStartActions, getSceneActions } from '@/gameLogic/run/actions';
+import { getNewlyUnlockedContent } from '@/gameLogic/unlocks/unlocksService';
 import { jsonDbService } from '@/services/jsonDbService';
 import { runStartMachine } from '@/stateMachines/runStartMachine';
 import { travelMachine } from '@/stateMachines/travelMachine';
@@ -14,69 +15,77 @@ import { createLogger } from '@/utils/loggers/loggerFactory';
 
 const logger = createLogger('RunOrchestrator', '#d946ef');
 
+// --- THE FIX IS HERE: Explicit list for suppressing app unlock messages ---
+const APP_UNLOCK_MESSAGE_SUPPRESS_LIST = [
+  'contacts',
+  'map',
+  'info',
+  'audio',
+  'ereader',
+  'video',
+  'despertador'
+];
+
 let runStartActor = null;
 let travelActor = null;
 
-// --- INTERNAL (UNLOCKED) CORE LOGIC ---
-
-async function _travelToSceneInternal(sceneName) {
+async function _transitionToScene(sceneName) {
     const displayStore = useDisplayStore();
     const narrationStore = useNarrationStore();
     const playerStore = usePlayerStore();
     const runStore = useRunStore();
 
-    logger.group(`Orchestrating travel to scene: ${sceneName}`);
-    
-    playerStore.setNarrationState({ lineQueue: [], currentLine: '' });
-    playerStore.awaitingTravelPrompt = false; // THE FIX IS HERE: Clear the flag on arrival
+    logger.group(`Orchestrating robust transition to scene: ${sceneName}`);
 
+
+    playerStore.setNarrationState({ lineQueue: [], currentLine: '' });
+    playerStore.awaitingTravelPrompt = false;
     const sceneData = jsonDbService.findCenaByName(sceneName);
     if (!sceneData) {
-      logger.error(`Scene data for '${sceneName}' not found!`);
-      logger.groupEnd();
-      return;
+        logger.error(`Scene data for '${sceneName}' not found!`);
+        logger.groupEnd();
+        return;
     }
-
     runStore.setCurrentScene(sceneData);
-    runStore.setTravelOptions([]); 
-    
-    await displayStore.animateSceneFadeIn();
-    
-    runStore.setGamePhase('EXPLORING');
-
-    displayStore.setDialogueVisibility(true);
-    const narrationText = runStore.currentScene.msg_entrada || `Você chegou em ${runStore.currentScene.nome}.`;
-    await narrationStore.speak([narrationText]);
-    
+    runStore.setTravelOptions([]);
     playerStore.lastSceneName = sceneName;
     playerStore.saveProgress();
 
+    await displayStore.animateSceneFadeIn();
+    
+    runStore.setGamePhase('EXPLORING');
+    displayStore.setDialogueVisibility(true);
+    const narrationText = sceneData.msg_entrada || `Você chegou em ${sceneData.nome}.`;
+    await narrationStore.speak([narrationText]);
+    
     const choices = getAvailableChoices(sceneName, playerStore.unlockedEscolhaIds);
     const actions = getSceneActions(sceneName);
     runStore.setInteractions({ choices, actions });
-    
     displayStore.setInteractionsVisibility(true);
+    
     logger.groupEnd();
 }
 
-function _startTravelSequence(escolha) {
+function _startTravelSequence(dialogueSequence) {
     const displayStore = useDisplayStore();
     const narrationStore = useNarrationStore();
     const runStore = useRunStore();
+    const playerStore = usePlayerStore();
 
     if (travelActor) travelActor.stop();
 
     const machine = travelMachine.provide({
         actors: {
             speakSequenceActor: fromPromise(({ input }) => narrationStore.speak(input.dialogue)),
-            fadeOutSceneActor: fromPromise(() => displayStore.animateSceneFadeOut()),
+fadeOutSceneActor: fromPromise(() => displayStore.animateSceneFadeOut()),
         },
         actions: {
             showDialogue: () => displayStore.setDialogueVisibility(true),
             hideDialogue: () => displayStore.setDialogueVisibility(false),
             enterTravelMode: () => runStore.setGamePhase('TRAVELING'),
             loadTravelOptions: () => {
-                const travelOptions = getTravelOptions(runStore.visitedScenesInThisRun);
+                runStore.setInteractions({ choices: [], actions: [] });
+                const travelOptions = getTravelOptions(playerStore.visitedScenesInThisRun);
                 runStore.setTravelOptions(travelOptions);
                 if (travelOptions.length === 0) {
                     setTimeout(() => travelActor.send({ type: 'NO_MORE_TRAVEL_OPTIONS' }), 10);
@@ -85,13 +94,11 @@ function _startTravelSequence(escolha) {
         }
     });
 
-    travelActor = createActor(machine, { input: { escolha } });
-    travelActor.subscribe(snapshot => handleTravelSnapshot(snapshot));
+    travelActor = createActor(machine, { input: { dialogueSequence } });
+    travelActor.subscribe(handleTravelSnapshot);
     travelActor.start();
 }
 
-
-// --- PUBLIC (LOCKED) ENTRY POINTS ---
 
 export function resumeGameSession() {
     const playerStore = usePlayerStore();
@@ -118,7 +125,6 @@ async function resumeExploring(sceneName) {
     const sceneData = jsonDbService.findCenaByName(sceneName);
     runStore.setCurrentScene(sceneData);
 
-    displayStore.animateSceneFadeIn(); 
     displayStore.setDialogueVisibility(true);
 
     if (playerStore.narrationState && playerStore.narrationState.currentLine) {
@@ -128,13 +134,10 @@ async function resumeExploring(sceneName) {
         await narrationStore.speak([narrationText]);
     }
     
-    // THE FIX IS HERE: Conditional logic based on the new flag
     if (playerStore.awaitingTravelPrompt) {
         logger.log('Resuming in post-choice state. Triggering travel sequence.');
-        displayStore.setInteractionsVisibility(false); // Hide scene choices
-        const lastChoiceId = playerStore.unlockedEscolhaIds[playerStore.unlockedEscolhaIds.length - 1];
-        const lastEscolha = jsonDbService.findEscolhaById(lastChoiceId);
-        _startTravelSequence(lastEscolha); // Re-trigger the travel logic
+        displayStore.setInteractionsVisibility(false);
+        _startTravelSequence([playerStore.narrationState.currentLine]);
     } else {
         logger.log('Resuming in standard scene state. Loading choices.');
         const choices = getAvailableChoices(sceneName, playerStore.unlockedEscolhaIds);
@@ -159,6 +162,7 @@ function initializeRunStartLogic() {
         actors: {
             loadInitialDataActor: fromPromise(({ input }) => Promise.resolve(getStartingSequence(input.runCount))),
             speakSequenceActor: fromPromise(({ input }) => narrationStore.speak(input.dialogue)),
+fadeOutSceneActor: fromPromise(() => displayStore.animateSceneFadeOut()),
         },
         actions: {
             fadeInScene: () => {},
@@ -169,7 +173,7 @@ function initializeRunStartLogic() {
     });
 
     runStartActor = createActor(machine, { input: { runCount: playerStore.runCount } });
-    runStartActor.subscribe(snapshot => handleRunStartSnapshot(snapshot));
+    runStartActor.subscribe(handleRunStartSnapshot);
     runStartActor.start();
 }
 
@@ -200,22 +204,34 @@ export async function selectChoice(escolhaId) {
     const displayStore = useDisplayStore();
     await displayStore.withInputLock(async () => {
         logger.group(`Orchestrating choice selection: ${escolhaId}`);
+        
+        displayStore.setDialogueVisibility(false);
         displayStore.setInteractionsVisibility(false);
-        await displayStore.waitFor(400);
 
         const playerStore = usePlayerStore();
         playerStore.unlockChoice(escolhaId);
 
         const runStore = useRunStore();
-        runStore.addVisitedScene(runStore.currentScene.nome);
-        runStore.setInteractions({ choices: [], actions: [] });
+        playerStore.addVisitedScene(runStore.currentScene.nome);
         
-        // THE FIX IS HERE: Set the flag before saving the consequence state
-        playerStore.awaitingTravelPrompt = true;
-        playerStore.saveProgress();
-        
+        const newlyUnlocked = getNewlyUnlockedContent();
+        const dialogueSequence = [];
         const escolha = jsonDbService.findEscolhaById(escolhaId);
-        _startTravelSequence(escolha);
+        if (escolha.msg_antes) {
+            dialogueSequence.push(escolha.msg_antes);
+        }
+
+        // --- THE CORRECTED LOGIC IS HERE ---
+        newlyUnlocked.forEach(item => {
+            if (item.type === 'ai') {
+                dialogueSequence.push(`O agente ${item.name} foi desbloqueado no terminal.`);
+            } else if (item.type === 'app' && !APP_UNLOCK_MESSAGE_SUPPRESS_LIST.includes(item.id)) {
+                dialogueSequence.push(`O app ${item.name} foi desbloqueado no celular.`);
+            }
+        });
+
+        playerStore.awaitingTravelPrompt = true;
+        _startTravelSequence(dialogueSequence);
     });
 }
 
@@ -223,8 +239,9 @@ async function handleTravelSnapshot(snapshot) {
     logger.log(`[XState:travel] Snapshot: ${snapshot.value}`);
     if (snapshot.status === 'done') {
         logger.log(`[XState:travel] Actor finished.`);
-        const runStore = useRunStore();
-        if (runStore.travelOptions.length === 0) {
+        const playerStore = usePlayerStore();
+        const travelOptions = getTravelOptions(playerStore.visitedScenesInThisRun);
+        if (travelOptions.length === 0) {
             await transitionToEnding();
         }
         logger.groupEnd();
@@ -233,8 +250,10 @@ async function handleTravelSnapshot(snapshot) {
 
 export async function travelToScene(sceneName) {
     const displayStore = useDisplayStore();
+    const runStore = useRunStore(); 
     await displayStore.withInputLock(async () => {
-        await _travelToSceneInternal(sceneName);
+        runStore.setTravelOptions([]);
+        await _transitionToScene(sceneName);
     });
 }
 
@@ -247,13 +266,12 @@ export async function executeAction(action) {
 
         if (action.type === 'transition' && action.payload.targetPhase === 'EXPLORING') {
             const playerStore = usePlayerStore();
-            const runStore = useRunStore();
             
             playerStore.gamePhase = 'EXPLORING';
             
-            const randomScene = getRandomScene(runStore.visitedScenesInThisRun);
+            const randomScene = getRandomScene(playerStore.visitedScenesInThisRun);
             if (randomScene) {
-                await _travelToSceneInternal(randomScene.nome);
+                await _transitionToScene(randomScene.nome);
             } else {
                 await transitionToEnding();
             }
@@ -274,6 +292,16 @@ export async function startNextRun() {
     });
 }
 
+export async function finishGameAndShowCredits() {
+    const playerStore = usePlayerStore();
+    const displayStore = useDisplayStore();
+    await displayStore.withInputLock(async () => {
+        logger.log("Final game sequence triggered.");
+        playerStore.finishGame();
+        displayStore.setDialogueVisibility(false);
+    });
+}
+
 async function transitionToEnding() {
     logger.group('Orchestrating end of run sequence...');
     const playerStore = usePlayerStore();
@@ -284,12 +312,11 @@ async function transitionToEnding() {
     runStore.setGamePhase('ENDING');
     playerStore.gamePhase = 'ENDING';
     playerStore.lastSceneName = null;
-    playerStore.awaitingTravelPrompt = false; // Ensure flag is cleared
+    playerStore.awaitingTravelPrompt = false;
     playerStore.saveProgress();
 
     displayStore.setInteractionsVisibility(false);
     await displayStore.waitFor(400);
-    await displayStore.animateSceneFadeOut();
 
     const sequence = getEndingSequence(playerStore.runCount);
     runStore.setCurrentScene(sequence);

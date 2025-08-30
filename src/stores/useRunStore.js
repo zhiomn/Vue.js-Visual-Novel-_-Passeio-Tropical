@@ -5,7 +5,6 @@ export const useRunStore = defineStore('run', {
     gamePhase: 'IDLE',
     currentScene: null,
     availableInteractions: { choices: [], actions: [] },
-    visitedScenesInThisRun: [],
     travelOptions: [],
     isFinalEnding: false,
   }),
@@ -33,10 +32,5 @@ export const useRunStore = defineStore('run', {
     setTravelOptions(options) {
       this.travelOptions = options;
     },
-    addVisitedScene(sceneName) {
-        if (!this.visitedScenesInThisRun.includes(sceneName)) {
-            this.visitedScenesInThisRun.push(sceneName);
-        }
-    }
   },
 });

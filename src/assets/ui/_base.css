@@ -14,7 +14,7 @@ body, html {
 #app {
   width: 100%;
   height: 100%;
-  position: relative;
+  position: relative; /* <-- THE FIX IS HERE */
 }
 
 .game-container {

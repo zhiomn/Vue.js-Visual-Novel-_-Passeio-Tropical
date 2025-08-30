@@ -12,6 +12,7 @@ export const usePlayerStore = defineStore('player', {
     isReady: false,
     hasArchitectAwakened: false,
     isFinalUnlockActive: false,
+    isGameFinished: false,
     activatedApps: [],
     unlockedEscolhaIds: [],
     runCount: 0,
@@ -21,14 +22,15 @@ export const usePlayerStore = defineStore('player', {
       lineQueue: [],
       currentLine: '',
     },
-    // THE FIX IS HERE: New state to track post-choice context
     awaitingTravelPrompt: false,
+    visitedScenesInThisRun: [],
   }),
   getters: {
     isGameComplete(state) {
       const configStore = useConfigStore();
       if (config.allDataRevealed) return true;
-      return state.runCount > configStore.totalRuns;
+      // THE FIX IS HERE: Changed > to >=
+      return state.runCount >= configStore.totalRuns;
     },
     isChoiceUnlocked: (state) => (escolhaId) => {
       if (config.allDataRevealed) return true;
@@ -40,6 +42,19 @@ export const usePlayerStore = defineStore('player', {
     },
   },
   actions: {
+    finishGame() {
+      if (!this.isGameFinished) {
+        this.isGameFinished = true;
+        this.saveProgress();
+        logger.log('O jogo foi marcado como finalizado.');
+      }
+    },
+    addVisitedScene(sceneName) {
+      if (!this.visitedScenesInThisRun.includes(sceneName)) {
+        this.visitedScenesInThisRun.push(sceneName);
+        this.saveProgress();
+      }
+    },
     setNarrationState({ lineQueue, currentLine }) {
       this.narrationState.lineQueue = lineQueue;
       this.narrationState.currentLine = currentLine;
@@ -49,23 +64,27 @@ export const usePlayerStore = defineStore('player', {
       if (!this.activatedApps.includes(appId)) {
         this.activatedApps.push(appId);
         logger.log(`App Ativado: ${appId}`);
+        this.saveProgress();
       }
     },
     awakenArchitect() {
       if (!this.hasArchitectAwakened) {
         this.hasArchitectAwakened = true;
         logger.log('O Arquiteto despertou. O estado do jogo mudou.');
+        this.saveProgress();
       }
     },
     setFinalUnlockState() {
       if (!this.isFinalUnlockActive) {
         this.isFinalUnlockActive = true;
         logger.log('DESBLOQUEIO FINAL ATIVADO. Todos os sistemas estão agora abertos.');
+        this.saveProgress();
       }
     },
     unlockChoice(escolhaId) {
       if (!this.unlockedEscolhaIds.includes(escolhaId)) {
         this.unlockedEscolhaIds.push(escolhaId);
+        this.saveProgress();
       }
     },
     startNewRun() {
@@ -74,7 +93,9 @@ export const usePlayerStore = defineStore('player', {
       this.gamePhase = 'STARTING';
       this.lastSceneName = null;
       this.narrationState = { lineQueue: [], currentLine: '' };
-      this.awaitingTravelPrompt = false; // Reset on new run
+      this.awaitingTravelPrompt = false;
+      this.visitedScenesInThisRun = [];
+      this.saveProgress();
     },
     saveProgress() {
       if (config.allDataRevealed) {

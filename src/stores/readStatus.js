@@ -120,6 +120,7 @@ export const useReadStatusStore = defineStore('readStatus', {
           }
         });
       }
+      this.saveReadStatus(); // <-- THE FIX IS HERE
     },
 
     markSceneAsViewed(sceneId) {
@@ -127,6 +128,7 @@ export const useReadStatusStore = defineStore('readStatus', {
         if (playerStore.runCount >= 2 && !this.viewedSceneIds.has(sceneId)) {
             this.viewedSceneIds.add(sceneId);
             logger.info(`Scene Viewed and Registered: ${sceneId}`);
+            this.saveReadStatus(); // <-- THE FIX IS HERE
         }
     },
 

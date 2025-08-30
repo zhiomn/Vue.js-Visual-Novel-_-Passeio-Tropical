@@ -36,7 +36,7 @@
 }
 
 
-/* --- Styles for Contemplative Mode --- */
+/* --- THE FIX IS HERE: Unified styles for Contemplative/Travel Mode --- */
 
 .contemplative-mode.dialogue-box-wrapper {
   bottom: auto;
@@ -63,33 +63,29 @@
   border: none;
   backdrop-filter: none;
   width: auto;
-  padding: 8px 15px;
+  padding: 10px 18px; /* Standardized padding */
   font-family: 'Courier New', Courier, monospace;
-  font-size: 1.2em;
+  font-size: 1.3em; /* Standardized font size */
   color: var(--color-text-muted);
   font-weight: normal;
   transition: color 0.2s ease;
-  white-space: nowrap; /* --- THE FIX IS HERE --- */
+  white-space: nowrap;
 }
 
 .contemplative-mode .choice-btn:hover:not(:disabled) {
   background: none;
   border-color: transparent;
   transform: none;
-  color: var(--color-text-primary);
+  color: var(--color-text-primary); /* This provides the light gray on hover */
 }
 
-.contemplative-mode .special-btn {
-  color: var(--color-primary);
+.contemplative-mode .special-btn,
+.contemplative-mode .special-btn:hover:not(:disabled) {
+  color: var(--color-text-primary); /* Standardized to light gray */
   font-weight: bold;
 }
 
-.contemplative-mode .special-btn:hover:not(:disabled) {
-  color: white;
-}
-
 /* --- Custom Scrollbar for Phone UI --- */
-/* Applied to all scrollable content areas within the phone for a consistent, native feel. */
 .content-area::-webkit-scrollbar,
 .list-container::-webkit-scrollbar,
 .messages-list::-webkit-scrollbar {
@@ -105,7 +101,7 @@
 .content-area::-webkit-scrollbar-thumb,
 .list-container::-webkit-scrollbar-thumb,
 .messages-list::-webkit-scrollbar-thumb {
-  background-color: rgba(140, 158, 255, 0.4); /* --color-primary with transparency */
+  background-color: rgba(140, 158, 255, 0.4);
   border-radius: 20px;
   border: 2px solid transparent;
   background-clip: content-box;

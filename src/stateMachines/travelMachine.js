@@ -4,7 +4,7 @@ export const travelMachine = createMachine({
   id: 'travel',
   initial: 'showingConsequence',
   context: ({ input }) => ({
-    escolha: input.escolha,
+    dialogueSequence: input.dialogueSequence, // Expect an array of strings
     error: null,
   }),
   states: {
@@ -14,33 +14,21 @@ export const travelMachine = createMachine({
         id: 'speakConsequence',
         src: 'speakSequenceActor',
         input: ({ context }) => ({
-            dialogue: [context.escolha.msg_antes || "Você descobriu algo novo..."]
+            dialogue: context.dialogueSequence
         }),
-        onDone: 'fadingOutScene',
-        onError: {
-            target: 'errorState',
-            actions: assign({ error: 'Failed to speak consequence.' })
-        }
-      }
-    },
-    fadingOutScene: {
-      entry: ['hideDialogue'], // <-- THE FIX IS HERE
-      invoke: {
-        id: 'fadeOutScene',
-        src: 'fadeOutSceneActor',
         onDone: 'enteringTravelMode',
         onError: {
             target: 'errorState',
-            actions: assign({ error: 'Failed to fade out scene.' })
+            actions: assign({ error: 'Failed to speak sequence.' })
         }
       }
     },
+fadingOutScene: {      invoke: {        id: 'fadeOutScene',        src: 'fadeOutSceneActor',        onDone: 'enteringTravelMode',        onError: {            target: 'errorState',            actions: assign({ error: 'Failed to fade out scene.' })        }      }    },
     enteringTravelMode: {
-        entry: ['enterTravelMode'],
+        entry: ['enterTravelMode', 'loadTravelOptions'],
         always: 'presentingTravelOptions'
     },
     presentingTravelOptions: {
-      entry: ['loadTravelOptions'], // 'showInteractions' removed as overlay handles its own reveal
       on: {
         TRAVEL_SELECTED: 'complete',
         NO_MORE_TRAVEL_OPTIONS: 'complete'

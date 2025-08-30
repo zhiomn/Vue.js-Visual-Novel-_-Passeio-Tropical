@@ -3,7 +3,6 @@
     <Stars :opacity="0.5" />
     <div class="loading-content">
       <h1 class="title">Passeio Tropical</h1>
-      <img src="@/assets/loading-wave.svg" class="loading-wave" alt="Loading animation" />
       <p class="loading-text">...carregando...</p>
     </div>
   </div>

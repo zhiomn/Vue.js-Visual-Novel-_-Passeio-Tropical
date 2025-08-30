@@ -1,6 +1,6 @@
 <template>
   <div class="travel-overlay">
-    <div class="content-wrapper">
+    <div class="content-wrapper contemplative-mode">
       <div class="choice-container">
         <RevealButton
           v-for="destination in travelOptions"
@@ -28,6 +28,7 @@ defineProps({
 </script>
 
 <style scoped>
+/* A sobreposição em si ainda precisa de estilos, mas os botões agora herdam do global */
 .travel-overlay {
   position: absolute;
   inset: 0;
@@ -46,19 +47,6 @@ defineProps({
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem; /* Increased gap for a more deliberate feel */
+  gap: 1.5rem;
 }
-/* Import styles from _components.css for contemplative buttons */
-:deep(.choice-btn) {
-  background: none; border: none; backdrop-filter: none;
-  width: auto; padding: 8px 15px; font-family: 'Courier New', Courier, monospace;
-  font-size: 1.4em; /* Larger font for travel mode */
-  color: var(--color-text-muted); font-weight: normal;
-  transition: color 0.2s ease; white-space: nowrap;
-}
-:deep(.choice-btn:hover:not(:disabled)) {
-  background: none; border-color: transparent; transform: none; color: var(--color-text-primary);
-}
-:deep(.special-btn) { color: var(--color-primary); font-weight: bold; }
-:deep(.special-btn:hover:not(:disabled)) { color: white; }
 </style>

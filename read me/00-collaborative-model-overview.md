@@ -12,3 +12,4 @@ The success of this project hinges on a shared understanding of our roles, princ
 -   **[1.4 Human Collaborator Profile](./04-human-profile.md):** A profile of the human's role, emphasizing their function as a Process Architect and Quality Assurance lead.
 -   **[1.5 Version Control Workflow](./05-version-control-workflow.md):** The Git and GitHub workflow that ensures project stability and history.
 -   **[1.6 Principle of Elegance & DRY Solutions](./06-dry-and-elegant-solutions.md):** The philosophical guide to problem-solving, prioritizing systemic, sustainable solutions over brute-force implementations.
+-   **[1.7 The `sed` Protocol](./07-sed-protocol.md):** The protocol for using the `sed` command for high-precision, surgical file edits.

@@ -2,7 +2,7 @@
   <div class="contemplative-overlay">
     <Stars />
     <transition name="dialogue-fade">
-      <div v-if="displayStore.isDialogueVisible" class="content-wrapper">
+      <div v-if="displayStore.isDialogueVisible" class="content-wrapper contemplative-mode">
         <TypewriterButton
           v-if="narration"
           :text="narration"
@@ -20,21 +20,25 @@
               :disabled="displayStore.isInputLocked"
               @click="executeAction(action)"
             />
-            <RevealButton
-              v-if="gamePhase === 'ENDING' && !isFinalEnding"
-              key="new-run-btn"
-              text="Começar a Próxima Jornada"
-              button-class="special-btn"
-              :disabled="displayStore.isInputLocked"
-              @click="startNextRun()"
-            />
-            <RevealButton
-              v-if="gamePhase === 'ENDING' && isFinalEnding"
-              key="end-game-btn"
-              text="Fim"
-              button-class="special-btn"
-              :disabled="true"
-            />
+            
+            <!-- THE FIX IS HERE: Conditional rendering for the final button -->
+            <template v-if="gamePhase === 'ENDING'">
+              <RevealButton
+                v-if="!isFinalEnding"
+                key="new-run-btn"
+                text="...adormecer..."
+                :disabled="displayStore.isInputLocked"
+                @click="startNextRun()"
+              />
+              <RevealButton
+                v-else
+                key="end-game-btn"
+                text="...acordar..."
+                button-class="special-btn"
+                :disabled="displayStore.isInputLocked"
+                @click="finishGameAndShowCredits()"
+              />
+            </template>
           </template>
         </div>
       </div>
@@ -46,7 +50,8 @@
 import { computed } from 'vue';
 import { useNarrationStore } from '@/stores/narration';
 import { useDisplayStore } from '@/stores/useDisplayStore';
-import { executeAction, startNextRun } from '@/services/runOrchestrator';
+// Updated imports
+import { executeAction, startNextRun, finishGameAndShowCredits } from '@/services/runOrchestrator';
 import Stars from '../Stars.vue';
 import TypewriterButton from './TypewriterButton.vue';
 import RevealButton from './RevealButton.vue';
@@ -94,18 +99,4 @@ const hasInteractions = computed(() =>
 }
 .continue-indicator{ font-size:1.5em; color:var(--color-text-muted); animation:pulse 1.5s infinite; margin-top: 1rem; }
 @keyframes pulse{ 0%,100%{ opacity:0 } 50%{ opacity:1 } }
-:deep(.dialogue-text) {
-  font-family: 'Courier New', Courier, monospace;
-}
-:deep(.choice-btn) {
-  background: none; border: none; backdrop-filter: none;
-  width: auto; padding: 8px 15px; font-family: 'Courier New', Courier, monospace;
-  font-size: 1.2em; color: var(--color-text-muted); font-weight: normal;
-  transition: color 0.2s ease; white-space: nowrap;
-}
-:deep(.choice-btn:hover:not(:disabled)) {
-  background: none; border-color: transparent; transform: none; color: var(--color-text-primary);
-}
-:deep(.special-btn) { color: var(--color-primary); font-weight: bold; }
-:deep(.special-btn:hover:not(:disabled)) { color: white; }
 </style>
