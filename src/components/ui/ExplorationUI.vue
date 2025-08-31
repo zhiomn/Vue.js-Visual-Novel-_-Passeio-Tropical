@@ -48,10 +48,17 @@ const props = defineProps({
 const hasInteractions = computed(() => props.interactions?.choices?.length > 0);
 
 function handleBoxClick() {
+  // Prevent advancing if choices are visible.
   if (props.areInteractionsVisible && hasInteractions.value) {
     return;
   }
-  narrationStore.playerProceed();
+
+  // --- THE FIX IS HERE ---
+  // Only allow the click to proceed to the next line if the current
+  // line's animation is complete and awaiting player input.
+  if (narrationStore.awaitingPlayerInput) {
+    narrationStore.playerProceed();
+  }
 }
 </script>
 

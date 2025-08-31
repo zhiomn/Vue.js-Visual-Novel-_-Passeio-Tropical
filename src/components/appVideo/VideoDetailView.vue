@@ -44,8 +44,19 @@ const embedUrl = computed(() => {
   if (!video.value?.link) return null;
   try {
     const url = new URL(video.value.link);
-    const videoId = url.searchParams.get('v');
-    // Adiciona parâmetros para otimizar o embed
+    let videoId = null;
+
+    // --- THE FIX IS HERE ---
+    // Check for shorts URL format: youtube.com/shorts/VIDEO_ID
+    if (url.hostname === 'youtube.com' && url.pathname.startsWith('/shorts/')) {
+      videoId = url.pathname.split('/shorts/')[1];
+    } 
+    // Fallback to standard URL format: youtube.com/watch?v=VIDEO_ID
+    else {
+      videoId = url.searchParams.get('v');
+    }
+
+    // Add parameters for an optimized embed
     return videoId ? `https://www.youtube.com/embed/${videoId}?autoplay=0&modestbranding=1&rel=0` : null;
   } catch (error) {
     console.error("Invalid video URL:", video.value.link);
@@ -57,7 +68,7 @@ function onIframeLoad() {
   isIframeLoading.value = false;
 }
 
-// Reseta o estado de loading quando o vídeo selecionado muda
+// Reset loading state when the selected video changes
 watch(() => props.videoId, () => {
   isIframeLoading.value = true;
 });

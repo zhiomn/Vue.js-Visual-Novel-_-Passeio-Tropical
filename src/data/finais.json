@@ -4,12 +4,12 @@
     "nome": "Caverna",
     "ambience_track": "ending_drone_1.mp3",
     "narration": [
-      "O caminho chega numa caverna...",
-      "Você vê uma luz lá dentro ondulando nas paredes...",
-      "Enquanto caminha, escuta o eco do som dos seus passos vibrando no ar...",
-      "Uma fogueira e uma esteira de palha estão perto...",
-      "Você se alimenta de frutas que colheu no passeio...",
-      "É hora de descansar..."
+      "...o caminho chega numa caverna...",
+      "...você vê uma luz lá dentro ondulando nas paredes...",
+      "...enquanto caminha, escuta o eco do som dos seus passos vibrando no ar...",
+      "...uma fogueira e uma esteira de palha estão perto...",
+      "...você se alimenta de frutas que colheu no passeio...",
+      "...é hora de descansar..."
     ]
   },
   {
@@ -17,12 +17,12 @@
     "nome": "Barco",
     "ambience_track": "ending_drone_2.mp3",
     "narration": [
-      "Um barco ancorado balança na água...",
-      "Você se aproxima e vê que há uma cabine...",
-      "O veleiro é confortável, mas não tem uma cama...",
-      "Na verdade, ele tem uma rede...",
-      "Você toma água e escova os dentes...",
-      "Deitad@ na rede, sente o balanço dela e do barco..."
+      "...um barco ancorado balança na água...",
+      "...você se aproxima e vê que há uma cabine...",
+      "...o veleiro é confortável, mas não tem uma cama...",
+      "...na verdade, ele tem uma rede...",
+      "...você toma água e escova os dentes...",
+      "...deitad@ na rede, sente o balanço dela e do barco..."
     ]
   },
   {
@@ -30,12 +30,12 @@
     "nome": "Campo estrelado",
     "ambience_track": "ending_drone_3.mp3",
     "narration": [
-      "A noite chegou, e com ela as estrelas...",
-      "Num grande campo aberto, sem luzes por perto, o céu aparece brilhando por completo...",
-      "O caminho até aqui foi variado, passando por momentos e cenários...",
-      "Uma rede surgiu na tela, e pude ler, ouvir e ver, revistas e poemas...",
-      "Embora a memória esteja viva e fresca, o presente do agora te convida a olhar pra cima...",
-      "Imaginando as estrelas tão distantes, já nascidas, e suas luzes emitidas...",
+      "...a noite chegou, e com ela as estrelas...",
+      "...num grande campo aberto, sem luzes por perto, o céu aparece brilhando por completo...",
+      "...o caminho até aqui foi variado, passando por momentos e cenários...",
+      "...uma rede surgiu na tela, e pude ler, ouvir e ver, revistas e poemas...",
+      "...embora a memória esteja viva e fresca, o presente do agora me convida a olhar pra cima...",
+      "...imaginando as estrelas tão distantes, já nascidas, e suas luzes emitidas...",
       "...que um dia (ou uma noite) tocarão nossas retinas..."
     ]
   }

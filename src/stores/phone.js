@@ -24,36 +24,33 @@ export const usePhoneStore = defineStore('phone', {
     isPhoneVisible: false,
     activeApp: null,
     terminalAdvanceSignal: 0,
+    hasNewAppNotification: false,
   }),
 
   getters: {
     getAppState: () => (appId) => {
       const playerStore = usePlayerStore();
 
-      // Prioridade 1: Desbloqueio Final. Tudo está acessível.
       if (playerStore.isFinalUnlockActive) {
         return { isUnlocked: true, areDetailsRevealed: true, meetsRequirements: true, isActivated: true };
       }
 
-      // Prioridade 2: Arquiteto Despertou. Apenas o Terminal está funcional.
       if (playerStore.hasArchitectAwakened) {
         const appConfig = appsData.find(app => app.id === appId);
         const isTerminalApp = appId === 'terminal';
         
         return { 
-          meetsRequirements: !!appConfig, // Todos os requisitos são considerados cumpridos para revelar nomes.
-          isUnlocked: isTerminalApp, // Apenas o Terminal está verdadeiramente desbloqueado.
+          meetsRequirements: !!appConfig,
+          isUnlocked: isTerminalApp,
           isActivated: playerStore.activatedApps.includes(appId) || isTerminalApp,
           areDetailsRevealed: true 
         };
       }
 
-      // Prioridade 3: Modo de Desenvolvedor (com exceções).
       if (config.allDataRevealed && !TERMINAL_FLOW_APPS.includes(appId)) {
         return { isUnlocked: true, areDetailsRevealed: true, meetsRequirements: true, isActivated: true };
       }
 
-      // Prioridade 4: Lógica Padrão do Jogo.
       const appConfig = appsData.find(app => app.id === appId);
       if (!appConfig) {
         return { isUnlocked: false, areDetailsRevealed: false, meetsRequirements: false, isActivated: false };
@@ -77,6 +74,22 @@ export const usePhoneStore = defineStore('phone', {
   },
 
   actions: {
+    setNewAppNotification() {
+      this.hasNewAppNotification = true;
+    },
+    clearNewAppNotification() {
+      this.hasNewAppNotification = false;
+    },
+    togglePhoneVisibility() {
+      this.clearNewAppNotification();
+      const configStore = useConfigStore();
+      if (configStore.phoneOnly) {
+        return; 
+      }
+      this.isPhoneVisible = !this.isPhoneVisible;
+      // --- LOG ADICIONADO ---
+      logger.log(`[ACTION] togglePhoneVisibility called. New state for isPhoneVisible: ${this.isPhoneVisible}`);
+    },
     triggerTerminalAdvance() {
       logger.log('Sinal de avanço do terminal acionado.');
       this.terminalAdvanceSignal++;
@@ -91,13 +104,6 @@ export const usePhoneStore = defineStore('phone', {
     },
     closeApp() {
       this.activeApp = null;
-    },
-    togglePhoneVisibility() {
-     const configStore = useConfigStore();
-      if (configStore.phoneOnly) {
-        return; 
-      }
-      this.isPhoneVisible = !this.isPhoneVisible;
     },
   },
 });

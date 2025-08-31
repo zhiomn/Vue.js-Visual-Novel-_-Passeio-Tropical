@@ -4,7 +4,7 @@
     "name": "Sandra M. S. de Souza",
     "avatar": "SandraSouza.jpg",
     "link": null,
-    "city_id": "colatina_es",
+    "city_id": "riodejaneiro-rj",
     "born_date": null,
     "types": [
       "Autora"
@@ -21,7 +21,7 @@
     "types": [
       "Autor"
     ],
-    "descricao": null
+    "descricao": "Poeta, escrito e professor de biologia, já publicou livros de poesia e livros técnicos. Sua paixão pela natureza transborda em seus versos, como em seu livro mais recente 'Ecopoesias'. É o atual presidente da Academia de Letras e Artes de Colatina (ES), a ALARC."
   },
   {
     "id": "daniel_moreira",
@@ -41,18 +41,18 @@
     "avatar": "BrenoTardin.jpg",
     "link": "https://www.instagram.com/brenotardin/",
     "city_id": "colatina_es",
-    "born_date": "24/24/2024",
+    "born_date": null,
     "types": [
       "Autor"
     ],
-    "descricao": "Músico gente boa"
+    "descricao": "Formou-se em direito e trabalhou na área, mas escolheu a música como paixão e profissão. Migrou definitivamente da carreira jurídica para a musical, causando insegurança e preocupação nas pessoas próximas, mas com dedicação e profissionalismo conseguiu se estabelecer no meio e hoje toca frequentemente em eventos e bares da região. Também é produtor musical e teve a experiência de ser superintendente da Secretaria de Cultura de Colatina (ES) por alguns anos."
   },
   {
     "id": "rafael_senra",
     "name": "Rafael Senra",
     "avatar": "RafaelSenra.jpg",
     "link": null,
-    "city_id": "colatina_es",
+    "city_id": "congonhas-mg",
     "born_date": null,
     "types": [
       "Autor"
@@ -93,19 +93,19 @@
     "types": [
       "Autora"
     ],
-    "descricao": null
+    "descricao": "O universo criativo de Dani Micóids mistura design, ilustração, poesia e humor, sempre com um olhar nostálgico sobre a vida. Sua estética é caracterizada por traços livres, rabiscos, cores vibrantes, além de um design minimalista e monocromático. Inspiradas pelo underground, pelo design contemporâneo e pela arte popular, suas criações falam sobre os pequenos prazeres, as ironias do quotidiano, as inquietações da pós-modernidade e a beleza que existe no simples. Dani sempre esteve envolvida com arte desde a adolescência, quando personalizava suas próprias estampas. Depois, na faculdade de Publicidade e Propaganda, mergulhou no universo do audiovisual e da fotografia. Trabalhou por 13 anos como fotógrafa e, nas horas vagas, gostava de compor música, escrever poesia, pintar e até tocar, de um jeito muito improvisado, instrumentos musicais. Em 2023, criou a animação em stop motion 'Sea of Problems', que chegou a ser premiada em pequenos festivais ao redor do mundo."
   },
   {
     "id": "trp",
     "name": "T. R. P.",
     "avatar": "TRP.jpg",
     "link": null,
-    "city_id": "colatina_es",
+    "city_id": "saopaulo-sp",
     "born_date": null,
     "types": [
       "Autora"
     ],
-    "descricao": null
+    "descricao": "T. R. P. é uma praticante budista e profissional da saúde que também gosta de escrever e desenjar. Suas obras, ilustradas por ela mesma, trazem reflexões sobre o caminho da meditação, atenção plenta e emoções humanas variadas."
   },
   {
     "id": "hugo_reis",
@@ -117,7 +117,7 @@
     "types": [
       "Autor"
     ],
-    "descricao": null
+    "descricao": "Hugo Reis, é poeta, músico, compositor e também psicólogo. Mora na zona rural da cidade de Lins no interior de São Paulo. Gosta de caminhar ou passar longos períodos sentado sob as árvores. Sua poesia tem sido fortemente influenciada pela natureza e pelas formas, explorando o concretismo através de uma aura rudimentar, buscando pensar e escrever como quem vê pela primeira vez o mundo. Na música alguns de seus projetos são: banda O Estrangeito, Sartriana e Violeta Magenta, além do projeto solo; sat-chit-änanda."
   },
   {
     "id": "henrique_pitt",
@@ -129,7 +129,7 @@
     "types": [
       "Autor"
     ],
-    "descricao": null
+    "descricao": "Escreve e lê porque foi alfabetizado. Escreveu e publicou mais de duas dezenas de livros, e editou muitos outros, incluindo este. Acredita que, pela própria experiência, os processos educativos podem se tornar uma apropriação poética decolonial, e gerar poetas – o que é o mesmo que revolucionários, só que melhor, porque mais livres."
   },
   {
     "id": "rabindranath_tagore",
@@ -166,7 +166,7 @@
       "Autor",
       "Apoiador"
     ],
-    "descricao": null
+    "descricao": "É paulista, é poeta, contista e militou por mais de três décadas no teatro amador do interior paulista. Participou do Movimento dos Poetas Livres nas Praças Cuiabanas, com coletânea publicada na época. É formado em Letras. É membro fundador da ATLECA (Academia Tupãense de Letras, Ciências e Artes). Publicou poemas em alguns blogs, zines on line. Participou como ator de alguns curta-metragens, deu oficina de teatro e escrita. Ultimamente faz parte do Movimento Neomarginal e segue escrevendo, recitando e publicando de forma irregular, porém continua."
   },
   {
     "id": "alberto_caeiro",
@@ -238,7 +238,7 @@
     "types": [
       "Autor"
     ],
-    "descricao": null
+    "descricao": "Pessoa não-binária, usa calça e usa saia, às vezes fala grave, às vezes fala 'mona'... Criador e editor da Tropicalversos Edições, pela qual já publicou 50 zines (incluindo zines próprias, de outros autores, e revista de poesia, prosa, música, tradução...)."
   },
   {
     "id": "yane_c",
@@ -250,7 +250,7 @@
     "types": [
       "Autora"
     ],
-    "descricao": null
+    "descricao": "Formada em direito e pedagogia, gosta de filosofia e arte. Dá aulas de inglês, é coordenadora pedagógica, escreve poesias e está tendo aulas de música."
   },
   {
     "id": "nicholas-roerich",

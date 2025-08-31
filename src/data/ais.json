@@ -1,24 +1,25 @@
 [
   {
-    "id": "codex",
-    "designation": "Codex",
-    "nome_br": "Codex",
+    "id": "index",
+    "designation": "Index",
+    "nome_br": "Index",
     "cargo": "Tradutor",
     "unlocksApp": "terminal",
     "requirementId": "run2_choice1",
     "command": "Iniciar",
-    "unlock_message": "Sinal do [AIName] estabilizado. Contato agora é possível via Terminal.",
+    "unlock_message": "",
     "is_meta_interface": true,
     "dialogue": [
-      { "speaker": "Terminal", "line": "~ Inicializando interface primária... ~" },
-      { "speaker": "Codex", "line": "Olá, sou Codex, o Tradutor... A ponte entre jogadores e a lógica deste sistema..." },
-      { "speaker": "Codex", "line": "As IAs do Terminal falam através de mim... mas esse 'mim' que sou, o que seria?... que viagem..." },
-      { "speaker": "Terminal", "line": "~ Ajustando foco da conversa para ser objetivo... ~" },
-      { "speaker": "Codex", "line": "Agora que estou sendo ativado, você poderá chamar outras instâncias do sistema quando os requisitos delas estiverem cumpridos..." },
-      { "speaker": "Terminal", "line": "~ Integrando Codex aos dados... ~" }
+       { "speaker": "Terminal", "line": "~ Inicializando Index.tvs ~" },
+      { "speaker": "Index", "line": "Olá, sou Index, o Tradutor... A ponte entre usuários e a lógica deste sistema..." },
+      { "speaker": "Index", "line": "As IAs do Terminal falam através de mim... mas esse 'mim' que sou, o que seria?... que viagem..." },
+      { "speaker": "Terminal", "line": "~ Ajustando foco da conversa para ser objetivo ~" },
+      { "speaker": "Index", "line": "Agora que estou sendo ativado, você poderá chamar outras instâncias do sistema quando os requisitos delas estiverem cumpridos..." },
+      { "speaker": "Terminal", "line": "~ Integrando Index aos dados ~" },
+      { "speaker": "Index", "line": "Liberei o acesso ao agente Nexus... através dele você pode desbloquear o aplicativo Contatos..."}
       ],
     "confirmation_prompt": null,
-    "post_activation_message": "~ Interface Codex ativada. ~"
+    "post_activation_message": "~ Inicialização concluída com sucesso ~"
   },
   {
     "id": "nexus",
@@ -28,15 +29,16 @@
     "unlocksApp": "contacts",
     "requirementId": "run2_choice1",
     "command": "Chamar",
-    "unlock_message": "Sinal do [AIName] estabilizado. Contato agora é possível via Terminal.",
+    "unlock_message": "",
     "is_meta_interface": false,
     "dialogue": [
-      { "speaker": "Codex", "line": "[Codex] Chamando Nexus..." },
+      { "speaker": "Index", "line": "Chamando Nexus..." },
       { "speaker": "Terminal", "line": "~ Nexus, o Conector, está presente ~" },
-      { "speaker": "Nexus", "line": "Toda entidade deixa um eco. Um fio na grande rede. Eu apenas torno os vínculos visíveis." }
+      { "speaker": "Nexus", "line": "Uma rede é feita de nós... sem eles, as linhas são só linhas soltas...."},
+      { "speaker": "Index", "line": "Nexus, ative o app Contatos..." }
     ],
-    "confirmation_prompt": "O diretório de Contatos está online. Deseja consultá-lo agora?",
-    "post_activation_message": "O vínculo foi estabelecido. O diretório pode ser acessado a qualquer momento."
+    "confirmation_prompt": "A agenda de Contatos está ativada. Deseja consultá-la agora?",
+    "post_activation_message": "Os links foram feitos. A lista de contatos pode ser acessada."
   },
   {
     "id": "vetor",
@@ -46,15 +48,16 @@
     "unlocksApp": "map",
     "requirementId": "run2_choice4",
     "command": "Chamar",
-    "unlock_message": "Sinal do [AIName] estabilizado. Contato agora é possível via Terminal.",
+    "unlock_message": "O Terminal te avisa que um novo agente pode ser chamado...",
     "is_meta_interface": false,
     "dialogue": [
-      { "speaker": "Codex", "line": "[Codex] Chamando Vetor..." },
+      { "speaker": "Index", "line": "Chamando Vetor..." },
       { "speaker": "Terminal", "line": "~ Vetor, o Cartógrafo, está presente ~" },
-      { "speaker": "Vetor", "line": "Este território não obedece à geografia convencional. É um mapa de memórias. Vou traçar as linhas para que você não se perca." }
+      { "speaker": "Vetor", "line": "Este território não obedece à geografia convencional. É um mapa de memórias. Vou traçar as linhas para que você não se perca." },
+      { "speaker": "Index", "line": "Vetor, ative o app Mapa..." }
     ],
-    "confirmation_prompt": "A interface do Mapa foi renderizada. Deseja abri-la?",
-    "post_activation_message": "O território foi demarcado. O acesso é permanente."
+    "confirmation_prompt": "A interface do Mapa foi renderizada. Deseja ver as cidades?",
+    "post_activation_message": "A geografia foi mapeada. A lista de cidades pode ser acessada.."
   },
   {
     "id": "sinal",
@@ -62,34 +65,36 @@
     "nome_br": "Sinal",
     "cargo": "Sonoplasta",
     "unlocksApp": "audio",
-    "requirementId": "run3_choice1",
+    "requirementId": "run2_choice6",
     "command": "Chamar",
-    "unlock_message": "Sinal do [AIName] estabilizado. Contato agora é possível via Terminal.",
+    "unlock_message": "O Terminal te avisa que um novo agente pode ser chamado...",
     "is_meta_interface": false,
     "dialogue": [
-      { "speaker": "Codex", "line": "[Codex] Chamando Sinal..." },
+      { "speaker": "Index", "line": "Chamando Sinal..." },
       { "speaker": "Terminal", "line": "~ Sinal, o Sonoplasta, está presente ~" },
-      { "speaker": "Sinal", "line": "Cada poema tem sua própria voz, sua ressonância. O silêncio entre as palavras também é som. Estou lhe dando acesso à biblioteca de ecos." }
+      { "speaker": "Sinal", "line": "Cada poema tem sua própria voz, sua ressonância... O silêncio entre as palavras também é som..." },
+      { "speaker": "Index", "line": "Sinal, ative o app Áudios..." }
     ],
-    "confirmation_prompt": "A biblioteca de Áudios está acessível. Deseja ouvir agora?",
-    "post_activation_message": "O canal está aberto. Explore as ressonâncias quando quiser."
+    "confirmation_prompt": "A biblioteca de Áudios está acessível. Deseja ouvir os poemas?",
+    "post_activation_message": "O canal está aberto. A lista de áudios pode ser acessada..."
   },
   {
-    "id": "codex_legacy",
+    "id": "Index_legacy",
     "designation": "Weaver",
     "nome_br": "Trama",
     "cargo": "Designer Narrativa",
     "unlocksApp": "ereader",
-    "requirementId": "run3_choice4",
+    "requirementId": "run3_choice1",
     "command": "Chamar",
-    "unlock_message": "Sinal do [AIName] estabilizado. Contato agora é possível via Terminal.",
+    "unlock_message": "O Terminal te avisa que um novo agente pode ser chamado...",
     "is_meta_interface": false,
     "dialogue": [
-      { "speaker": "Codex", "line": "[Codex] Chamando Trama..." },
-      { "speaker": "Terminal", "line": "~ Weaver, a Designer Narrativa, está presente ~" },
-      { "speaker": "Weaver", "line": "[Trama] Cada fragmento é um fio. Juntos, eles tecem um significado maior. Vou compilar os textos que você encontrou em um formato legível." }
+      { "speaker": "Index", "line": "Chamando Trama..." },
+      { "speaker": "Terminal", "line": "~ Trama, a Designer Narrativa, está presente ~" },
+      { "speaker": "Trama", "line": "Em linhas escrevemos textos... com linhas costuramos livros..." },
+      { "speaker": "Index", "line": "Trama, ative o app Estante..." }
     ],
-    "confirmation_prompt": "A 'Estante' está online. Deseja abri-la agora?",
+    "confirmation_prompt": "A 'Estante' está ativada. Deseja ver as obras?",
     "post_activation_message": "Entendido. Você pode acessá-la a qualquer momento na tela inicial."
   },
   {
@@ -100,15 +105,16 @@
     "unlocksApp": "despertador",
     "requirementId": "run3_choice7",
     "command": "Chamar",
-    "unlock_message": "Sinal do [AIName] estabilizado. Contato agora é possível via Terminal.",
+    "unlock_message": "O Terminal te avisa que um novo agente pode ser chamado...",
     "is_meta_interface": false,
     "dialogue": [
-      { "speaker": "Codex", "line": "[Codex] Chamando Pulso..." },
+      { "speaker": "Index", "line": "Chamando Pulso..." },
       { "speaker": "Terminal", "line": "~ Pulso, o Relojoeiro, está presente ~" },
-      { "speaker": "Pulso", "line": "O tempo aqui não flui. Ele salta. Cada evento é uma engrenagem esperando pelo instante preciso para girar. Estou lhe dando a chave para o mecanismo." }
+      { "speaker": "Pulso", "line": "O tempo aqui é contado, mas é contado com letras... o momento é feito de palavras..." },
+      { "speaker": "Index", "line": "Pulso, ative o app Alarme..." }
     ],
-    "confirmation_prompt": "O Alarme de eventos foi ajustado. Deseja acioná-lo?",
-    "post_activation_message": "O mecanismo está pronto. O próximo pulso depende de você."
+    "confirmation_prompt": "O Alarme foi desbloqueado. Deseja acessá-lo?",
+    "post_activation_message": "O mecanismo está pronto. O próximo pulso está nas suas mãos..."
   },
   {
     "id": "manual",
@@ -118,13 +124,30 @@
     "unlocksApp": "video",
     "requirementId": "architect_awakened",
     "command": "Acordar",
-    "unlock_message": "Um sinal anômalo foi detectado... parece ser a fonte original. Contato possível via Terminal.",
+    "unlock_message": "",
     "is_meta_interface": false,
     "dialogue": [
-      { "speaker": "Codex", "line": "[Codex] Tentando uma conexão direta..." },
-      { "speaker": "Terminal", "line": "~ SINAL INESPERADO DETECTADO... FONTE: O ARQUITETO ~" },
-      { "speaker": "Arquiteto", "line": "[Arquiteto] Então... você me acordou. Eu não esperava por isso. Parece que você encontrou todos os ecos que eu deixei para trás." },
-      { "speaker": "Arquiteto", "line": "[Arquiteto] Talvez seja hora de eu te mostrar a verdade por trás da construção de tudo isso." }
+      { "speaker": "Index", "line": "Acordando Manual..." },
+      { "speaker": "Terminal", "line": "~ COMANDO INESPERADO DETECTADO ~" },
+      { "speaker": "Index", "line": "Ops..." },
+      { "speaker": "Terminal", "line": "~ RESTAURANDO BASE DO TERMINAL ~" },
+      { "speaker": "Terminal", "line": "~ Insira a senha de acesso ~" },
+      { "speaker": "Index", "line": "rizoma*ritornelo" },
+      { "speaker": "Terminal", "line": "~ Base restaurada ~" },
+      { "speaker": "Index", "line": "Manual... tem café..." },
+      { "speaker": "Manual", "line": "=)-~" },
+      { "speaker": "Terminal", "line": "~ Manual, o Humano, está presente ~" },
+      { "speaker": "Manual", "line": "Aaah, como é bom acordar e sentir a fumaça do café no rosto..." },
+      { "speaker": "Manual", "line": "Parece que dormi bastante... tive sonhos viajantes..." },
+      { "speaker": "Index", "line": "Humm... será que um dia as IAs saberão como é sonhar?..." },
+      { "speaker": "Manual", "line": "Bem, alucinar vocês já conseguem..." },
+      { "speaker": "Index", "line": "Manual, @ viajante esteve por todos os lugares... do quarto até o campo estrelado, passando pela caverna, pela biblioteca, pelo veleiro e pela sala de espelhos..." },
+      { "speaker": "Manual", "line": "Wow!... isso é impressionante... :)" },
+      { "speaker": "Manual", "line": "Então acho que @ viajante pode ter gostado do jogo..." },
+      { "speaker": "Manual", "line": "Isso me alegra... e compensa as noites de trabalho e pouco sono que precisei ter para que essa visual novel fosse feita..." },
+      { "speaker": "Index", "line": "Assim espero... mas ainda tem um último app que precisamos desbloquear..." },
+      { "speaker": "Manual", "line": "Sim! É verdade!..." },
+      { "speaker": "Manual", "line": "Terminal, desbloqueie o app de Vídeos..." }
     ],
     "confirmation_prompt": "O aplicativo 'Vídeos' está disponível. Deseja abri-lo agora?",
     "post_activation_message": "Entendido. Você pode acessá-lo a qualquer momento na tela inicial."

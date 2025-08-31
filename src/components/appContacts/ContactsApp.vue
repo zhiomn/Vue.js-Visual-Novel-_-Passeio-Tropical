@@ -39,7 +39,7 @@ function closeContact() {
 
 // The header title and back button behavior are now dynamic
 const headerTitle = computed(() => {
-  return currentContactId.value ? '' : 'Contacts'; // Hide title in detail view
+  return currentContactId.value ? '' : 'Contatos'; // Hide title in detail view
 });
 
 function handleBack() {

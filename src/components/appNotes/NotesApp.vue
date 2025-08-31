@@ -38,7 +38,7 @@ function closeNote() {
 
 // The header title and back button behavior are now dynamic
 const headerTitle = computed(() => {
-  return currentNoteId.value ? '' : 'Notes'; // Hide title in detail view for a cleaner look
+  return currentNoteId.value ? '' : 'Anotações'; // Hide title in detail view for a cleaner look
 });
 
 function handleBack() {

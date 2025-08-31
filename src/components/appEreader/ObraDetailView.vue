@@ -1,24 +1,20 @@
 <template>
   <div class="content-area detail-view-container">
-    <div v-if="isPdfLoading" class="loader-container">
-      <div class="spinner"></div>
-      <p>Carregando revista...</p>
-    </div>
-    <iframe
-      v-if="obra"
-      :src="obra.pdf_url"
-      @load="onPdfLoad"
-      width="100%"
-      height="100%"
-      frameborder="0"
-      :style="{ visibility: isPdfLoading ? 'hidden' : 'visible' }"
-    ></iframe>
+    <!-- 
+      THE FIX IS HERE:
+      We are replacing the native <iframe> with a specialized
+      Vue component that uses pdf.js to render the document.
+      This component handles its own loading state.
+    -->
+    <vue-pdf-embed v-if="obra" :source="obra.pdf_url" />
   </div>
 </template>
 
 <script setup>
-import { ref, computed, watch, onMounted } from 'vue';
+import { computed } from 'vue';
 import { useContentStore } from '@/stores/contentStore';
+// Import the new component
+import VuePdfEmbed from 'vue-pdf-embed';
 
 const props = defineProps({
   obraId: {
@@ -28,55 +24,23 @@ const props = defineProps({
 });
 
 const contentStore = useContentStore();
-const isPdfLoading = ref(true);
 
 const obra = computed(() => {
   return contentStore.unlockedObras.find(o => o.id === props.obraId);
 });
 
-function onPdfLoad() {
-  isPdfLoading.value = false;
-}
-
-watch(() => props.obraId, (newId) => {
-  if (newId) {
-    isPdfLoading.value = true;
-  }
-});
-
-onMounted(() => {
-  isPdfLoading.value = true;
-})
+// The custom loading logic (isPdfLoading, onPdfLoad) is no longer needed.
 </script>
 
 <style scoped>
+/*
+  We remove the custom loader styles as they are no longer used.
+  The container is kept simple.
+*/
 .detail-view-container {
   padding: 0;
-  position: relative;
+  /* Make sure the PDF viewer can scroll */
+  overflow-y: auto; 
   background-color: #2a2a2e;
-}
-.loader-container {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 20px;
-  color: var(--color-text-muted);
-}
-.spinner {
-  border: 4px solid rgba(255, 255, 255, 0.2);
-  border-left-color: var(--color-primary);
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-}
-@keyframes spin {
-  to { transform: rotate(3deg); }
 }
 </style>

@@ -43,18 +43,22 @@ const item = computed(() => {
 
 const captionTitle = computed(() => {
     if (!item.value) return '';
-    // For both types, the main title ('name') is what we want.
-    // For magazines, it's "Tropicalzin 1". For paintings, it's "Claude Monet".
+     if (props.itemType === 'revista') {
+        return `Capa da revista ${item.value.name}`;
+    }
+    if (props.itemType === 'pintura') {
+        return `Pintura de ${item.value.name}`;
+    }
     return item.value.name;
 });
 
 const captionSubtitle = computed(() => {
     if (!item.value) return '';
     if (props.itemType === 'revista') {
-        return `Capa da revista, publicada em ${item.value.obra.date}`;
-    }
+        
+         }
     if (props.itemType === 'pintura') {
-        return `"${item.value.obra.pintura_name}"`;
+       
     }
     return '';
 });

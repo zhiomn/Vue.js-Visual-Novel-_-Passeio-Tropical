@@ -4,7 +4,7 @@
     "name": "Tropicalzin 1",
     "date": "16 de março de 2023",
     "cover_image": "Tropicalzin01-16mar2023.webp",
-    "pdf_url": "https://tropicalversos.com/midias/revistas/pdf/Tropicalzin01-16mar2023.pdf",
+    "pdf_url": "./midias/revistas/pdf/Tropicalzin01-16mar2023.pdf",
     "poem_count": 14
   },
   {
@@ -12,7 +12,7 @@
     "name": "Tropicalzin 2",
     "date": "27 de abril de 2023",
     "cover_image": "Tropicalzin02-27abr2023.webp",
-    "pdf_url": "https://tropicalversos.com/midias/revistas/pdf/Tropicalzin02-27abr2023.pdf",
+    "pdf_url": "./midias/revistas/pdf/Tropicalzin02-27abr2023.pdf",
     "poem_count": 15
   },
   {
@@ -20,7 +20,7 @@
     "name": "Tropicalzin 3",
     "date": "25 de maio de 2023",
     "cover_image": "Tropicalzin03-25mai2023.webp",
-    "pdf_url": "https://tropicalversos.com/midias/revistas/pdf/Tropicalzin03-25mai2023.pdf",
+    "pdf_url": "./midias/revistas/pdf/Tropicalzin03-25mai2023.pdf",
     "poem_count": 20
   },
   {
@@ -28,7 +28,7 @@
     "name": "Tropicalzin 4",
     "date": "29 de junho de 2023",
     "cover_image": "Tropicalzin04-29jun2023.webp",
-    "pdf_url": "https://tropicalversos.com/midias/revistas/pdf/Tropicalzin04-29jun2023.pdf",
+    "pdf_url": "./midias/revistas/pdf/Tropicalzin04-29jun2023.pdf",
     "poem_count": 21
   },
   {
@@ -36,7 +36,7 @@
     "name": "Tropicalzin 5",
     "date": "20 de julho de 2023",
     "cover_image": "Tropicalzin05-20jul2023.webp",
-    "pdf_url": "https://tropicalversos.com/midias/revistas/pdf/Tropicalzin05-20jul2023.pdf",
+    "pdf_url": "./midias/revistas/pdf/Tropicalzin05-20jul2023.pdf",
     "poem_count": 20
   },
   {
@@ -44,7 +44,7 @@
     "name": "Tropicalzin 6",
     "date": "17 de agosto de 2023",
     "cover_image": "Tropicalzin06-17ago2023.webp",
-    "pdf_url": "https://tropicalversos.com/midias/revistas/pdf/Tropicalzin06-17ago2023.pdf",
+    "pdf_url": "./midias/revistas/pdf/Tropicalzin06-17ago2023.pdf",
     "poem_count": 16
   },
   {
@@ -52,7 +52,7 @@
     "name": "Tropicalzin 7",
     "date": "28 de setembro de 2023",
     "cover_image": "Tropicalzin07-28set2023.webp",
-    "pdf_url": "https://tropicalversos.com/midias/revistas/pdf/Tropicalzin07-28set2023.pdf",
+    "pdf_url": "./midias/revistas/pdf/Tropicalzin07-28set2023.pdf",
     "poem_count": 19
   },
   {
@@ -60,7 +60,7 @@
     "name": "Tropicalzin 8",
     "date": "26 de outubro de 2023",
     "cover_image": "Tropicalzin08-26out2023.webp",
-    "pdf_url": "https://tropicalversos.com/midias/revistas/pdf/Tropicalzin08-26out2023.pdf",
+    "pdf_url": "./midias/revistas/pdf/Tropicalzin08-26out2023.pdf",
     "poem_count": 18
   },
   {
@@ -68,7 +68,7 @@
     "name": "Tropicalzin 9",
     "date": "30 de novembro de 2023",
     "cover_image": "Tropicalzin09-30nov2023.webp",
-    "pdf_url": "https://tropicalversos.com/midias/revistas/pdf/Tropicalzin09-30nov2023.pdf",
+    "pdf_url": "./midias/revistas/pdf/Tropicalzin09-30nov2023.pdf",
     "poem_count": 17
   },
   {
@@ -76,7 +76,7 @@
     "name": "Tropicalzin 10",
     "date": "22 de dezembro de 2023",
     "cover_image": "Tropicalzin10-22dez2023.webp",
-    "pdf_url": "https://tropicalversos.com/midias/revistas/pdf/Tropicalzin10-22dez2023.pdf",
+    "pdf_url": "./midias/revistas/pdf/Tropicalzin10-22dez2023.pdf",
     "poem_count": 20
   },
   {
@@ -84,7 +84,7 @@
     "name": "Tropicalzin 11",
     "date": "20 de janeiro de 2024",
     "cover_image": "Tropicalzin11-20jan2024.webp",
-    "pdf_url": "https://tropicalversos.com/midias/revistas/pdf/Tropicalzin11-20jan2024.pdf",
+    "pdf_url": "./midias/revistas/pdf/Tropicalzin11-20jan2024.pdf",
     "poem_count": 19
   },
   {
@@ -92,7 +92,7 @@
     "name": "Tropicalzin 12",
     "date": "22 de fevereiro de 2024",
     "cover_image": "Tropicalzin12-22fev2024.webp",
-    "pdf_url": "https://tropicalversos.com/midias/revistas/pdf/Tropicalzin12-22fev2024.pdf",
+    "pdf_url": "./midias/revistas/pdf/Tropicalzin12-22fev2024.pdf",
     "poem_count": 19
   },
   {
@@ -100,7 +100,7 @@
     "name": "Tropicalzin 13",
     "date": "31 de março de 2024",
     "cover_image": "Tropicalzin13-31mar2024.webp",
-    "pdf_url": "https://tropicalversos.com/midias/revistas/pdf/Tropicalzin13-31mar2024.pdf",
+    "pdf_url": "./midias/revistas/pdf/Tropicalzin13-31mar2024.pdf",
     "poem_count": 21
   },
   {
@@ -108,7 +108,7 @@
     "name": "Tropicalzin 14",
     "date": "28 de abril de 2024",
     "cover_image": "Tropicalzin14-28abr2024.webp",
-    "pdf_url": "https://tropicalversos.com/midias/revistas/pdf/Tropicalzin14-28abr2024.pdf",
+    "pdf_url": "./midias/revistas/pdf/Tropicalzin14-28abr2024.pdf",
     "poem_count": 17
   },
   {
@@ -116,7 +116,7 @@
     "name": "Tropicalzin 15",
     "date": "24 de maio de 2024",
     "cover_image": "Tropicalzin15-24mai2024.webp",
-    "pdf_url": "https://tropicalversos.com/midias/revistas/pdf/Tropicalzin15-24mai2024.pdf",
+    "pdf_url": "./midias/revistas/pdf/Tropicalzin15-24mai2024.pdf",
     "poem_count": 17
   },
   {
@@ -124,7 +124,7 @@
     "name": "Tropicalzin 16",
     "date": "30 de junho de 2024",
     "cover_image": "Tropicalzin16-30jun2024.webp",
-    "pdf_url": "https://tropicalversos.com/midias/revistas/pdf/Tropicalzin16-30jun2024.pdf",
+    "pdf_url": "./midias/revistas/pdf/Tropicalzin16-30jun2024.pdf",
     "poem_count": 14
   },
   {
@@ -132,7 +132,7 @@
     "name": "Tropicalzin 17",
     "date": "14 de agosto de 2024",
     "cover_image": "Tropicalzin17-14ago2024.webp",
-    "pdf_url": "https://tropicalversos.com/midias/revistas/pdf/Tropicalzin17-14ago2024.pdf",
+    "pdf_url": "./midias/revistas/pdf/Tropicalzin17-14ago2024.pdf",
     "poem_count": 15
   },
   {
@@ -140,7 +140,7 @@
     "name": "Tropicalzin 18",
     "date": "13 de novembro de 2024",
     "cover_image": "Tropicalzin18-13nov2024.webp",
-    "pdf_url": "https://tropicalversos.com/midias/revistas/pdf/Tropicalzin18-13nov2024.pdf",
+    "pdf_url": "./midias/revistas/pdf/Tropicalzin18-13nov2024.pdf",
     "poem_count": 24
   },
   {
@@ -148,7 +148,7 @@
     "name": "Tropicalzin 19",
     "date": "19 de janeiro de 2025",
     "cover_image": "Tropicalzin19-19jan2025.webp",
-    "pdf_url": "https://tropicalversos.com/midias/revistas/pdf/Tropicalzin19-19jan2025.pdf",
+    "pdf_url": "./midias/revistas/pdf/Tropicalzin19-19jan2025.pdf",
     "poem_count": 21
   },
   {
@@ -156,7 +156,7 @@
     "name": "Tropicalzin 20",
     "date": "20 de março de 2025",
     "cover_image": "Tropicalzin20-20mar2025.webp",
-    "pdf_url": "https://tropicalversos.com/midias/revistas/pdf/Tropicalzin20-20mar2025.pdf",
+    "pdf_url": "./midias/revistas/pdf/Tropicalzin20-20mar2025.pdf",
     "poem_count": 20
   },
   {
@@ -164,7 +164,7 @@
     "name": "Tropicalzin 21",
     "date": "13 de junho de 2025",
     "cover_image": "Tropicalzin21-13jun2025.webp",
-    "pdf_url": "https://tropicalversos.com/midias/revistas/pdf/Tropicalzin21-13jun2025.pdf",
+    "pdf_url": "./midias/revistas/pdf/Tropicalzin21-13jun2025.pdf",
     "poem_count": 17
   }
 ]

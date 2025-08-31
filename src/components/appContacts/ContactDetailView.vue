@@ -9,18 +9,18 @@
       <p class="profile-location">
         <span>{{ contact.types.join(' / ') }}</span>
         <span v-if="contact.cityName"> • </span>
-        <span>{{ contact.cityName }}, {{ contact.estado }}</span>
+        <span>{{ contact.cityName }}, {{ contact.estado }}, {{ contact.pais }}</span>
       </p></div>
 
     <div class="divider"></div>
 
     <div class="profile-details">
       <div v-if="contact.descricao" class="detail-item">
-        <h3>About</h3>
+        <h3>Sobre</h3>
         <p>{{ contact.descricao }}</p>
       </div>
       <div v-if="contact.born_date" class="detail-item">
-        <h3>Born</h3>
+        <h3>Nascimento</h3>
         <p>{{ contact.born_date }}</p>
       </div>
       <div v-if="contact.link" class="detail-item">

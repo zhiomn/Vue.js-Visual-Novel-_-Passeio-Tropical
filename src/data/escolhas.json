@@ -60,7 +60,7 @@
     "textId": "texto_08",
     "cena": "Ponte",
     "escolha": "Margens",
-    "msg_antes": "Nas margens você vê o que é deixado de lado... lixo jogado, bichos mortos... parece que lá é onde deixam aquilo onde não veem mais valor e brilho... mas nelas você também vê plantas e animais, que resistem ao desprezo e aos absurdos da insensibilidade humana...",
+    "msg_antes": "Nas margens você vê o que é deixado de lado... lixo jogado, bichos mortos... parece que lá é onde deixam aquilo em que não veem mais valor e brilho... mas nelas você também vê plantas e animais, que resistem ao desprezo e aos absurdos da insensibilidade humana...",
     "imagem": "Tropicalzin08-26out2023.webp"
   },
   {
@@ -156,7 +156,7 @@
     "textId": "texto_20",
     "cena": "Jardim",
     "escolha": "Flores",
-    "msg_antes": "Pétalas lilás de tumbérgias colorem a paisagem... abelhas pousam na flores transportando pólen entre elas... pássaros pousam no chão para pegar galhos secos e os levam para fazerem seus ninhos...",
+    "msg_antes": "Pétalas lilás de tumbérgias colorem a paisagem... abelhas pousam nas flores transportando pólen entre elas... pássaros pousam no chão para pegar galhos secos e os levam para fazerem seus ninhos...",
     "imagem": "Tropicalzin20-20mar2025.jpeg"
   },
   {

@@ -17,18 +17,19 @@ export function getUnlockedAudioTracks(playerStore, readStatusStore, masterConte
             const isUnlocked = config.allDataRevealed || readStatusStore.isRead('notes', `note_${escolha.id}`);
             const content = isUnlocked ? masterContentMap.get(escolha.id) : null;
             
-            // --- THE FIX IS HERE ---
-            // The logic now directly uses the `obraId` from the text to find the cover image.
             const obra = obrasData.find(o => o.id === texto.obraId);
             const coverImagePath = obra ? `./assets/gallery/${obra.cover_image}` : '';
-            const audioPath = `/audio/${texto.audio}`;
+            
+            // --- THE FIX IS HERE ---
+            // Changed path from absolute "/audio/..." to relative "./audio/..."
+            const audioPath = `./audio/${texto.audio}`;
             
             return {
                 id: `audio_texto_${escolha.id}`,
                 title: isUnlocked ? content?.title : '???',
                 authorName: isUnlocked ? content?.authorName : '???',
                 obraName: isUnlocked ? content?.obraName : '',
-                coverImage: coverImagePath, // Use the new, direct path
+                coverImage: coverImagePath,
                 audioFile: audioPath,
                 isUnlocked: isUnlocked,
             };

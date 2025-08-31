@@ -3,6 +3,8 @@ import { usePlayerStore } from '@/stores/player';
 import { useNarrationStore } from '@/stores/narration';
 import { useDisplayStore } from '@/stores/useDisplayStore';
 import { useRunStore } from '@/stores/useRunStore';
+import { usePhoneStore } from '@/stores/phone';
+import { useReadStatusStore } from '@/stores/readStatus'; // <-- IMPORT ADICIONADO
 import { getStartingSequence } from '@/gameLogic/run/start';
 import { getAvailableChoices, getRandomScene, getTravelOptions } from '@/gameLogic/run/explore';
 import { getEndingSequence } from '@/gameLogic/run/end';
@@ -15,7 +17,6 @@ import { createLogger } from '@/utils/loggers/loggerFactory';
 
 const logger = createLogger('RunOrchestrator', '#d946ef');
 
-// --- THE FIX IS HERE: Explicit list for suppressing app unlock messages ---
 const APP_UNLOCK_MESSAGE_SUPPRESS_LIST = [
   'contacts',
   'map',
@@ -34,9 +35,9 @@ async function _transitionToScene(sceneName) {
     const narrationStore = useNarrationStore();
     const playerStore = usePlayerStore();
     const runStore = useRunStore();
+    const readStatusStore = useReadStatusStore(); // <-- INSTÂNCIA DA STORE OBTIDA
 
     logger.group(`Orchestrating robust transition to scene: ${sceneName}`);
-
 
     playerStore.setNarrationState({ lineQueue: [], currentLine: '' });
     playerStore.awaitingTravelPrompt = false;
@@ -46,6 +47,11 @@ async function _transitionToScene(sceneName) {
         logger.groupEnd();
         return;
     }
+    
+    // --- A CORREÇÃO ESTÁ AQUI ---
+    // A visita à cena agora é marcada permanentemente para desbloquear conteúdo.
+    readStatusStore.markSceneAsViewed(sceneData.id);
+
     runStore.setCurrentScene(sceneData);
     runStore.setTravelOptions([]);
     playerStore.lastSceneName = sceneName;
@@ -55,7 +61,11 @@ async function _transitionToScene(sceneName) {
     
     runStore.setGamePhase('EXPLORING');
     displayStore.setDialogueVisibility(true);
-    const narrationText = sceneData.msg_entrada || `Você chegou em ${sceneData.nome}.`;
+
+    const narrationText = playerStore.runCount > 1 && sceneData.msg_javisitou
+      ? sceneData.msg_javisitou
+      : sceneData.msg_entrada || `Você chegou em ${sceneData.nome}.`;
+
     await narrationStore.speak([narrationText]);
     
     const choices = getAvailableChoices(sceneName, playerStore.unlockedEscolhaIds);
@@ -130,8 +140,10 @@ async function resumeExploring(sceneName) {
     if (playerStore.narrationState && playerStore.narrationState.currentLine) {
         narrationStore.rehydrate(playerStore.narrationState);
     } else {
-        const narrationText = sceneData.msg_entrada || `Você chegou em ${sceneData.nome}.`;
-        await narrationStore.speak([narrationText]);
+      const narrationText = playerStore.runCount > 1 && sceneData.msg_javisitou
+        ? sceneData.msg_javisitou
+        : sceneData.msg_entrada || `Você chegou em ${sceneData.nome}.`;
+      await narrationStore.speak([narrationText]);
     }
     
     if (playerStore.awaitingTravelPrompt) {
@@ -202,6 +214,7 @@ async function handleRunStartSnapshot(snapshot) {
 
 export async function selectChoice(escolhaId) {
     const displayStore = useDisplayStore();
+    const phoneStore = usePhoneStore();
     await displayStore.withInputLock(async () => {
         logger.group(`Orchestrating choice selection: ${escolhaId}`);
         
@@ -221,14 +234,20 @@ export async function selectChoice(escolhaId) {
             dialogueSequence.push(escolha.msg_antes);
         }
 
-        // --- THE CORRECTED LOGIC IS HERE ---
+        let shouldTriggerNotification = false;
         newlyUnlocked.forEach(item => {
-            if (item.type === 'ai') {
-                dialogueSequence.push(`O agente ${item.name} foi desbloqueado no terminal.`);
-            } else if (item.type === 'app' && !APP_UNLOCK_MESSAGE_SUPPRESS_LIST.includes(item.id)) {
-                dialogueSequence.push(`O app ${item.name} foi desbloqueado no celular.`);
+            if (item.unlockMessage) {
+                dialogueSequence.push(item.unlockMessage.replace('[AppName]', item.name));
+            }
+
+            if (item.type === 'ai' || (item.type === 'app' && !APP_UNLOCK_MESSAGE_SUPPRESS_LIST.includes(item.id))) {
+                shouldTriggerNotification = true;
             }
         });
+
+        if (shouldTriggerNotification) {
+            phoneStore.setNewAppNotification();
+        }
 
         playerStore.awaitingTravelPrompt = true;
         _startTravelSequence(dialogueSequence);

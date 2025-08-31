@@ -1,26 +1,34 @@
 [
   {
     "id": "video_1",
-    "titulo": "A Construção de um Verso",
-    "descricao": "Uma visão aprofundada do processo criativo por trás da poesia que impulsiona o projeto, explorando as inspirações e as técnicas.",
-    "thumbnail": "thumbnail1.webp",
-    "categoria": "Processo Criativo",
-    "link": "https://www.youtube.com/watch?v=Mr4wdI4DtAg"
+    "titulo": "Noite de Sexta",
+    "descricao": "Um poeta com sono porque se meteu a tentar fazer um jogo...",
+    "thumbnail": "noite-de-sexta.jpg",
+    "categoria": "Bastidores",
+    "link": "https://youtube.com/shorts/hid7qH4gOTM?feature=share"
   },
   {
     "id": "video_2",
-    "titulo": "Ecos da Arquitetura",
-    "descricao": "Uma análise da arquitetura do jogo, revelando como os sistemas de estado e a lógica de desbloqueio foram projetados para criar uma experiência coesa.",
-    "thumbnail": "thumbnail2.webp",
-    "categoria": "Desenvolvimento",
-    "link": "https://www.youtube.com/watch?v=o-YBDTqX_ZU"
+    "titulo": "Beckstage #1: falando sozinho",
+    "descricao": "Podcast gravado no bambuzal em 2024...",
+    "thumbnail": "beckstage1.webp",
+    "categoria": "Podcast",
+    "link": "https://www.youtube.com/watch?v=KOiSRnHarSg"
   },
   {
     "id": "video_3",
-    "titulo": "O Despertar",
-    "descricao": "A transmissão final.",
-    "thumbnail": "thumbnail3.webp",
-    "categoria": "",
-    "link": "https://www.youtube.com/watch?v=xvFZjo5PgG0"
+    "titulo": "Dança às avessas: 'Do Inteiror'",
+    "descricao": "Dançando uma música do Castello Branco em 2017...",
+    "thumbnail": "dointerior.webp",
+    "categoria": "Dança",
+    "link": "https://www.youtube.com/watch?v=yihQbhJIiGY"
+  },
+  {
+    "id": "video_4",
+    "titulo": "Manhã de Domingo",
+    "descricao": "É hoje! :) (falo também sobre as revistas)",
+    "thumbnail": "domingo.jpg",
+    "categoria": "Bastidores",
+    "link": "https://youtube.com/shorts/aFLjzw8M-7c?feature=share"
   }
 ]

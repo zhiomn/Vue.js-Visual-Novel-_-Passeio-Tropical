@@ -9,13 +9,12 @@ const logger = createLogger('UnlocksService', '#a855f7');
 
 /**
  * Checks what new content (apps or AIs) is unlocked by the latest player action.
- * @returns {{type: string, name: string}[]} An array of unlocked items.
+ * @returns {{id: string, type: string, name: string, unlockMessage: string}[]} An array of rich unlocked item objects.
  */
 export function getNewlyUnlockedContent() {
   const playerStore = usePlayerStore();
   const phoneStore = usePhoneStore();
 
-  // Simulate the player's state *before* the last choice was made
   const previousPlayerState = {
     runCount: playerStore.runCount,
     choiceCount: playerStore.unlockedChoiceCount - 1,
@@ -38,7 +37,6 @@ export function getNewlyUnlockedContent() {
   for (const item of allUnlockables) {
     if (!item.requirementId) continue;
 
-    // Check if it's already unlocked from a terminal activation
     const appState = phoneStore.getAppState(item.id);
     if (appState.isActivated) continue;
 
@@ -46,11 +44,18 @@ export function getNewlyUnlockedContent() {
     const isMetNow = evaluateRequirement(item.requirementId, currentPlayerState);
 
     if (!wasMetBefore && isMetNow) {
-      logger.log(`New unlock detected: ${item.unlockType} - ${item.name || item.nome_br}`);
-      newlyUnlocked.push({
+      const name = item.name || item.nome_br;
+      logger.log(`New unlock detected: ${item.unlockType} - ${name}`);
+      
+      const unlockObject = {
+        id: item.id,
         type: item.unlockType,
-        name: item.name || item.nome_br,
-      });
+        name: name,
+        // --- THE FIX IS HERE: Standardizing to camelCase ---
+        unlockMessage: item.unlock_message,
+      };
+
+      newlyUnlocked.push(unlockObject);
     }
   }
   

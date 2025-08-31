@@ -3,7 +3,7 @@ import { createPinia } from 'pinia';
 import { usePlayerStore } from '@/stores/player';
 import { useReadStatusStore } from '@/stores/readStatus';
 import appsData from '@/data/apps.json';
-import escolhasData from '@/data/escolhas.json'; // <-- IMPORT ADICIONADO
+import escolhasData from '@/data/escolhas.json';
 
 import App from './App.vue';
 import './assets/main.css';
@@ -22,16 +22,24 @@ if (import.meta.env.DEV) {
   };
   
   const jumpToEnd = () => {
-    console.warn('[DEV TOOL] Jumping to end-game state...');
+    console.warn('[DEV TOOL] Jumping to pre-finale state (Architect Awakened)...');
     const playerStore = usePlayerStore(pinia);
     const readStatusStore = useReadStatusStore(pinia);
 
+    // This now jumps to the point where the player has finished the 3 runs
+    // and has just awakened the architect, making the 'Manual' AI available.
     readStatusStore.markAllAsRead();
     playerStore.runCount = 3;
     playerStore.hasArchitectAwakened = true;
-    playerStore.isGameFinished = true;
-    playerStore.isFinalUnlockActive = true;
-    playerStore.activatedApps = appsData.map(app => app.id);
+    
+    // --- CRITICAL FIX: DO NOT set these flags ---
+    // playerStore.isGameFinished = true; 
+    // playerStore.isFinalUnlockActive = true; 
+    
+    // Activate all apps EXCEPT the final one unlocked by Manual.
+    playerStore.activatedApps = appsData
+      .map(app => app.id)
+      .filter(id => id !== 'video');
     
     playerStore.saveProgress();
     readStatusStore.saveReadStatus();
@@ -40,30 +48,24 @@ if (import.meta.env.DEV) {
     location.reload();
   };
 
-  // --- A NOVA FERRAMENTA DE DEPURAÇÃO ESTÁ AQUI ---
   const jumpToRun2 = () => {
     console.warn('[DEV TOOL] Jumping to the start of Run 2...');
     const playerStore = usePlayerStore(pinia);
     const readStatusStore = useReadStatusStore(pinia);
 
-    // 1. Simular a conclusão da Run 1 (7 escolhas feitas)
     const choicesToUnlock = escolhasData.slice(0, 7).map(e => e.id);
     playerStore.unlockedEscolhaIds = choicesToUnlock;
 
-    // 2. Marcar as notas correspondentes como lidas para acionar desbloqueios
     choicesToUnlock.forEach(id => {
-      // Simula o desbloqueio causal que ocorreria no jogo
       readStatusStore.markAsRead('notes', `note_${id}`);
     });
 
-    // 3. Definir o estado do jogador para o início da Run 2
     playerStore.runCount = 2;
     playerStore.activatedApps = ['messages', 'notes', 'gallery', 'ajustes'];
-    playerStore.gamePhase = 'STARTING'; // Garante que comece na sequência de início
+    playerStore.gamePhase = 'STARTING';
     playerStore.lastSceneName = null;
     playerStore.visitedScenesInThisRun = [];
 
-    // 4. Salvar e recarregar
     playerStore.saveProgress();
     readStatusStore.saveReadStatus();
     console.warn('[DEV TOOL] State for Run 2 saved. Reloading...');
@@ -72,7 +74,7 @@ if (import.meta.env.DEV) {
 
   window.resetGame = resetGame;
   window.jumpToEnd = jumpToEnd;
-  window.jumpToRun2 = jumpToRun2; // <-- Expõe a nova função
+  window.jumpToRun2 = jumpToRun2;
   
   console.log('[DEV TOOL] Funções disponíveis: resetGame(), jumpToRun2(), jumpToEnd()');
 }

@@ -13,7 +13,7 @@
     "nome": "São Roque do Canaã",
     "estado": "Espírito Santo",
     "pais": "Brasil",
-    "texto": "A história de São Roque do Canaã é marcada pela imigração italiana, que se iniciou por volta de 1875. [12] Fugindo de uma grave epidemia que assolava a região, os imigrantes fizeram novenas a São Roque, o santo protetor contra doenças. [12] Atribuindo o fim da peste à intercessão do santo, construíram um oratório por volta de 1889, onde hoje se encontra a Igreja Matriz. [12] O nome \"do Canaã\" foi adicionado em homenagem ao Vale do Canaã, para diferenciar a localidade de outras com o mesmo nome. [7, 12] A cultura local preserva fortemente as tradições italianas, visíveis na culinária, nas festas e no dialeto vêneto, ainda falado por alguns moradores.",
+    "texto": "A história de São Roque do Canaã é marcada pela imigração italiana, que se iniciou por volta de 1875. Fugindo de uma grave epidemia que assolava a região, os imigrantes fizeram novenas a São Roque, o santo protetor contra doenças. Atribuindo o fim da peste à intercessão do santo, construíram um oratório por volta de 1889, onde hoje se encontra a Igreja Matriz. O nome \"do Canaã\" foi adicionado em homenagem ao Vale do Canaã, para diferenciar a localidade de outras com o mesmo nome. A cultura local preserva fortemente as tradições italianas, visíveis na culinária, nas festas e no dialeto vêneto, ainda falado por alguns moradores.",
     "foto": "saoroque-es.jpg",
     "foto_link": "https://www.saoroquedocanaa.es.gov.br/pagina/ler/2081/a-cidade"
   },
@@ -22,7 +22,7 @@
     "nome": "Itarana",
     "estado": "Espírito Santo",
     "pais": "Brasil",
-    "texto": "Colonizada na segunda metade do século XIX por imigrantes italianos vindos de Santa Teresa, a cidade de Itarana tem sua origem na povoação de Figueira de Santa Joana. [36] O nome Itarana, que significa \"Pedra da Onça\" em tupi, foi adotado em 1943. [9] A cultura local é uma mistura harmoniosa das heranças italianas e alemãs. [9] Em 2016, a língua pomerana, de origem alemã, foi cooficializada no município, reflexo da forte presença dessa comunidade. [25] A cidade é conhecida por suas belezas naturais, com montanhas e cachoeiras, e por eventos culturais como o Tombo da Papa e a Festa do Café, que celebram as tradições rurais e a identidade local. [31]",
+    "texto": "Colonizada na segunda metade do século XIX por imigrantes italianos vindos de Santa Teresa, a cidade de Itarana tem sua origem na povoação de Figueira de Santa Joana. O nome Itarana, que significa \"Pedra da Onça\" em tupi, foi adotado em 1943. A cultura local é uma mistura harmoniosa das heranças italianas e alemãs. Em 2016, a língua pomerana, de origem alemã, foi cooficializada no município, reflexo da forte presença dessa comunidade. A cidade é conhecida por suas belezas naturais, com montanhas e cachoeiras, e por eventos culturais como o Tombo da Papa e a Festa do Café, que celebram as tradições rurais e a identidade local.",
     "foto": "itarana-es.jpg",
     "foto_link": "https://commons.wikimedia.org/wiki/File:Itarana-ES_(50894880968).jpg"
   },
@@ -31,25 +31,34 @@
     "nome": "Vitória",
     "estado": "Espírito Santo",
     "pais": "Brasil",
-    "texto": "Fundada em 8 de setembro de 1551, Vitória é uma das cidades mais antigas do Brasil. [8] O nome da cidade é uma homenagem à vitória portuguesa sobre os índios goitacás. [43] A capital capixaba preserva um rico patrimônio histórico, com edificações que datam do século XVI, como a Capela de Santa Luzia, a construção mais antiga da cidade. [8] A influência da colonização europeia é visível na arquitetura religiosa e nos prédios históricos do centro. [14] A cultura local é marcada por manifestações tradicionais, como a confecção das panelas de barro pelas Paneleiras de Goiabeiras, e por um vibrante calendário de eventos. [14]",
+    "texto": "Fundada em 8 de setembro de 1551, Vitória é uma das cidades mais antigas do Brasil. O nome da cidade é uma homenagem à vitória portuguesa sobre os índios goitacás. A capital capixaba preserva um rico patrimônio histórico, com edificações que datam do século XVI, como a Capela de Santa Luzia, a construção mais antiga da cidade. A influência da colonização europeia é visível na arquitetura religiosa e nos prédios históricos do centro. A cultura local é marcada por manifestações tradicionais, como a confecção das panelas de barro pelas Paneleiras de Goiabeiras, e por um vibrante calendário de eventos.",
     "foto": "vitoria-es.jpg",
-    "foto_link": "https://commons.wikimedia.org/wiki/File:Itarana-ES_(50894880968).jpg"
+    "foto_link": "https://pt.wikipedia.org/wiki/Vit%C3%B3ria_(Esp%C3%ADrito_Santo)#/media/Ficheiro:-2016-11-05_ao_13-_Vit%C3%B3ria_94_Romerito_Pontes_(30875449812)_(cropped).jpg"
   },
   {
     "id": "belohorizonte_mg",
     "nome": "Belo Horizonte",
     "estado": "Minas Gerais",
     "pais": "Brasil",
-    "texto": "Inaugurada em 1897 para ser a nova capital de Minas Gerais, Belo Horizonte foi a primeira cidade planejada do Brasil. [39] O projeto urbanístico de Aarão Reis, inspirado em ideais republicanos e em cidades europeias, previa ruas largas e quarteirões regulares. [39] Culturalmente, a cidade se destaca pela efervescência da vida noturna, sendo conhecida como a \"Capital Nacional dos Botecos\". [17] BH foi palco do surgimento do movimento musical Clube da Esquina, que projetou a música mineira para o mundo. O Conjunto Arquitetônico da Pampulha, projetado por Oscar Niemeyer, é um marco do modernismo brasileiro e foi reconhecido como Patrimônio Cultural da Humanidade pela UNESCO. [39]",
+    "texto": "Inaugurada em 1897 para ser a nova capital de Minas Gerais, Belo Horizonte foi a primeira cidade planejada do Brasil. O projeto urbanístico de Aarão Reis, inspirado em ideais republicanos e em cidades europeias, previa ruas largas e quarteirões regulares. Culturalmente, a cidade se destaca pela efervescência da vida noturna, sendo conhecida como a \"Capital Nacional dos Botecos\". BH foi palco do surgimento do movimento musical Clube da Esquina, que projetou a música mineira para o mundo. O Conjunto Arquitetônico da Pampulha, projetado por Oscar Niemeyer, é um marco do modernismo brasileiro e foi reconhecido como Patrimônio Cultural da Humanidade pela UNESCO.",
     "foto": "belohorizonte-mg.jpg",
     "foto_link": "https://commons.wikimedia.org/wiki/File:Belo_Horizonte_Brazil_Skyline_Aerial,_December_2024.jpg"
+  },
+    {
+    "id": "congonhas-mg",
+    "nome": "Congonhas",
+    "estado": "Minas Gerais",
+    "pais": "Brasil",
+    "texto": "A história de Congonhas está ligada à descoberta de ouro no século XVIII, que atraiu exploradores e deu origem ao arraial. O nome da cidade deriva de um arbusto comum na região, chamado 'congonha', palavra de origem tupi-guarani que significa 'o que alimenta'. No entanto, a cidade é mundialmente conhecida por abrigar uma das mais importantes obras do barroco: o Santuário do Bom Jesus de Matosinhos. Este complexo religioso, reconhecido como Patrimônio Mundial pela UNESCO, foi construído a partir de uma promessa do português Feliciano Mendes, em agradecimento por uma cura. O local é famoso pelas esculturas dos Doze Profetas e das cenas da Paixão de Cristo, obras-primas de Antônio Francisco Lisboa, o Aleijadinho.",
+    "foto": "congonhas-mg.jpg",
+    "foto_link": "https://pt.wikipedia.org/wiki/Congonhas#/media/Ficheiro:Vista_Panor%C3%A2mica_da_Cidade_de_Congonhas_-_MG.jpg"
   },
   {
     "id": "lins_sp",
     "nome": "Lins",
     "estado": "São Paulo",
     "pais": "Brasil",
-    "texto": "Lins surgiu no início do século XX, com a expansão da Estrada de Ferro Noroeste do Brasil, em um local que era cruzamento de uma antiga trilha de índios coroados. [46] O nome da estação, \"Albuquerque Lins\", foi uma homenagem ao então presidente do estado de São Paulo. [46] A cidade preserva sua herança cultural em espaços como o Museu Histórico de Lins, localizado na antiga estação ferroviária, que retrata a história local e dedica parte de sua exposição à cultura japonesa, muito presente na região. [11, 53] A cultura grega também deixou sua marca na cidade, com a construção da Igreja Ortodoxa Grega. [53]",
+    "texto": "Lins surgiu no início do século XX, com a expansão da Estrada de Ferro Noroeste do Brasil, em um local que era cruzamento de uma antiga trilha de índios coroados. O nome da estação, \"Albuquerque Lins\", foi uma homenagem ao então presidente do estado de São Paulo. A cidade preserva sua herança cultural em espaços como o Museu Histórico de Lins, localizado na antiga estação ferroviária, que retrata a história local e dedica parte de sua exposição à cultura japonesa, muito presente na região. A cultura grega também deixou sua marca na cidade, com a construção da Igreja Ortodoxa Grega.",
     "foto": "lins-sp.jpg",
     "foto_link": "https://commons.wikimedia.org/wiki/File:Vistanoturnalins.jpg"
   },
@@ -58,9 +67,27 @@
     "nome": "Tupã",
     "estado": "São Paulo",
     "pais": "Brasil",
-    "texto": "Fundada em 12 de outubro de 1929 por Luiz de Souza Leão, Tupã teve seu nome escolhido em homenagem aos povos indígenas que habitavam a região. [35] A cidade cresceu à sombra do cultivo do café, com forte influência de imigrantes, especialmente letos e japoneses. [35] A construção da ferrovia na década de 1920 foi um marco para o desenvolvimento local, facilitando o escoamento da produção agrícola. [16] Tupã é conhecida como a \"Capital Nacional da Fotografia\" e sedia o Museu Histórico e Pedagógico Índia Vanuíre, um dos mais importantes do país dedicados à cultura indígena. [44]",
+    "texto": "Fundada em 12 de outubro de 1929 por Luiz de Souza Leão, Tupã teve seu nome escolhido em homenagem aos povos indígenas que habitavam a região. A cidade cresceu à sombra do cultivo do café, com forte influência de imigrantes, especialmente letos e japoneses. A construção da ferrovia na década de 1920 foi um marco para o desenvolvimento local, facilitando o escoamento da produção agrícola. Tupã é conhecida como a \"Capital Nacional da Fotografia\" e sedia o Museu Histórico e Pedagógico Índia Vanuíre, um dos mais importantes do país dedicados à cultura indígena.",
     "foto": "tupa-sp.jpg",
     "foto_link": "https://www.tupa.sp.gov.br/pagina/3/perfil-da-cidade"
+  },
+  {
+    "id": "riodejaneiro-rj",
+    "nome": "Rio de Janeiro",
+    "estado": "Rio de Janeiro",
+    "pais": "Brasil",
+    "texto": "Descoberta em 1º de janeiro de 1502, a baía que abriga a cidade foi inicialmente confundida com a foz de um rio, originando o nome Rio de Janeiro. Oficialmente fundada em 1565, a cidade tornou-se a capital do Brasil em 1763, posição que ocupou por quase 200 anos. Palco da chegada da família real portuguesa em 1808, o Rio de Janeiro floresceu como centro político e cultural do país. Sua paisagem icônica, com o Pão de Açúcar e o Cristo Redentor, aliada à efervescência cultural do Carnaval e do samba, fazem da cidade um dos destinos mais famosos do mundo, refletindo uma rica mistura de influências indígenas, europeias e africanas.",
+    "foto": "riodejaneiro-rj.jpg",
+    "foto_link": "https://pt.wikipedia.org/wiki/Ficheiro:Cidade_Maravilhosa.jpg"
+  },
+  {
+    "id": "saopaulo-sp",
+    "nome": "São Paulo",
+    "estado": "São Paulo",
+    "pais": "Brasil",
+    "texto": "Fundada em 25 de janeiro de 1554 por padres jesuítas, a cidade de São Paulo surgiu como uma missão para catequizar os indígenas. Inicialmente um posto avançado dos bandeirantes, a cidade ganhou proeminência econômica com o ciclo do café no século XIX. A chegada de imigrantes de diversas partes do mundo no final do século XIX e início do XX impulsionou seu crescimento e a transformou em uma metrópole multicultural. Hoje, São Paulo é o principal centro financeiro da América do Sul e um polo de cultura, abrigando eventos como a Semana de Arte Moderna de 1922, que revolucionou a arte brasileira.",
+    "foto": "saopaulo-sp.jpg",
+    "foto_link": "https://pt.wikipedia.org/wiki/S%C3%A3o_Paulo#/media/Ficheiro:Marginal_Pinheiros_e_Jockey_Club.jpg"
   },
   {
     "id": "marianomoro-rs",
@@ -76,7 +103,7 @@
     "nome": "Lisboa",
     "estado": "",
     "pais": "Portugal",
-    "texto": "Com mais de 20 séculos de existência, a história de Lisboa é marcada pela passagem de diversos povos, como fenícios, romanos e mouros. [13, 24] A cidade prosperou como um importante centro comercial e cultural sob o domínio muçulmano, até a reconquista cristã em 1147. [24] A Era dos Descobrimentos, nos séculos XV e XVI, foi um período de grande esplendor, quando Lisboa se tornou a \"Senhora dos Mares\". Em 1755, a cidade foi devastada por um terremoto, seguido de um tsunami e um incêndio, mas foi reconstruída. [24] A cultura lisboeta é rica e diversificada, com destaque para o Fado, gênero musical classificado como Patrimônio Cultural Imaterial da Humanidade.",
+    "texto": "Com mais de 20 séculos de existência, a história de Lisboa é marcada pela passagem de diversos povos, como fenícios, romanos e mouros. A cidade prosperou como um importante centro comercial e cultural sob o domínio muçulmano, até a reconquista cristã em 1147. A Era dos Descobrimentos, nos séculos XV e XVI, foi um período de grande esplendor, quando Lisboa se tornou a \"Senhora dos Mares\". Em 1755, a cidade foi devastada por um terremoto, seguido de um tsunami e um incêndio, mas foi reconstruída. A cultura lisboeta é rica e diversificada, com destaque para o Fado, gênero musical classificado como Patrimônio Cultural Imaterial da Humanidade.",
     "foto": "lisboa-pt.jpg",
     "foto_link": "https://pt.wikipedia.org/wiki/Ficheiro:Lisbon_(36831596786)_(cropped).jpg"
   },
@@ -94,7 +121,7 @@
     "nome": "São Petersburgo",
     "estado": "Distrito Federal do Noroeste",
     "pais": "Rússia",
-    "texto": "Fundada em 1703 pelo czar Pedro, o Grande, São Petersburgo foi a capital do Império Russo por mais de dois séculos. [20] A cidade foi palco de eventos cruciais da história russa, como a Revolução de 1917, ganhando o apelido de \"Berço das Revoluções\". [21] Durante a Segunda Guerra Mundial, a cidade, então chamada de Leningrado, resistiu a um cerco de quase 900 dias pelas forças nazistas. [20] Conhecida como a \"Veneza do Norte\" por seus canais, São Petersburgo é um Patrimônio Mundial da UNESCO e abriga tesouros culturais como o Museu Hermitage, o terceiro maior do mundo. [10, 21, 26]",
+    "texto": "Fundada em 1703 pelo czar Pedro, o Grande, São Petersburgo foi a capital do Império Russo por mais de dois séculos. A cidade foi palco de eventos cruciais da história russa, como a Revolução de 1917, ganhando o apelido de \"Berço das Revoluções\". Durante a Segunda Guerra Mundial, a cidade, então chamada de Leningrado, resistiu a um cerco de quase 900 dias pelas forças nazistas. Conhecida como a \"Veneza do Norte\" por seus canais, São Petersburgo é um Patrimônio Mundial da UNESCO e abriga tesouros culturais como o Museu Hermitage, o terceiro maior do mundo.",
     "foto": "saopetesburgo-russia.jpg",
     "foto_link": "https://commons.wikimedia.org/wiki/File:4A7A3069_Moika,_Saint_Petersburg_(35468573803).jpg"
   },
@@ -103,7 +130,7 @@
     "nome": "Moscou",
     "estado": "Distrito Federal Central",
     "pais": "Rússia",
-    "texto": "A primeira menção a Moscou data de 1147. [37] A cidade cresceu em torno do Kremlin, uma fortaleza que hoje abriga o governo russo. [29] Ao longo de sua história, Moscou foi palco de eventos marcantes, como o Grande Incêndio de 1547 e a invasão das tropas de Napoleão em 1812. [34] A cidade se tornou a capital da União Soviética em 1918. [34] Culturalmente, Moscou é um centro de grande riqueza, com centenas de museus, teatros e o famoso Balé Bolshoi. [18, 29] As estações de metrô de Moscou são verdadeiros museus subterrâneos, decoradas para homenagear personalidades importantes da história do país. [29]",
+    "texto": "A primeira menção a Moscou data de 1147. A cidade cresceu em torno do Kremlin, uma fortaleza que hoje abriga o governo russo. Ao longo de sua história, Moscou foi palco de eventos marcantes, como o Grande Incêndio de 1547 e a invasão das tropas de Napoleão em 1812. A cidade se tornou a capital da União Soviética em 1918. Culturalmente, Moscou é um centro de grande riqueza, com centenas de museus, teatros e o famoso Balé Bolshoi. As estações de metrô de Moscou são verdadeiros museus subterrâneos, decoradas para homenagear personalidades importantes da história do país.",
     "foto": "moscou-russia.jpg",
     "foto_link": "https://pt.wikipedia.org/wiki/Moscovo#/media/Ficheiro:Saint_Basil's_Cathedral_and_the_Red_Square.jpg"
   },
@@ -121,17 +148,17 @@
     "nome": "Teodósia",
     "estado": "",
     "pais": "Criméia",
-    "texto": "Fundada por gregos no século VI a.C., Teodósia tem uma longa e complexa história, tendo sido ocupada por diversos povos ao longo dos séculos. [19] Chamada de Caffa durante o período em que foi uma colônia genovesa, tornou-se um importante centro de comércio de escravos. A cidade também é conhecida por ter sido um dos pontos de entrada da Peste Negra na Europa, no século XIV, trazida por navios genoveses. Mais tarde, sob o domínio do Império Otomano, foi renomeada para Keve. [19] Hoje, Teodósia é um importante porto e um popular destino turístico de veraneio. [19]",
-    "foto": "feodosa-crimeia.jpg",
+    "texto": "Fundada por gregos no século VI a.C., Teodósia tem uma longa e complexa história, tendo sido ocupada por diversos povos ao longo dos séculos. Chamada de Caffa durante o período em que foi uma colônia genovesa, tornou-se um importante centro de comércio de escravos. A cidade também é conhecida por ter sido um dos pontos de entrada da Peste Negra na Europa, no século XIV, trazida por navios genoveses. Mais tarde, sob o domínio do Império Otomano, foi renomeada para Keve. Hoje, Teodósia é um importante porto e um popular destino turístico de veraneio.",
+    "foto": "feodosia-crimeia.jpg",
     "foto_link": ""
   },
   {
     "id": "pomeranie_russia",
-    "nome": "Pomeranie",
+    "nome": "Vila Pomerana",
     "estado": "Oblast de Novgorod",
     "pais": "Rússia",
-    "texto": "Pomeranie é uma aldeia localizada no distrito de Volotovsky. Embora pequena, a aldeia tem seu lugar na história da arte russa como o local de nascimento do pintor Alexey Bogolyubov, em 1824. Bogolyubov, neto do famoso escritor e filósofo Alexander Radishchev, tornou-se um proeminente pintor de paisagens e marinhas, deixando um legado significativo na arte russa do século XIX. A história da aldeia está, portanto, intrinsecamente ligada à vida e obra deste importante artista.",
-    "foto": null,
-    "foto_link": ""
+    "texto": "Embora pequena, essa vila tem seu lugar na história da arte russa como o local de nascimento do pintor Alexey Bogolyubov, em 1824. Bogolyubov, neto do famoso escritor e filósofo Alexander Radishchev, tornou-se um proeminente pintor de paisagens e marinhas, deixando um legado significativo na arte russa do século XIX.",
+    "foto": "pomeranie-russia.jpg",
+    "foto_link": "https://www.wikiart.org/en/alexey-bogolyubov/radishchevskaya-estate-of-bogolyubov-homestead-ablyazov"
   }
 ]

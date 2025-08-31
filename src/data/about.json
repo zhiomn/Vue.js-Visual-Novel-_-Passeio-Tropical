@@ -1,20 +1,32 @@
 {
   "projectDescription": "Passeio Tropical?... esse parece o nome de um livro que li quando era criança... ou será que foi um filme?... humm... essa memória é como a de um sonho coberto por neblina...",
   "technicalInfo": {
-    "title": "Ficha Técnica",
+    "title": "Ferramentas Tecnológicas",
     "items": [
-      { "label": "Engine de Jogo", "value": "Vue 3 (Composition API)" },
+      { "label": "Framework", "value": "Vue 3" },
       { "label": "Gerenciador de Estado", "value": "Pinia" },
       { "label": "Ambiente de Desenvolvimento", "value": "Vite" },
-      { "label": "Linguagem Principal", "value": "JavaScript (ESM)" },
-      { "label": "Estilização", "value": "CSS Padrão com Variáveis" }
+      { "label": "Linguagens de Programação", "value": "HTML, CSS e JavaScript" },
+      { "label": "Sistema Operacional", "value": "Lubuntu (Linux)" }
     ]
   },
   "credits": {
     "title": "Equipe",
-    "members": [
-      { "role": "Direção, Roteiro e Design", "name": "Zião Clarice Dionísio" },
-      { "role": "Programação", "name": "Gemini 2.5" }
+    "groups": [
+      {
+        "title": "Criação",
+        "members": [
+          { "role": "Direção, Roteiro e Design", "name": "Zião Clarice Dionísio" },
+          { "role": "Programação", "name": "Gemini 2.5" }
+        ]
+      },
+      {
+        "title": "Elenco Principal",
+        "members": [
+          { "role": "Autores", "name": "Sandra M. S. de Souza, Jacimar Berti Boti, Daniel de S. Moreira, Breno Tardin, Rafael Senra, Augusto Bermond, Maria Emília dos Santos, Dani Micóids, T. R. P., Hugo Reis, Henrique Pitt, Rabindranath Tagore, M. Isolina de Castro Soares, Jim Duran, Alberto Caeiro, Nadie, Suely Selvátici Zanotelli, MaraEliza Penitente, Eduardo Bulian Gouveia, Zião Clarice Dionísio e Yane C." },
+          { "role": "Pintores", "name": "Nicholas Roerich, Wassily Kandinsky, Jean-Leon Gerome, Alexey Bogolyubov e Lev Lagorio." }
+        ]
+      }
     ]
   }
 }

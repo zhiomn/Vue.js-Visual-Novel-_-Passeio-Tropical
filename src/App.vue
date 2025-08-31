@@ -3,6 +3,7 @@
   
   <template v-else>
     <div class="game-container" 
+         v-show="!(playerStore.isGameFinished && phoneStore.isPhoneVisible)"
          :style="{ fontSize: `${configStore.getSettingValue('uiScale')}%` }"
          :class="{ 'phone-is-active': phoneStore.isPhoneVisible }">
       
@@ -38,7 +39,7 @@
       />
 
       <!-- TELA DE FINALIZAÇÃO -->
-      <div v-if="playerStore.isGameFinished" class="game-finished-overlay">
+      <div v-if="playerStore.isGameFinished" class="game-finished-overlay" @click="openPhonePostGame">
         <Stars />
         <div class="finished-content">
           <p>Obrigad@ por jogar :)</p>
@@ -81,6 +82,11 @@ const phoneStore = usePhoneStore();
 const displayStore = useDisplayStore();
 const readStatusStore = useReadStatusStore();
 
+function openPhonePostGame() {
+  phoneStore.isPhoneVisible = true;
+  phoneStore.activeApp = null; // Garante que abra na tela inicial
+}
+
 onMounted(async () => {
   // 1. Load essential data first
   configStore.loadSettingsFromLocalStorage();
@@ -119,6 +125,7 @@ onMounted(async () => {
   text-align: center;
   background-color: var(--color-bg-dark);
   animation: fadeIn 1.5s ease;
+  cursor: pointer;
 }
 
 .finished-content {

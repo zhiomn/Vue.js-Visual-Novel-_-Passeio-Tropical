@@ -30,16 +30,14 @@ function completeAnimation() {
   emit('animationComplete');
 }
 
-// --- A LÓGICA CENTRAL ESTÁ AQUI ---
-// Este método é chamado quando o parágrafo de texto é clicado.
+// --- A LÓGICA MODIFICADA ESTÁ AQUI ---
+// Este método agora só funciona se a animação estiver completa.
 function handleClick() {
   if (isAnimationComplete.value) {
     // Se a animação já terminou, emitimos um evento para o pai avançar para a próxima linha.
     emit('requestNextLine');
-  } else {
-    // Se a animação está em andamento, nós a completamos.
-    completeAnimation();
   }
+  // A lógica 'else' que completava a animação foi removida.
 }
 
 watch(() => narrationStore.skipAnimationSignal, () => {
@@ -90,7 +88,7 @@ defineExpose({
   line-height: 1.6;
   margin: 0 0 20px 0;
   min-height: 100px;
-  cursor: pointer; /* Adicionado para indicar que o texto é clicável */
+  /* A propriedade 'cursor: pointer' foi removida para não indicar clicabilidade durante a animação */
 }
 .cursor {
   animation: blink 1s step-end infinite;

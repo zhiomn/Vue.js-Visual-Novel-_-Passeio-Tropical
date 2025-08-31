@@ -5,7 +5,7 @@
     "icon": "fa-solid fa-comments",
     "colorGradient": ["#4ade80", "#16a34a"],
     "requirementId": "run1_choice1",
-    "unlock_message": "Fragmentos de conversas passadas começam a surgir... Novo aplicativo: [AppName]."
+    "unlock_message": "O app Mensagens foi desbloqueado no celular."
   },
   {
     "id": "notes",
@@ -13,7 +13,7 @@
     "icon": "fa-solid fa-note-sticky",
     "colorGradient": ["#ec4899", "#ef4444"],
     "requirementId": "run1_choice3",
-    "unlock_message": "Pensamentos e poemas encontrados agora podem ser salvos. Novo aplicativo: [AppName]."
+    "unlock_message": "O app Anotações foi desbloqueado no celular."
   },
   {
     "id": "gallery",
@@ -21,7 +21,7 @@
     "icon": "fa-solid fa-images",
     "colorGradient": ["#8c9eff", "#764ba2"],
     "requirementId": "run1_choice6",
-    "unlock_message": "As imagens descritas nas anotações agora podem ser visualizadas. Novo aplicativo: [AppName]."
+    "unlock_message": "O app Galeria foi desbloqueado no celular."
   },
   {
     "id": "contacts",
@@ -29,7 +29,8 @@
     "icon": "fa-solid fa-address-book",
     "colorGradient": ["#8c9eff", "#764ba2"],
     "requirementId": "run2_choice1",
-    "requiresTerminalUnlock": true
+    "requiresTerminalUnlock": true,
+    "unlock_message": ""
   },
   {
     "id": "map",
@@ -37,31 +38,35 @@
     "icon": "fa-solid fa-map-location-dot",
     "colorGradient": ["#f97316", "#c2410c"],
     "requirementId": "run2_choice4",
-    "requiresTerminalUnlock": true
-  },
- {
-    "id": "info",
-    "name": "Sobre",
-    "icon": "fa-solid fa-info-circle",
-    "colorGradient": ["#9ca3af", "#4b5563"],
-    "requirementId": "run2_choice6",
-    "requiresTerminalUnlock": true
+    "requiresTerminalUnlock": true,
+    "unlock_message": ""
   },
   {
     "id": "audio",
     "name": "Áudios",
     "icon": "fa-solid fa-headphones-simple",
     "colorGradient": ["#4ade80", "#16a34a"],
-    "requirementId": "run3_choice1",
-    "requiresTerminalUnlock": true
+    "requirementId": "run2_choice6",
+    "requiresTerminalUnlock": true,
+    "unlock_message": ""
   },
   {
     "id": "ereader",
     "name": "Estante",
     "icon": "fa-solid fa-book-open-reader",
     "colorGradient": ["#8c9eff", "#764ba2"],
+    "requirementId": "run3_choice1",
+    "requiresTerminalUnlock": true,
+    "unlock_message": ""
+  },
+ {
+    "id": "info",
+    "name": "Sobre",
+    "icon": "fa-solid fa-info-circle",
+    "colorGradient": ["#9ca3af", "#4b5563"],
     "requirementId": "run3_choice4",
-    "requiresTerminalUnlock": true
+    "requiresTerminalUnlock": false,
+    "unlock_message": ""
   },
   {
     "id": "video",
@@ -69,7 +74,8 @@
     "icon": "fa-solid fa-circle-play",
     "colorGradient": ["#ef4444", "#764ba2"],
     "requiresTerminalUnlock": true,
-    "requirementId": "architect_awakened"
+    "requirementId": "architect_awakened",
+    "unlock_message": ""
   },
   {
     "id": "despertador",
@@ -77,14 +83,16 @@
     "icon": "fa-solid fa-bell",
     "colorGradient": ["#f97316", "#c2410c"],
     "requirementId": "run3_choice7",
-    "requiresTerminalUnlock": true
+    "requiresTerminalUnlock": true,
+    "unlock_message": ""
   },
   {
     "id": "ajustes",
     "name": "Ajustes",
     "icon": "fa-solid fa-gear",
     "colorGradient": ["#9ca3af", "#4b5563"],
-    "requirementId": "run1_choice0"
+    "requirementId": "run1_choice0",
+    "unlock_message": ""
   },
     {
     "id": "terminal",
@@ -92,6 +100,6 @@
     "icon": "fa-solid fa-terminal",
     "colorGradient": ["#000000", "#121212"],
     "requirementId": "run2_choice1",
-    "unlock_message": "Sinal desconhecido detectado... Acesso ao sistema subjacente concedido. Novo aplicativo: [AppName]."
+    "unlock_message": "O celular vibra de um jeito diferente... um app chamado Terminal apareceu..."
   }
 ]

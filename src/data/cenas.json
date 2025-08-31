@@ -6,7 +6,8 @@
     "painterId": "lev-lagorio",
     "ambience_track": "windy_hills.mp3",
     "msg_entrada": "No topo da colina o vento é potente... seus cabelos voam junto com seus pensamentos...",
-    "msg_saida": "É hora de descer a colina..."
+    "msg_saida": "É hora de descer a colina...",
+    "msg_javisitou": "Você voltou para a colina..."
   },
   {
     "id": "cena_jardim",
@@ -15,7 +16,8 @@
     "painterId": "jean-leon-gerome",
     "ambience_track": "garden_ambience.mp3",
     "msg_entrada": "O cheiro das flores flutua no ar... um jardim colorido e cheio de formas é onde você está...",
-    "msg_saida": "Você segue a caminhada..."
+    "msg_saida": "Você segue a caminhada...",
+    "msg_javisitou": "Você retornou ao jardim..."
   },
   {
     "id": "cena_parque",
@@ -24,7 +26,8 @@
     "painterId": "wassily-kandinsky",
     "ambience_track": "park_sounds.mp3",
     "msg_entrada": "O parque é um ponto de encontro e descanso... crianças brincam, pessoas conversam, cachorros passeiam...",
-    "msg_saida": "Vamos explorar outro lugar..."
+    "msg_saida": "Vamos explorar outro lugar...",
+    "msg_javisitou": "Você chegou novamente ao parque..."
   },
   {
     "id": "cena_ponte",
@@ -33,7 +36,8 @@
     "painterId": "lev-lagorio",
     "ambience_track": "river_flow.mp3",
     "msg_entrada": "A ponte está imóvel sobre o rio sempre em movimento... você observa o que passa e o que permanece por mais tempo, mas que um dia também terá fim...",
-    "msg_saida": "Você atravessa a ponte..."
+    "msg_saida": "Você atravessa a ponte...",
+    "msg_javisitou": "Você está na ponte mais uma vez..."
   },
   {
     "id": "cena_praia",
@@ -42,7 +46,8 @@
     "painterId": "lev-lagorio",
     "ambience_track": "ocean_waves.mp3",
     "msg_entrada": "As gaivotas voam no céu azul e o som das ondas te acalma... o grande oceano está na sua frente...",
-    "msg_saida": "É hora de ir adiante..."
+    "msg_saida": "É hora de ir adiante...",
+    "msg_javisitou": "Você chegou na praia..."
   },
   {
     "id": "cena_rua",
@@ -51,7 +56,8 @@
     "painterId": "alexey-bogolyubov",
     "ambience_track": "city_sounds.mp3",
     "msg_entrada": "Na rua tudo é movimento... carros passam, pessoas caminham... entram e saem de prédios e lojas... a vida corre...",
-    "msg_saida": "Você decide deixar a multidão..."
+    "msg_saida": "Você decide deixar a multidão...",
+    "msg_javisitou": "Você está de volta à rua movimentada..."
   },
   {
     "id": "cena_tenda",
@@ -60,6 +66,7 @@
     "painterId": "nicholas-roerich",
     "ambience_track": "forest_night.mp3",
     "msg_entrada": "Num campo aberto você encontra uma tenda... os tecidos dela são ornamentados, e dentro está macio e confortável...",
-    "msg_saida": "Você sai da tenda após descansar..."
+    "msg_saida": "Você sai da tenda após descansar...",
+    "msg_javisitou": "A tenda te recebe novamente..."
   }
 ]

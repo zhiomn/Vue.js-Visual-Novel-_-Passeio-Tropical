@@ -67,6 +67,7 @@ export const useContentStore = defineStore('content', {
           cityId: cidade?.id,
           cityName: cidade?.nome,
           estado: cidade?.estado,
+          pais: cidade?.pais,
         };
         this._masterContentMap.set(escolha.id, contentObject);
       });
